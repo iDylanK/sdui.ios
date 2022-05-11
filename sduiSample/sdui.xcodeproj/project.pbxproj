@@ -28,6 +28,10 @@
 		FCFBDEFD282A91B3002E3462 /* CustomModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEFB282A91B3002E3462 /* CustomModels.swift */; };
 		FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
 		FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
+		FCFBDF04282BE281002E3462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF03282BE281002E3462 /* AppDelegate.swift */; };
+		FCFBDF05282BE281002E3462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF03282BE281002E3462 /* AppDelegate.swift */; };
+		FCFBDF07282BE5E0002E3462 /* CustomComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF06282BE5E0002E3462 /* CustomComponentView.swift */; };
+		FCFBDF08282BE5E0002E3462 /* CustomComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF06282BE5E0002E3462 /* CustomComponentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,8 @@
 		FCFBDEF82827D9DC002E3462 /* ApiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiModels.swift; sourceTree = "<group>"; };
 		FCFBDEFB282A91B3002E3462 /* CustomModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomModels.swift; path = ../Api/CustomModels.swift; sourceTree = "<group>"; };
 		FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDelegate.swift; sourceTree = "<group>"; };
+		FCFBDF03282BE281002E3462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FCFBDF06282BE5E0002E3462 /* CustomComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComponentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,7 @@
 			children = (
 				FC0EB1FD27FDD32B00834533 /* sduiApp.swift */,
 				FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */,
+				FCFBDF03282BE281002E3462 /* AppDelegate.swift */,
 				FCFBDEFF282A95B5002E3462 /* Domain */,
 				FCDDC57427FF4AF400E8E4ED /* Api */,
 				FCDDC57327FF042000E8E4ED /* Views */,
@@ -184,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				FCDDC57127FF03FB00E8E4ED /* PostListView */,
+				FCFBDF06282BE5E0002E3462 /* CustomComponentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -376,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCFBDF04282BE281002E3462 /* AppDelegate.swift in Sources */,
 				FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */,
 				FC0EB22727FDD32E00834533 /* PostListView.swift in Sources */,
 				FCDDC56F27FF03F200E8E4ED /* PostListViewModel.swift in Sources */,
@@ -383,6 +392,7 @@
 				FC0EB23A27FDD51700834533 /* Api.swift in Sources */,
 				FC0EB22527FDD32E00834533 /* sduiApp.swift in Sources */,
 				FCFBDEF92827D9DC002E3462 /* ApiModels.swift in Sources */,
+				FCFBDF07282BE5E0002E3462 /* CustomComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCFBDF05282BE281002E3462 /* AppDelegate.swift in Sources */,
 				FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */,
 				FC0EB22827FDD32E00834533 /* PostListView.swift in Sources */,
 				FCDDC57027FF03F200E8E4ED /* PostListViewModel.swift in Sources */,
@@ -397,6 +408,7 @@
 				FCFBDEFA2827D9DC002E3462 /* ApiModels.swift in Sources */,
 				FC0EB23B27FDD51700834533 /* Api.swift in Sources */,
 				FC0EB22627FDD32E00834533 /* sduiApp.swift in Sources */,
+				FCFBDF08282BE5E0002E3462 /* CustomComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

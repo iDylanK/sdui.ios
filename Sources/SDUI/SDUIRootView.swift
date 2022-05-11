@@ -16,12 +16,7 @@ public struct SDUIRootView: View {
     
     public init() {}
     
-    public init(delegate: SDUIDelegate? = nil) {
-        if let delegate = delegate { SDUI.shared.delegate = delegate }
-    }
-
-    public init(delegate: SDUIDelegate? = nil, viewUrl: String?) {
-        if let delegate = delegate { SDUI.shared.delegate = delegate }
+    public init(viewUrl: String?) {
         self.viewUrl = viewUrl
     }
         
@@ -40,7 +35,7 @@ public struct SDUIRootView: View {
                 })
                 
                 .sheet(isPresented: self.state.sheetBinding()) {
-                    SDUIRootView(delegate: nil, viewUrl: self.state.sheet?.url)
+                    SDUIRootView(viewUrl: self.state.sheet?.url)
                 }
                 .environmentObject(state)
         }

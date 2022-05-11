@@ -7,24 +7,16 @@
 
 import SwiftUI
 import SDUI
+import UIKit
 
 @main
 struct sduiApp: App {
-    var delegate = SampleDelegate()
-//    var sdui = SDUI(delegate: delegate)
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     
     var body: some Scene {
         WindowGroup {
-//            SDUI(delegate: delegate).rootView
-            SDUIRootView(delegate: delegate)
+            SDUIRootView()
         }
     }
 }
-
-
-
-//public class SDUISampleView: SDUIRootView {
-////    override func SDUIComponent(_ component: SDUIComponent) -> some View {
-////        super.SDUIComponent(component)
-////    }
-//}
