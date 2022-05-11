@@ -9,18 +9,22 @@ import SwiftUI
 import SDUI
 
 @main
-struct sduiApp: App {    
+struct sduiApp: App {
     var delegate = SampleDelegate()
+//    var sdui = SDUI(delegate: delegate)
     
     var body: some Scene {
         WindowGroup {
+//            SDUI(delegate: delegate).rootView
             SDUIRootView(delegate: delegate)
         }
     }
 }
 
-class SampleDelegate: SDUIDelegate {
-    func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> ())) {
-        Api.shared.getViewWith(uri: uri, data: data, completion: completion)
-    }
-}
+
+
+//public class SDUISampleView: SDUIRootView {
+////    override func SDUIComponent(_ component: SDUIComponent) -> some View {
+////        super.SDUIComponent(component)
+////    }
+//}

@@ -24,6 +24,10 @@
 		FCFBDEF028169BE4002E3462 /* SDUI in Frameworks */ = {isa = PBXBuildFile; productRef = FCFBDEEF28169BE4002E3462 /* SDUI */; };
 		FCFBDEF92827D9DC002E3462 /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEF82827D9DC002E3462 /* ApiModels.swift */; };
 		FCFBDEFA2827D9DC002E3462 /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEF82827D9DC002E3462 /* ApiModels.swift */; };
+		FCFBDEFC282A91B3002E3462 /* CustomModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEFB282A91B3002E3462 /* CustomModels.swift */; };
+		FCFBDEFD282A91B3002E3462 /* CustomModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEFB282A91B3002E3462 /* CustomModels.swift */; };
+		FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
+		FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,8 @@
 		FCDDC56E27FF03F200E8E4ED /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
 		FCFBDEF42827C4AE002E3462 /* sdui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = sdui; path = ..; sourceTree = "<group>"; };
 		FCFBDEF82827D9DC002E3462 /* ApiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiModels.swift; sourceTree = "<group>"; };
+		FCFBDEFB282A91B3002E3462 /* CustomModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomModels.swift; path = ../Api/CustomModels.swift; sourceTree = "<group>"; };
+		FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				FC0EB1FD27FDD32B00834533 /* sduiApp.swift */,
+				FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */,
+				FCFBDEFF282A95B5002E3462 /* Domain */,
 				FCDDC57427FF4AF400E8E4ED /* Api */,
 				FCDDC57327FF042000E8E4ED /* Views */,
 				FC0EB1FF27FDD32E00834533 /* Assets.xcassets */,
@@ -195,6 +203,14 @@
 				FCFBDEF42827C4AE002E3462 /* sdui */,
 			);
 			name = Packages;
+			sourceTree = "<group>";
+		};
+		FCFBDEFF282A95B5002E3462 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FCFBDEFB282A91B3002E3462 /* CustomModels.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,8 +376,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */,
 				FC0EB22727FDD32E00834533 /* PostListView.swift in Sources */,
 				FCDDC56F27FF03F200E8E4ED /* PostListViewModel.swift in Sources */,
+				FCFBDEFC282A91B3002E3462 /* CustomModels.swift in Sources */,
 				FC0EB23A27FDD51700834533 /* Api.swift in Sources */,
 				FC0EB22527FDD32E00834533 /* sduiApp.swift in Sources */,
 				FCFBDEF92827D9DC002E3462 /* ApiModels.swift in Sources */,
@@ -372,8 +390,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */,
 				FC0EB22827FDD32E00834533 /* PostListView.swift in Sources */,
 				FCDDC57027FF03F200E8E4ED /* PostListViewModel.swift in Sources */,
+				FCFBDEFD282A91B3002E3462 /* CustomModels.swift in Sources */,
 				FCFBDEFA2827D9DC002E3462 /* ApiModels.swift in Sources */,
 				FC0EB23B27FDD51700834533 /* Api.swift in Sources */,
 				FC0EB22627FDD32E00834533 /* sduiApp.swift in Sources */,

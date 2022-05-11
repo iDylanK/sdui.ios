@@ -1,6 +1,15 @@
-public struct SDUI {
-    public private(set) var text = "Hello, World!"
+//
+//  SDUI.swift
+//
+//
+//  Created by Dylan on 10/04/2022.
+//
 
-    public init() {
-    }
+public class SDUI {
+    public static var shared = SDUI()
+    
+    public var delegate: SDUIDelegate?
+
+    public init() {}
+    
 }

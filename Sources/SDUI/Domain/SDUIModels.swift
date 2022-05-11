@@ -20,10 +20,14 @@ public struct SDUISchema: Codable, Hashable {
     public let cell: SDUICell?
     public let color: SDUIColor?
     public let component: SDUIComponent?
+    public let custom: SDUICustom?
+    public let customBase: SDUICustomBase?
+    public let customSample: SDUICustomSample?
     public let hStack: SDUIHStack?
     public let image: SDUIImage?
     public let list: SDUIList?
     public let post: SDUIPost?
+    public let postList: SDUIPostList?
     public let posts: [SDUIPost]?
     public let progressView: SDUIProgressView?
     public let screen: SDUIScreen?
@@ -40,10 +44,14 @@ public struct SDUISchema: Codable, Hashable {
         case cell = "Cell"
         case color = "Color"
         case component = "Component"
+        case custom = "Custom"
+        case customBase = "CustomBase"
+        case customSample = "CustomSample"
         case hStack = "HStack"
         case image = "Image"
         case list = "List"
         case post = "Post"
+        case postList = "PostList"
         case posts = "Posts"
         case progressView = "ProgressView"
         case screen = "Screen"
@@ -53,7 +61,7 @@ public struct SDUISchema: Codable, Hashable {
         case vStack = "VStack"
     }
 
-    public init(action: SDUIAction?, actionBase: SDUIActionBase?, alert: SDUIAlert?, button: SDUIButton?, cell: SDUICell?, color: SDUIColor?, component: SDUIComponent?, hStack: SDUIHStack?, image: SDUIImage?, list: SDUIList?, post: SDUIPost?, posts: [SDUIPost]?, progressView: SDUIProgressView?, screen: SDUIScreen?, sheet: SDUISheet?, text: SDUIText?, view: SDUIView?, vStack: SDUIVStack?) {
+    public init(action: SDUIAction?, actionBase: SDUIActionBase?, alert: SDUIAlert?, button: SDUIButton?, cell: SDUICell?, color: SDUIColor?, component: SDUIComponent?, custom: SDUICustom?, customBase: SDUICustomBase?, customSample: SDUICustomSample?, hStack: SDUIHStack?, image: SDUIImage?, list: SDUIList?, post: SDUIPost?, postList: SDUIPostList?, posts: [SDUIPost]?, progressView: SDUIProgressView?, screen: SDUIScreen?, sheet: SDUISheet?, text: SDUIText?, view: SDUIView?, vStack: SDUIVStack?) {
         self.action = action
         self.actionBase = actionBase
         self.alert = alert
@@ -61,10 +69,14 @@ public struct SDUISchema: Codable, Hashable {
         self.cell = cell
         self.color = color
         self.component = component
+        self.custom = custom
+        self.customBase = customBase
+        self.customSample = customSample
         self.hStack = hStack
         self.image = image
         self.list = list
         self.post = post
+        self.postList = postList
         self.posts = posts
         self.progressView = progressView
         self.screen = screen
@@ -215,6 +227,8 @@ public struct SDUIComponent: Codable, Hashable {
     public let components: [SDUIComponent]?
     public let cells: [SDUICell]?
     public let url: String?
+    public let customType: SDUIComponentCustomType?
+    public let message: String?
 
     enum CodingKeys: String, CodingKey {
         case color = "color"
@@ -225,9 +239,11 @@ public struct SDUIComponent: Codable, Hashable {
         case components = "components"
         case cells = "cells"
         case url = "url"
+        case customType = "custom_type"
+        case message = "message"
     }
 
-    public init(color: SDUIColor?, content: String?, type: SDUIComponentType, action: SDUIAction?, title: String?, components: [SDUIComponent]?, cells: [SDUICell]?, url: String?) {
+    public init(color: SDUIColor?, content: String?, type: SDUIComponentType, action: SDUIAction?, title: String?, components: [SDUIComponent]?, cells: [SDUICell]?, url: String?, customType: SDUIComponentCustomType?, message: String?) {
         self.color = color
         self.content = content
         self.type = type
@@ -236,6 +252,8 @@ public struct SDUIComponent: Codable, Hashable {
         self.components = components
         self.cells = cells
         self.url = url
+        self.customType = customType
+        self.message = message
     }
 }
 
@@ -264,14 +282,103 @@ public struct SDUICell: Codable, Hashable {
     }
 }
 
+public enum SDUIComponentCustomType: String, Codable, Hashable {
+    case postList = "POST_LIST"
+    case sample = "SAMPLE"
+}
+
 public enum SDUIComponentType: String, Codable, Hashable {
     case button = "BUTTON"
+    case custom = "CUSTOM"
     case hstack = "HSTACK"
     case image = "IMAGE"
     case list = "LIST"
     case progressView = "PROGRESS_VIEW"
     case text = "TEXT"
     case vstack = "VSTACK"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUICustom
+public struct SDUICustom: Codable, Hashable {
+    public let customType: SDUIComponentCustomType
+    public let message: String?
+    public let type: SDUICustomType
+    public let title: String?
+
+    enum CodingKeys: String, CodingKey {
+        case customType = "custom_type"
+        case message = "message"
+        case type = "type"
+        case title = "title"
+    }
+
+    public init(customType: SDUIComponentCustomType, message: String?, type: SDUICustomType, title: String?) {
+        self.customType = customType
+        self.message = message
+        self.type = type
+        self.title = title
+    }
+}
+
+public enum SDUICustomType: String, Codable, Hashable {
+    case custom = "CUSTOM"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUICustomBase
+public struct SDUICustomBase: Codable, Hashable {
+    public let customType: SDUICustomBaseCustomType
+    public let type: SDUICustomType
+
+    enum CodingKeys: String, CodingKey {
+        case customType = "custom_type"
+        case type = "type"
+    }
+
+    public init(customType: SDUICustomBaseCustomType, type: SDUICustomType) {
+        self.customType = customType
+        self.type = type
+    }
+}
+
+public enum SDUICustomBaseCustomType: String, Codable, Hashable {
+    case sample = "SAMPLE"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUICustomSample
+public struct SDUICustomSample: Codable, Hashable {
+    public let customType: SDUICustomBaseCustomType
+    public let message: String?
+    public let type: SDUICustomType
+
+    enum CodingKeys: String, CodingKey {
+        case customType = "custom_type"
+        case message = "message"
+        case type = "type"
+    }
+
+    public init(customType: SDUICustomBaseCustomType, message: String?, type: SDUICustomType) {
+        self.customType = customType
+        self.message = message
+        self.type = type
+    }
 }
 
 //
@@ -378,6 +485,38 @@ public struct SDUIPost: Codable, Hashable {
         self.message = message
         self.title = title
     }
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIPostList
+public struct SDUIPostList: Codable, Hashable {
+    public let customType: SDUIPostListCustomType
+    public let message: String?
+    public let title: String?
+    public let type: SDUICustomType
+
+    enum CodingKeys: String, CodingKey {
+        case customType = "custom_type"
+        case message = "message"
+        case title = "title"
+        case type = "type"
+    }
+
+    public init(customType: SDUIPostListCustomType, message: String?, title: String?, type: SDUICustomType) {
+        self.customType = customType
+        self.message = message
+        self.title = title
+        self.type = type
+    }
+}
+
+public enum SDUIPostListCustomType: String, Codable, Hashable {
+    case postList = "POST_LIST"
 }
 
 //
