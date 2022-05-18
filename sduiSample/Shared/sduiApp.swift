@@ -12,11 +12,30 @@ import UIKit
 @main
 struct sduiApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+    @State private var currentTab = 0
     
     var body: some Scene {
         WindowGroup {
-            SDUIRootView()
+            TabView(selection: $currentTab) {
+                SDUIRootView()
+                    .tabItem {
+                        Label("SDUI Library", systemImage: "list.dash")
+                    }
+                    .tag(0)
+
+                SDUIRootView(viewUrl: "products/custom")
+                    .tabItem {
+                        Label("Product custom", systemImage: "square.and.pencil")
+                    }
+                    .tag(1)
+                
+                SDUIRootView(viewUrl: "products")
+                    .tabItem {
+                        Label("Product list", systemImage: "square.and.pencil")
+                    }.tag(2)
+            }
         }
     }
+    
 }
+

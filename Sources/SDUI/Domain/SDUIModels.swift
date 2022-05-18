@@ -16,6 +16,7 @@ public struct SDUISchema: Codable, Hashable {
     public let action: SDUIAction?
     public let actionBase: SDUIActionBase?
     public let alert: SDUIAlert?
+    public let alignment: SDUIAlignment?
     public let button: SDUIButton?
     public let cell: SDUICell?
     public let color: SDUIColor?
@@ -23,14 +24,20 @@ public struct SDUISchema: Codable, Hashable {
     public let custom: SDUICustom?
     public let customBase: SDUICustomBase?
     public let customSample: SDUICustomSample?
+    public let frame: SDUIFrame?
     public let hStack: SDUIHStack?
     public let image: SDUIImage?
     public let list: SDUIList?
+    public let navigationLink: SDUINavigationLink?
+    public let navigationView: SDUINavigationView?
     public let post: SDUIPost?
     public let postList: SDUIPostList?
     public let posts: [SDUIPost]?
+    public let product: SDUIProduct?
+    public let productList: SDUIProductList?
     public let progressView: SDUIProgressView?
     public let screen: SDUIScreen?
+    public let section: SDUISection?
     public let sheet: SDUISheet?
     public let text: SDUIText?
     public let view: SDUIView?
@@ -40,6 +47,7 @@ public struct SDUISchema: Codable, Hashable {
         case action = "Action"
         case actionBase = "ActionBase"
         case alert = "Alert"
+        case alignment = "Alignment"
         case button = "Button"
         case cell = "Cell"
         case color = "Color"
@@ -47,24 +55,31 @@ public struct SDUISchema: Codable, Hashable {
         case custom = "Custom"
         case customBase = "CustomBase"
         case customSample = "CustomSample"
+        case frame = "Frame"
         case hStack = "HStack"
         case image = "Image"
         case list = "List"
+        case navigationLink = "NavigationLink"
+        case navigationView = "NavigationView"
         case post = "Post"
         case postList = "PostList"
         case posts = "Posts"
+        case product = "Product"
+        case productList = "ProductList"
         case progressView = "ProgressView"
         case screen = "Screen"
+        case section = "Section"
         case sheet = "Sheet"
         case text = "Text"
         case view = "View"
         case vStack = "VStack"
     }
 
-    public init(action: SDUIAction?, actionBase: SDUIActionBase?, alert: SDUIAlert?, button: SDUIButton?, cell: SDUICell?, color: SDUIColor?, component: SDUIComponent?, custom: SDUICustom?, customBase: SDUICustomBase?, customSample: SDUICustomSample?, hStack: SDUIHStack?, image: SDUIImage?, list: SDUIList?, post: SDUIPost?, postList: SDUIPostList?, posts: [SDUIPost]?, progressView: SDUIProgressView?, screen: SDUIScreen?, sheet: SDUISheet?, text: SDUIText?, view: SDUIView?, vStack: SDUIVStack?) {
+    public init(action: SDUIAction?, actionBase: SDUIActionBase?, alert: SDUIAlert?, alignment: SDUIAlignment?, button: SDUIButton?, cell: SDUICell?, color: SDUIColor?, component: SDUIComponent?, custom: SDUICustom?, customBase: SDUICustomBase?, customSample: SDUICustomSample?, frame: SDUIFrame?, hStack: SDUIHStack?, image: SDUIImage?, list: SDUIList?, navigationLink: SDUINavigationLink?, navigationView: SDUINavigationView?, post: SDUIPost?, postList: SDUIPostList?, posts: [SDUIPost]?, product: SDUIProduct?, productList: SDUIProductList?, progressView: SDUIProgressView?, screen: SDUIScreen?, section: SDUISection?, sheet: SDUISheet?, text: SDUIText?, view: SDUIView?, vStack: SDUIVStack?) {
         self.action = action
         self.actionBase = actionBase
         self.alert = alert
+        self.alignment = alignment
         self.button = button
         self.cell = cell
         self.color = color
@@ -72,14 +87,20 @@ public struct SDUISchema: Codable, Hashable {
         self.custom = custom
         self.customBase = customBase
         self.customSample = customSample
+        self.frame = frame
         self.hStack = hStack
         self.image = image
         self.list = list
+        self.navigationLink = navigationLink
+        self.navigationView = navigationView
         self.post = post
         self.postList = postList
         self.posts = posts
+        self.product = product
+        self.productList = productList
         self.progressView = progressView
         self.screen = screen
+        self.section = section
         self.sheet = sheet
         self.text = text
         self.view = view
@@ -120,6 +141,7 @@ public struct SDUIAction: Codable, Hashable {
 
 public enum SDUIActionType: String, Codable, Hashable {
     case alert = "ALERT"
+    case navigationLink = "NAVIGATION_LINK"
     case sheet = "SHEET"
 }
 
@@ -174,6 +196,11 @@ public enum SDUIAlertType: String, Codable, Hashable {
     case alert = "ALERT"
 }
 
+public enum SDUIAlignment: String, Codable, Hashable {
+    case center = "CENTER"
+    case top = "TOP"
+}
+
 //
 // Hashable or Equatable:
 // The compiler will not be able to synthesize the implementation of Hashable or Equatable
@@ -226,9 +253,11 @@ public struct SDUIComponent: Codable, Hashable {
     public let title: String?
     public let components: [SDUIComponent]?
     public let cells: [SDUICell]?
+    public let frame: SDUIFrame?
     public let url: String?
     public let customType: SDUIComponentCustomType?
     public let message: String?
+    public let products: [SDUIProduct]?
 
     enum CodingKeys: String, CodingKey {
         case color = "color"
@@ -238,12 +267,14 @@ public struct SDUIComponent: Codable, Hashable {
         case title = "title"
         case components = "components"
         case cells = "cells"
+        case frame = "frame"
         case url = "url"
         case customType = "custom_type"
         case message = "message"
+        case products = "products"
     }
 
-    public init(color: SDUIColor?, content: String?, type: SDUIComponentType, action: SDUIAction?, title: String?, components: [SDUIComponent]?, cells: [SDUICell]?, url: String?, customType: SDUIComponentCustomType?, message: String?) {
+    public init(color: SDUIColor?, content: String?, type: SDUIComponentType, action: SDUIAction?, title: String?, components: [SDUIComponent]?, cells: [SDUICell]?, frame: SDUIFrame?, url: String?, customType: SDUIComponentCustomType?, message: String?, products: [SDUIProduct]?) {
         self.color = color
         self.content = content
         self.type = type
@@ -251,9 +282,11 @@ public struct SDUIComponent: Codable, Hashable {
         self.title = title
         self.components = components
         self.cells = cells
+        self.frame = frame
         self.url = url
         self.customType = customType
         self.message = message
+        self.products = products
     }
 }
 
@@ -284,7 +317,58 @@ public struct SDUICell: Codable, Hashable {
 
 public enum SDUIComponentCustomType: String, Codable, Hashable {
     case postList = "POST_LIST"
+    case productList = "PRODUCT_LIST"
     case sample = "SAMPLE"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIFrame
+public struct SDUIFrame: Codable, Hashable {
+    public let alignment: SDUIAlignment
+    public let height: Double
+    public let width: Double
+
+    enum CodingKeys: String, CodingKey {
+        case alignment = "alignment"
+        case height = "height"
+        case width = "width"
+    }
+
+    public init(alignment: SDUIAlignment, height: Double, width: Double) {
+        self.alignment = alignment
+        self.height = height
+        self.width = width
+    }
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIProduct
+public struct SDUIProduct: Codable, Hashable {
+    public let action: SDUIAction?
+    public let content: String
+    public let image: String
+
+    enum CodingKeys: String, CodingKey {
+        case action = "action"
+        case content = "content"
+        case image = "image"
+    }
+
+    public init(action: SDUIAction?, content: String, image: String) {
+        self.action = action
+        self.content = content
+        self.image = image
+    }
 }
 
 public enum SDUIComponentType: String, Codable, Hashable {
@@ -310,19 +394,22 @@ public struct SDUICustom: Codable, Hashable {
     public let message: String?
     public let type: SDUICustomType
     public let title: String?
+    public let products: [SDUIProduct]?
 
     enum CodingKeys: String, CodingKey {
         case customType = "custom_type"
         case message = "message"
         case type = "type"
         case title = "title"
+        case products = "products"
     }
 
-    public init(customType: SDUIComponentCustomType, message: String?, type: SDUICustomType, title: String?) {
+    public init(customType: SDUIComponentCustomType, message: String?, type: SDUICustomType, title: String?, products: [SDUIProduct]?) {
         self.customType = customType
         self.message = message
         self.type = type
         self.title = title
+        self.products = products
     }
 }
 
@@ -415,15 +502,18 @@ public enum SDUIHStackType: String, Codable, Hashable {
 
 // MARK: - SDUIImage
 public struct SDUIImage: Codable, Hashable {
+    public let frame: SDUIFrame?
     public let type: SDUIImageType
     public let url: String
 
     enum CodingKeys: String, CodingKey {
+        case frame = "frame"
         case type = "type"
         case url = "url"
     }
 
-    public init(type: SDUIImageType, url: String) {
+    public init(frame: SDUIFrame?, type: SDUIImageType, url: String) {
+        self.frame = frame
         self.type = type
         self.url = url
     }
@@ -457,6 +547,57 @@ public struct SDUIList: Codable, Hashable {
 
 public enum SDUIListType: String, Codable, Hashable {
     case list = "LIST"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUINavigationLink
+public struct SDUINavigationLink: Codable, Hashable {
+    public let id: String
+    public let type: SDUINavigationLinkType
+    public let url: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case type = "type"
+        case url = "url"
+    }
+
+    public init(id: String, type: SDUINavigationLinkType, url: String) {
+        self.id = id
+        self.type = type
+        self.url = url
+    }
+}
+
+public enum SDUINavigationLinkType: String, Codable, Hashable {
+    case navigationLink = "NAVIGATION_LINK"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUINavigationView
+public struct SDUINavigationView: Codable, Hashable {
+    public let refreshable: Bool
+    public let title: String
+
+    enum CodingKeys: String, CodingKey {
+        case refreshable = "refreshable"
+        case title = "title"
+    }
+
+    public init(refreshable: Bool, title: String) {
+        self.refreshable = refreshable
+        self.title = title
+    }
 }
 
 //
@@ -525,6 +666,35 @@ public enum SDUIPostListCustomType: String, Codable, Hashable {
 // for types that require the use of JSONAny, nor will the implementation of Hashable be
 // synthesized for types that have collections (such as arrays or dictionaries).
 
+// MARK: - SDUIProductList
+public struct SDUIProductList: Codable, Hashable {
+    public let customType: SDUIProductListCustomType
+    public let products: [SDUIProduct]
+    public let type: SDUICustomType
+
+    enum CodingKeys: String, CodingKey {
+        case customType = "custom_type"
+        case products = "products"
+        case type = "type"
+    }
+
+    public init(customType: SDUIProductListCustomType, products: [SDUIProduct], type: SDUICustomType) {
+        self.customType = customType
+        self.products = products
+        self.type = type
+    }
+}
+
+public enum SDUIProductListCustomType: String, Codable, Hashable {
+    case productList = "PRODUCT_LIST"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
 // MARK: - SDUIProgressView
 public struct SDUIProgressView: Codable, Hashable {
     public let title: String?
@@ -554,15 +724,18 @@ public enum SDUIProgressViewType: String, Codable, Hashable {
 // MARK: - SDUIScreen
 public struct SDUIScreen: Codable, Hashable {
     public let data: JSONAny?
+    public let navigationView: SDUINavigationView?
     public let view: SDUIView?
 
     enum CodingKeys: String, CodingKey {
         case data = "data"
+        case navigationView = "navigation_view"
         case view = "view"
     }
 
-    public init(data: JSONAny?, view: SDUIView?) {
+    public init(data: JSONAny?, navigationView: SDUINavigationView?, view: SDUIView?) {
         self.data = data
+        self.navigationView = navigationView
         self.view = view
     }
 }
@@ -575,6 +748,25 @@ public struct SDUIScreen: Codable, Hashable {
 
 // MARK: - SDUIView
 public struct SDUIView: Codable, Hashable {
+    public let sections: [SDUISection]?
+
+    enum CodingKeys: String, CodingKey {
+        case sections = "sections"
+    }
+
+    public init(sections: [SDUISection]?) {
+        self.sections = sections
+    }
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUISection
+public struct SDUISection: Codable, Hashable {
     public let components: [SDUIComponent]?
 
     enum CodingKeys: String, CodingKey {

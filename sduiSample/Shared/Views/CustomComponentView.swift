@@ -15,7 +15,9 @@ struct CustomComponentView: View {
         switch component.customType {
         case .sample: Text("Sample")
         case .postList: PostListView()
+        case .productList: ProductListView(products: component.products ?? [])
         case .none: EmptyView()
         }
     }
+    
 }

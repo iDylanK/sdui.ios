@@ -11,4 +11,5 @@ import SwiftUI
 public protocol SDUIDelegate {
     func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> ()))
     func customComponent(_ component: SDUIComponent) -> AnyView
+//    func customComponent2<Content: View>(_ component: SDUIComponent) -> Content
 }

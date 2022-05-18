@@ -10,7 +10,9 @@ import SwiftUI
 
 public class SDUIState: ObservableObject {
     @Published var alert: SDUIAction?
-    @Published var sheet: SDUIAction?
+    @Published public var sheet: SDUIAction?
+    
+    public init() {}
     
     public func alertBinding() -> Binding<Bool> {
        return Binding(get: {

@@ -13,16 +13,21 @@ struct PostListView: View {
     
     var body: some View {
         NavigationView {
-            List(self.viewModel.posts, id: \.id) { post in
-                Section {
-                    PostView(post: post)
+            VStack {
+//                Image(systemName: "list.dash")
+//                Text("a")
+                List(self.viewModel.posts, id: \.id) { post in
+                    Section {
+                        PostView(post: post)
+                    }
+                }
+                .onAppear() {
+                    self.viewModel.getPosts()
                 }
             }
-            .onAppear() {
-                self.viewModel.getPosts()
-            }
-            .navigationTitle("SDUI")
-        }.refreshable {
+        }
+        .navigationTitle("SDUI")
+        .refreshable {
             self.viewModel.getPosts()
         }
     }

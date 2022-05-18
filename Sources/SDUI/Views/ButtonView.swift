@@ -20,7 +20,7 @@ struct ButtonView: View {
         switch button.action?.type {
         case .alert: Button(button.title, action: { state.alert = button.action })
         case .sheet: Button(button.title, action: { state.sheet = button.action  })
-        case .none: Button(button.title, action: {})
+        default: Button(button.title, action: {})
         }
     }
 }

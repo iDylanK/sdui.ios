@@ -14,17 +14,30 @@ struct ListView: View {
     
     var body: some View {
         List(list.cells, id: \.id) { cell in
-            Button(action: {
-                switch cell.action?.type {
-                case .alert: state.alert = cell.action
-                case .sheet: state.sheet = cell.action
-                case .none: state.sheet = nil
+            if cell.action?.type == .navigationLink {
+                NavigationLink(destination: SDUIRootView(viewUrl: cell.action?.url)) {
+                    ListViewCell(cell: cell)
                 }
-
-            }) {
-                ForEach(cell.components ?? [], id: \.self) { component in
-                    ComponentView(component: component)
+            } else {
+                Button(action: {
+                    switch cell.action?.type {
+                        case .alert: state.alert = cell.action
+                        case .sheet: state.sheet = cell.action
+                        default: state.sheet = nil; state.alert = nil
+                    }
+                }) {
+                    ListViewCell(cell: cell)
                 }
+            }
+        }
+    }
+    
+    private struct ListViewCell: View {
+        var cell: SDUICell
+        
+        var body: some View {
+            ForEach(cell.components ?? [], id: \.self) { component in
+                ComponentView(component: component)
             }
         }
     }

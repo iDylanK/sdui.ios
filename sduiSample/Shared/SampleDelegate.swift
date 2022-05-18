@@ -17,4 +17,5 @@ class SampleDelegate: SDUIDelegate {
     func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> ())) {
         Api.shared.getViewWith(uri: uri, data: data, completion: completion)
     }
+    
 }

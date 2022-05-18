@@ -10,4 +10,5 @@ import SDUI
 
 public enum CustomComponentType: String, Codable, Hashable {
     case postList = "POST_LIST"
+    case productList = "PRODUCT_LIST"
 }
