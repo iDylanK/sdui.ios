@@ -6,32 +6,18 @@
 //
 
 import Foundation
-//import struct­ SDUI.SDUIComponent
 import SDUI
 import SwiftUI
 
 class SampleDelegate: SDUIDelegate {
     
-    typealias SampleComponent = SDUIComponent
-    
     func componentView(_ component: SDUI.SDUIComponent) -> AnyView {
+        guard let component = component.decoded as? SDUIComponent else { return AnyView(ErrorView(error: "Decoding error")) }
         
-        do {
-            let jsonEncoder = JSONEncoder()
-            let jsonData = try jsonEncoder.encode(component.content)
-            let component = Api.decode(data: jsonData, type: SDUIComponent.self)
-            guard let component = component else { return AnyView(Text("Error1")) }
-            return AnyView(ComponentView(component: component))
-        } catch {
-            return AnyView(Text("Error2"))
+        switch component {
+        case .product(let product): return AnyView(ProductListCell(product: product.product))
+        case .empty(_): return AnyView(ErrorView(error: "Decoding error"))
         }
-
-//        var container = singleValueContainer()
-//        let encoder = Encoder()
-//        let ff = JSONEncoder()
-//        component.content?.encode(to: component.content!)
-        
-//        return AnyView(CustomComponentView(component: component))
     }
     
     func headerView(_ header: SDUI.SDUIHeader) -> AnyView {
@@ -40,6 +26,10 @@ class SampleDelegate: SDUIDelegate {
     
     func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> ())) {
         Api.shared.getViewWith(uri: uri, data: data, completion: completion)
+    }
+    
+    func decodeComponent(_ decoder: Decoder) throws -> Any  {
+        return try SDUIComponent(from: decoder)
     }
     
 }

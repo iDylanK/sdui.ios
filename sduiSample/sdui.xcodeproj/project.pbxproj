@@ -13,27 +13,18 @@
 		FC0EB22427FDD32E00834533 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB22327FDD32E00834533 /* Tests_macOSLaunchTests.swift */; };
 		FC0EB22527FDD32E00834533 /* sduiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB1FD27FDD32B00834533 /* sduiApp.swift */; };
 		FC0EB22627FDD32E00834533 /* sduiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB1FD27FDD32B00834533 /* sduiApp.swift */; };
-		FC0EB22727FDD32E00834533 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB1FE27FDD32B00834533 /* PostListView.swift */; };
-		FC0EB22827FDD32E00834533 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB1FE27FDD32B00834533 /* PostListView.swift */; };
 		FC0EB22927FDD32E00834533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0EB1FF27FDD32E00834533 /* Assets.xcassets */; };
 		FC0EB22A27FDD32E00834533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0EB1FF27FDD32E00834533 /* Assets.xcassets */; };
 		FC0EB23A27FDD51700834533 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB23927FDD51700834533 /* Api.swift */; };
 		FC0EB23B27FDD51700834533 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB23927FDD51700834533 /* Api.swift */; };
 		FC16797628378EC200BA58E6 /* SDUIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC16797528378EC200BA58E6 /* SDUIComponent.swift */; };
 		FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC92728282BF17900678825 /* ProductListCell.swift */; };
-		FCA2F3B128418CAB005E1370 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B028418CAB005E1370 /* HeaderView.swift */; };
-		FCA2F3B228418CAB005E1370 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B028418CAB005E1370 /* HeaderView.swift */; };
-		FCDDC56F27FF03F200E8E4ED /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDC56E27FF03F200E8E4ED /* PostListViewModel.swift */; };
-		FCDDC57027FF03F200E8E4ED /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDC56E27FF03F200E8E4ED /* PostListViewModel.swift */; };
 		FCFBDEF028169BE4002E3462 /* SDUI in Frameworks */ = {isa = PBXBuildFile; productRef = FCFBDEEF28169BE4002E3462 /* SDUI */; };
 		FCFBDEF92827D9DC002E3462 /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEF82827D9DC002E3462 /* ApiModels.swift */; };
-		FCFBDEFA2827D9DC002E3462 /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEF82827D9DC002E3462 /* ApiModels.swift */; };
 		FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
 		FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
 		FCFBDF04282BE281002E3462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF03282BE281002E3462 /* AppDelegate.swift */; };
 		FCFBDF05282BE281002E3462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF03282BE281002E3462 /* AppDelegate.swift */; };
-		FCFBDF07282BE5E0002E3462 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF06282BE5E0002E3462 /* ComponentView.swift */; };
-		FCFBDF08282BE5E0002E3462 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF06282BE5E0002E3462 /* ComponentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +46,6 @@
 
 /* Begin PBXFileReference section */
 		FC0EB1FD27FDD32B00834533 /* sduiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sduiApp.swift; sourceTree = "<group>"; };
-		FC0EB1FE27FDD32B00834533 /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
 		FC0EB1FF27FDD32E00834533 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC0EB20427FDD32E00834533 /* sdui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sdui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0EB20A27FDD32E00834533 /* sdui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sdui.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,18 +57,12 @@
 		FC0EB22127FDD32E00834533 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		FC0EB22327FDD32E00834533 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		FC0EB23927FDD51700834533 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		FC1679562836507700BA58E6 /* SampleComponentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleComponentType.swift; sourceTree = "<group>"; };
-		FC16795A2836507700BA58E6 /* SampleComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleComponent.swift; sourceTree = "<group>"; };
 		FC16797528378EC200BA58E6 /* SDUIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIComponent.swift; sourceTree = "<group>"; };
-		FCA2F3B028418CAB005E1370 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		FCC92726282BE81F00678825 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		FCC92728282BF17900678825 /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
-		FCDDC56E27FF03F200E8E4ED /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
 		FCFBDEF42827C4AE002E3462 /* sdui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = sdui; path = ..; sourceTree = "<group>"; };
 		FCFBDEF82827D9DC002E3462 /* ApiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiModels.swift; sourceTree = "<group>"; };
 		FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDelegate.swift; sourceTree = "<group>"; };
 		FCFBDF03282BE281002E3462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FCFBDF06282BE5E0002E3462 /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +101,7 @@
 		FC0EB1F727FDD32B00834533 = {
 			isa = PBXGroup;
 			children = (
-				FCFBDEED28169BD7002E3462 /* Packages */,
+				FCFBDEF42827C4AE002E3462 /* sdui */,
 				FC0EB1FC27FDD32B00834533 /* Shared */,
 				FC0EB20B27FDD32E00834533 /* macOS */,
 				FC0EB21427FDD32E00834533 /* Tests iOS */,
@@ -137,7 +121,6 @@
 				FCDDC57427FF4AF400E8E4ED /* Api */,
 				FCA2F3B328418CB4005E1370 /* Headers */,
 				FC16797728378FFE00BA58E6 /* Components */,
-				FCDDC57327FF042000E8E4ED /* Views */,
 				FC0EB1FF27FDD32E00834533 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -184,8 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				FCC92728282BF17900678825 /* ProductListCell.swift */,
-				FCFBDF09282BE7D5002E3462 /* ProductListView */,
-				FCDDC57127FF03FB00E8E4ED /* PostListView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -204,57 +185,21 @@
 			path = Headers;
 			sourceTree = "<group>";
 		};
-		FCDDC57127FF03FB00E8E4ED /* PostListView */ = {
-			isa = PBXGroup;
-			children = (
-				FC0EB1FE27FDD32B00834533 /* PostListView.swift */,
-				FCDDC56E27FF03F200E8E4ED /* PostListViewModel.swift */,
-			);
-			path = PostListView;
-			sourceTree = "<group>";
-		};
-		FCDDC57327FF042000E8E4ED /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				FCFBDF06282BE5E0002E3462 /* ComponentView.swift */,
-				FCA2F3B028418CAB005E1370 /* HeaderView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		FCDDC57427FF4AF400E8E4ED /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				FCFBDEF82827D9DC002E3462 /* ApiModels.swift */,
 				FC0EB23927FDD51700834533 /* Api.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
 		};
-		FCFBDEED28169BD7002E3462 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				FCFBDEF42827C4AE002E3462 /* sdui */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		FCFBDEFF282A95B5002E3462 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				FC16795A2836507700BA58E6 /* SampleComponent.swift */,
-				FC1679562836507700BA58E6 /* SampleComponentType.swift */,
 				FC16797528378EC200BA58E6 /* SDUIComponent.swift */,
+				FCFBDEF82827D9DC002E3462 /* ApiModels.swift */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		FCFBDF09282BE7D5002E3462 /* ProductListView */ = {
-			isa = PBXGroup;
-			children = (
-				FCC92726282BE81F00678825 /* ProductListView.swift */,
-			);
-			path = ProductListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,13 +368,9 @@
 				FCFBDF04282BE281002E3462 /* AppDelegate.swift in Sources */,
 				FC16797628378EC200BA58E6 /* SDUIComponent.swift in Sources */,
 				FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */,
-				FC0EB22727FDD32E00834533 /* PostListView.swift in Sources */,
-				FCDDC56F27FF03F200E8E4ED /* PostListViewModel.swift in Sources */,
 				FC0EB23A27FDD51700834533 /* Api.swift in Sources */,
 				FC0EB22527FDD32E00834533 /* sduiApp.swift in Sources */,
-				FCA2F3B128418CAB005E1370 /* HeaderView.swift in Sources */,
 				FCFBDEF92827D9DC002E3462 /* ApiModels.swift in Sources */,
-				FCFBDF07282BE5E0002E3462 /* ComponentView.swift in Sources */,
 				FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,14 +380,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCFBDF05282BE281002E3462 /* AppDelegate.swift in Sources */,
-				FCA2F3B228418CAB005E1370 /* HeaderView.swift in Sources */,
 				FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */,
-				FC0EB22827FDD32E00834533 /* PostListView.swift in Sources */,
-				FCDDC57027FF03F200E8E4ED /* PostListViewModel.swift in Sources */,
-				FCFBDEFA2827D9DC002E3462 /* ApiModels.swift in Sources */,
 				FC0EB23B27FDD51700834533 /* Api.swift in Sources */,
 				FC0EB22627FDD32E00834533 /* sduiApp.swift in Sources */,
-				FCFBDF08282BE5E0002E3462 /* ComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

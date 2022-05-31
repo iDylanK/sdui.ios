@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-struct ErrorView: View {
+public struct ErrorView: View {
     var error: String
     
-    var body: some View {
+    public init(error: String) { self.error = error }
+    
+    public var body: some View {
         Text(error)
     }
 }

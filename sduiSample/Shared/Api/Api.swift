@@ -17,65 +17,14 @@ final class Api {
     public func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> ())) {
         let url: URL = URL(string: "\(baseUrl)/\(uri ?? "home")")! //home
         
-//        guard let url = url else { url = URL(string: "\(baseUrl)/home") }
-        
         get(url: url, type: SDUIScreen.self) { result in
             switch result {
             case .success(let screen):
                 DispatchQueue.main.async {
-//                    if let dataValue = data, let data = screen.data {
-////                        TODO: Data
-////                        let jsonData = data.get(value: dataValue)
-////                        self.decode(data: jsonData!, type: [ApiPost].self)
-//                    }
                     completion(screen)
                 }
             case .failure(let error):
                 print("error: \(error)")
-            }
-        }
-    }
-    
-    public func getPosts(_ completion: @escaping (([ApiPost]) -> ()) ) {
-        if let url = URL(string: "\(baseUrl)/posts") {
-            
-            get(url: url, type: [ApiPost].self) { result in
-                switch result {
-                case .success(let posts):
-                    completion(posts)
-                case .failure(let error):
-                    print("error: \(error)")
-                }
-            }
-        }
-    }
-    
-    public func getHome(_ completion: @escaping ((SDUIScreen) -> ()) ) {
-        if let url = URL(string: "\(baseUrl)/home") {
-            
-            get(url: url, type: SDUIScreen.self) { result in
-                print(result)
-                switch result {
-                case .success(let screen):
-                    completion(screen)
-                case .failure(let error):
-                    print("error: \(error)")
-                }
-            }
-        }
-    }
-    
-    public func getTest(_ completion: @escaping ((SDUIScreen) -> ()) ) {
-        if let url = URL(string: "\(baseUrl)/test") {
-            
-            get(url: url, type: SDUIScreen.self) { result in
-                print(result)
-                switch result {
-                case .success(let screen):
-                    completion(screen)
-                case .failure(let error):
-                    print("error: \(error)")
-                }
             }
         }
     }
@@ -107,7 +56,7 @@ final class Api {
        task.resume()
     }
     
-    public static func decode<T: Codable>(data: Data, type: T.Type) -> T? {
+    private static func decode<T: Codable>(data: Data, type: T.Type) -> T? {
         do {
             let decoder = JSONDecoder()
             let decodedResponse = try decoder.decode(T.self, from: data)
