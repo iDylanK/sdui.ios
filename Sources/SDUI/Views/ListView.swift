@@ -10,35 +10,37 @@ import SwiftUI
 struct ListView: View {
     @EnvironmentObject var state: SDUIState
 
-    var list: SDUIList
+    var sections: [SDUISection]
     
     var body: some View {
-        List(list.cells, id: \.id) { cell in
-            if cell.action?.type == .navigationLink {
-                NavigationLink(destination: SDUIRootView(viewUrl: cell.action?.url)) {
-                    ListViewCell(cell: cell)
+        List(sections[0].components ?? [], id: \.id) { component in
+            if component.action?.type == .navigationLink {
+                NavigationLink(destination: SDUIRootView(viewUrl: component.action?.url)) {
+                    ComponentView(component: component)
                 }
             } else {
                 Button(action: {
-                    switch cell.action?.type {
-                        case .alert: state.alert = cell.action
-                        case .sheet: state.sheet = cell.action
+                    switch component.action?.type {
+                        case .alert: state.alert = component.action
+                        case .sheet: state.sheet = component.action
                         default: state.sheet = nil; state.alert = nil
                     }
                 }) {
-                    ListViewCell(cell: cell)
+                    ComponentView(component: component)
                 }
             }
+//            ComponentView(component: component.content!)
         }
+        
     }
     
-    private struct ListViewCell: View {
-        var cell: SDUICell
-        
-        var body: some View {
-            ForEach(cell.components ?? [], id: \.self) { component in
-                ComponentView(component: component)
-            }
-        }
-    }
+//    private struct ListViewCell: View {
+//        var component: JSONAny
+//
+//        var body: some View {
+//            ForEach(cell.components ?? [], id: \.self) { component in
+//                ComponentView(component: component)
+//            }
+//        }
+//    }
 }

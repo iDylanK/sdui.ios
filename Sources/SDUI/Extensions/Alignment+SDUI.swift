@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-extension Alignment {
-    static func SDUI(alignment: SDUIAlignment) -> Alignment {
-        return Alignment.top
-    }
-}
-
+//extension Alignment {
+//    static func SDUI(alignment: SDUIAlignment) -> Alignment {
+//        return Alignment.top
+//    }
+//}
+//
 

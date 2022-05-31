@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-extension Color {
+public extension Color {
     static func SDUI(color: SDUIColor?) -> Color {
         switch color {
         case .blue: return Color.blue

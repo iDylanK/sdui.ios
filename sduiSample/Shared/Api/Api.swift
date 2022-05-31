@@ -23,11 +23,11 @@ final class Api {
             switch result {
             case .success(let screen):
                 DispatchQueue.main.async {
-                    if let dataValue = data, let data = screen.data {
-//                        TODO: Data
-//                        let jsonData = data.get(value: dataValue)
-//                        self.decode(data: jsonData!, type: [ApiPost].self)
-                    }
+//                    if let dataValue = data, let data = screen.data {
+////                        TODO: Data
+////                        let jsonData = data.get(value: dataValue)
+////                        self.decode(data: jsonData!, type: [ApiPost].self)
+//                    }
                     completion(screen)
                 }
             case .failure(let error):
@@ -40,7 +40,6 @@ final class Api {
         if let url = URL(string: "\(baseUrl)/posts") {
             
             get(url: url, type: [ApiPost].self) { result in
-                print(result)
                 switch result {
                 case .success(let posts):
                     completion(posts)
@@ -82,7 +81,7 @@ final class Api {
     }
     
     private func get<T: Codable>(url: URL, type: T.Type, completion: @escaping (Result<T, SDUINetworkError>) -> Void) {
-       let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
            
            if let _ = error {
                completion(.failure(.unableToComplete))
@@ -99,16 +98,16 @@ final class Api {
                return
            }
            
-           if let decodedResponse = self.decode(data: data, type: type) {
+           if let decodedResponse = Api.decode(data: data, type: type) {
                completion(.success(decodedResponse))
            } else { completion(.failure(.invalidData)) }
            
        }
        
        task.resume()
-   }
+    }
     
-    private func decode<T: Codable>(data: Data, type: T.Type) -> T? {
+    public static func decode<T: Codable>(data: Data, type: T.Type) -> T? {
         do {
             let decoder = JSONDecoder()
             let decodedResponse = try decoder.decode(T.self, from: data)

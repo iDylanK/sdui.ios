@@ -32,20 +32,30 @@ public struct SDUIRootView: View {
                     ScreenView(screen: self.screen!)
                         .environmentObject(state)
                         .navigationTitle(navigationView.title)
-                }.if(self.navigationView?.refreshable ?? false, transform: { view in
-                    view.refreshable(action: {
-                        self.getView()
-                    })
-                }).navigationViewStyle(.stack)
+                }
+//                .if(self.screen?.view?.refreshable ?? false, transform: { view in
+//                        view.refreshable(action: {
+//                            self.getView()
+//                        })
+//                    })
+                    .navigationViewStyle(.stack)
             } else {
                 ScreenView(screen: self.screen!) // TODO: bad practise '!'
                     .environmentObject(state)
+                    .navigationBarTitle("", displayMode: .inline)
+//                    .navigationBarHidden(true)
+//                    .if(self.screen?.view?.refreshable ?? false, transform: { view in
+//                        view.refreshable(action: {
+//                            self.getView()
+//                        })
+//                    })
+                    .navigationViewStyle(.stack)
             }
         }
     }
     
     private func getView() {
-        SDUI.shared.delegate?.getViewWith(uri: viewUrl, data: nil, completion: { screen in
+        ServerDrivenUI.shared.delegate?.getViewWith(uri: viewUrl, data: nil, completion: { screen in
             DispatchQueue.main.async {
                 self.screen = screen
                 self.navigationView = screen.navigationView

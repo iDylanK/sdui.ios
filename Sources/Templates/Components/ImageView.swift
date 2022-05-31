@@ -16,8 +16,8 @@ struct ImageView: View {
         } placeholder: {
             ProgressView()
         }
-        .if(image.frame != nil) { view in
-            view.frame(width: image.frame!.width, height: image.frame!.height, alignment: Alignment.SDUI(alignment: image.frame!.alignment))
-        }
+//        .if(image.frame != nil) { view in
+//            view.frame(width: image.frame!.width, height: image.frame!.height, alignment: Alignment.SDUI(alignment: image.frame!.alignment))
+//        }
     }
 }

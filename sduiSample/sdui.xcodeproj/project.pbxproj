@@ -19,21 +19,21 @@
 		FC0EB22A27FDD32E00834533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0EB1FF27FDD32E00834533 /* Assets.xcassets */; };
 		FC0EB23A27FDD51700834533 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB23927FDD51700834533 /* Api.swift */; };
 		FC0EB23B27FDD51700834533 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB23927FDD51700834533 /* Api.swift */; };
-		FCC92727282BE81F00678825 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC92726282BE81F00678825 /* ProductListView.swift */; };
-		FCC92729282BF17900678825 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC92728282BF17900678825 /* ProductListCell.swift */; };
+		FC16797628378EC200BA58E6 /* SDUIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC16797528378EC200BA58E6 /* SDUIComponent.swift */; };
+		FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC92728282BF17900678825 /* ProductListCell.swift */; };
+		FCA2F3B128418CAB005E1370 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B028418CAB005E1370 /* HeaderView.swift */; };
+		FCA2F3B228418CAB005E1370 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B028418CAB005E1370 /* HeaderView.swift */; };
 		FCDDC56F27FF03F200E8E4ED /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDC56E27FF03F200E8E4ED /* PostListViewModel.swift */; };
 		FCDDC57027FF03F200E8E4ED /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDC56E27FF03F200E8E4ED /* PostListViewModel.swift */; };
 		FCFBDEF028169BE4002E3462 /* SDUI in Frameworks */ = {isa = PBXBuildFile; productRef = FCFBDEEF28169BE4002E3462 /* SDUI */; };
 		FCFBDEF92827D9DC002E3462 /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEF82827D9DC002E3462 /* ApiModels.swift */; };
 		FCFBDEFA2827D9DC002E3462 /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEF82827D9DC002E3462 /* ApiModels.swift */; };
-		FCFBDEFC282A91B3002E3462 /* CustomModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEFB282A91B3002E3462 /* CustomModels.swift */; };
-		FCFBDEFD282A91B3002E3462 /* CustomModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEFB282A91B3002E3462 /* CustomModels.swift */; };
 		FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
 		FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
 		FCFBDF04282BE281002E3462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF03282BE281002E3462 /* AppDelegate.swift */; };
 		FCFBDF05282BE281002E3462 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF03282BE281002E3462 /* AppDelegate.swift */; };
-		FCFBDF07282BE5E0002E3462 /* CustomComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF06282BE5E0002E3462 /* CustomComponentView.swift */; };
-		FCFBDF08282BE5E0002E3462 /* CustomComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF06282BE5E0002E3462 /* CustomComponentView.swift */; };
+		FCFBDF07282BE5E0002E3462 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF06282BE5E0002E3462 /* ComponentView.swift */; };
+		FCFBDF08282BE5E0002E3462 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF06282BE5E0002E3462 /* ComponentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,15 +67,18 @@
 		FC0EB22127FDD32E00834533 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		FC0EB22327FDD32E00834533 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		FC0EB23927FDD51700834533 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		FC1679562836507700BA58E6 /* SampleComponentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleComponentType.swift; sourceTree = "<group>"; };
+		FC16795A2836507700BA58E6 /* SampleComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleComponent.swift; sourceTree = "<group>"; };
+		FC16797528378EC200BA58E6 /* SDUIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIComponent.swift; sourceTree = "<group>"; };
+		FCA2F3B028418CAB005E1370 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FCC92726282BE81F00678825 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		FCC92728282BF17900678825 /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
 		FCDDC56E27FF03F200E8E4ED /* PostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
 		FCFBDEF42827C4AE002E3462 /* sdui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = sdui; path = ..; sourceTree = "<group>"; };
 		FCFBDEF82827D9DC002E3462 /* ApiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiModels.swift; sourceTree = "<group>"; };
-		FCFBDEFB282A91B3002E3462 /* CustomModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomModels.swift; path = ../Api/CustomModels.swift; sourceTree = "<group>"; };
 		FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDelegate.swift; sourceTree = "<group>"; };
 		FCFBDF03282BE281002E3462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FCFBDF06282BE5E0002E3462 /* CustomComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComponentView.swift; sourceTree = "<group>"; };
+		FCFBDF06282BE5E0002E3462 /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				FCFBDF03282BE281002E3462 /* AppDelegate.swift */,
 				FCFBDEFF282A95B5002E3462 /* Domain */,
 				FCDDC57427FF4AF400E8E4ED /* Api */,
+				FCA2F3B328418CB4005E1370 /* Headers */,
+				FC16797728378FFE00BA58E6 /* Components */,
 				FCDDC57327FF042000E8E4ED /* Views */,
 				FC0EB1FF27FDD32E00834533 /* Assets.xcassets */,
 			);
@@ -175,11 +180,28 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		FC16797728378FFE00BA58E6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FCC92728282BF17900678825 /* ProductListCell.swift */,
+				FCFBDF09282BE7D5002E3462 /* ProductListView */,
+				FCDDC57127FF03FB00E8E4ED /* PostListView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		FC3100702816920200797EF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FCA2F3B328418CB4005E1370 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 		FCDDC57127FF03FB00E8E4ED /* PostListView */ = {
@@ -194,9 +216,8 @@
 		FCDDC57327FF042000E8E4ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FCFBDF09282BE7D5002E3462 /* ProductListView */,
-				FCDDC57127FF03FB00E8E4ED /* PostListView */,
-				FCFBDF06282BE5E0002E3462 /* CustomComponentView.swift */,
+				FCFBDF06282BE5E0002E3462 /* ComponentView.swift */,
+				FCA2F3B028418CAB005E1370 /* HeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,7 +242,9 @@
 		FCFBDEFF282A95B5002E3462 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				FCFBDEFB282A91B3002E3462 /* CustomModels.swift */,
+				FC16795A2836507700BA58E6 /* SampleComponent.swift */,
+				FC1679562836507700BA58E6 /* SampleComponentType.swift */,
+				FC16797528378EC200BA58E6 /* SDUIComponent.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -230,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				FCC92726282BE81F00678825 /* ProductListView.swift */,
-				FCC92728282BF17900678825 /* ProductListCell.swift */,
 			);
 			path = ProductListView;
 			sourceTree = "<group>";
@@ -399,16 +421,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCFBDF04282BE281002E3462 /* AppDelegate.swift in Sources */,
+				FC16797628378EC200BA58E6 /* SDUIComponent.swift in Sources */,
 				FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */,
-				FCC92729282BF17900678825 /* ProductListCell.swift in Sources */,
 				FC0EB22727FDD32E00834533 /* PostListView.swift in Sources */,
 				FCDDC56F27FF03F200E8E4ED /* PostListViewModel.swift in Sources */,
-				FCC92727282BE81F00678825 /* ProductListView.swift in Sources */,
-				FCFBDEFC282A91B3002E3462 /* CustomModels.swift in Sources */,
 				FC0EB23A27FDD51700834533 /* Api.swift in Sources */,
 				FC0EB22527FDD32E00834533 /* sduiApp.swift in Sources */,
+				FCA2F3B128418CAB005E1370 /* HeaderView.swift in Sources */,
 				FCFBDEF92827D9DC002E3462 /* ApiModels.swift in Sources */,
-				FCFBDF07282BE5E0002E3462 /* CustomComponentView.swift in Sources */,
+				FCFBDF07282BE5E0002E3462 /* ComponentView.swift in Sources */,
+				FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,14 +439,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCFBDF05282BE281002E3462 /* AppDelegate.swift in Sources */,
+				FCA2F3B228418CAB005E1370 /* HeaderView.swift in Sources */,
 				FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */,
 				FC0EB22827FDD32E00834533 /* PostListView.swift in Sources */,
 				FCDDC57027FF03F200E8E4ED /* PostListViewModel.swift in Sources */,
-				FCFBDEFD282A91B3002E3462 /* CustomModels.swift in Sources */,
 				FCFBDEFA2827D9DC002E3462 /* ApiModels.swift in Sources */,
 				FC0EB23B27FDD51700834533 /* Api.swift in Sources */,
 				FC0EB22627FDD32E00834533 /* sduiApp.swift in Sources */,
-				FCFBDF08282BE5E0002E3462 /* CustomComponentView.swift in Sources */,
+				FCFBDF08282BE5E0002E3462 /* ComponentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

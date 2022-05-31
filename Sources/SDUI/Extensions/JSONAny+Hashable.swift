@@ -22,7 +22,9 @@ extension JSONAny: Hashable, Equatable {
     if let value = value as? String {
       hasher.combine(value)
     }
-    assertionFailure("Unknown JSONAny type")
+//      TODO: crashes but why?
+      print(value)
+//    assertionFailure("Unknown JSONAny type")
   }
 
   public static func == (lhs: JSONAny, rhs: JSONAny) -> Bool {
@@ -52,4 +54,8 @@ extension JSONAny: Hashable, Equatable {
         } catch {}
         return nil
     }
+}
+
+extension JSONAny: Identifiable {
+    
 }

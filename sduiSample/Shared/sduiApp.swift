@@ -14,6 +14,10 @@ struct sduiApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var currentTab = 0
     
+    init() {
+        UITabBar.appearance().backgroundColor = .white
+    }
+    
     var body: some Scene {
         WindowGroup {
             TabView(selection: $currentTab) {
@@ -23,15 +27,15 @@ struct sduiApp: App {
                     }
                     .tag(0)
 
-                SDUIRootView(viewUrl: "products/custom")
+                Text("Documentation")
                     .tabItem {
-                        Label("Product custom", systemImage: "square.and.pencil")
+                        Label("Documentation", systemImage: "square.and.pencil")
                     }
                     .tag(1)
                 
-                SDUIRootView(viewUrl: "products")
+                Text("Templates")
                     .tabItem {
-                        Label("Product list", systemImage: "square.and.pencil")
+                        Label("Templates", systemImage: "square.and.pencil")
                     }.tag(2)
             }
         }
