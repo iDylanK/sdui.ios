@@ -12,61 +12,8 @@
 import Foundation
 
 // MARK: - SDUISchema
-public struct SDUISchema: Codable, Hashable {
-    public let action: SDUIAction?
-    public let actionBase: SDUIActionBase?
-    public let alert: SDUIAlert?
-    public let color: SDUIColor?
-    public let component: SDUIComponent?
-    public let header: SDUIHeader?
-    public let navigationLink: SDUINavigationLink?
-    public let navigationView: SDUINavigationView?
-    public let screen: SDUIScreen?
-    public let screenType: SDUIScreenType?
-    public let section: SDUISection?
-    public let sheet: SDUISheet?
-    public let view: SDUIView?
 
-    enum CodingKeys: String, CodingKey {
-        case action = "Action"
-        case actionBase = "ActionBase"
-        case alert = "Alert"
-        case color = "Color"
-        case component = "Component"
-        case header = "Header"
-        case navigationLink = "NavigationLink"
-        case navigationView = "NavigationView"
-        case screen = "Screen"
-        case screenType = "ScreenType"
-        case section = "Section"
-        case sheet = "Sheet"
-        case view = "View"
-    }
 
-    public init(action: SDUIAction?, actionBase: SDUIActionBase?, alert: SDUIAlert?, color: SDUIColor?, component: SDUIComponent?, header: SDUIHeader?, navigationLink: SDUINavigationLink?, navigationView: SDUINavigationView?, screen: SDUIScreen?, screenType: SDUIScreenType?, section: SDUISection?, sheet: SDUISheet?, view: SDUIView?) {
-        self.action = action
-        self.actionBase = actionBase
-        self.alert = alert
-        self.color = color
-        self.component = component
-        self.header = header
-        self.navigationLink = navigationLink
-        self.navigationView = navigationView
-        self.screen = screen
-        self.screenType = screenType
-        self.section = section
-        self.sheet = sheet
-        self.view = view
-    }
-}
-
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
-// MARK: - SDUIAction
 public struct SDUIAction: Codable, Hashable {
     public let id: String
     public let type: SDUIActionType
@@ -159,29 +106,11 @@ public enum SDUIColor: String, Codable, Hashable {
 // for types that require the use of JSONAny, nor will the implementation of Hashable be
 // synthesized for types that have collections (such as arrays or dictionaries).
 
-// MARK: - SDUIHeader
-public struct SDUIHeader: Codable, Hashable {
-    public let id: String
-    public let scrollable: Bool
+// MARK: - SDUIComponent
 
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case scrollable = "scrollable"
-    }
 
-    public init(id: String, scrollable: Bool) {
-        self.id = id
-        self.scrollable = scrollable
-    }
-}
 
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
 
-// MARK: - SDUINavigationLink
 public struct SDUINavigationLink: Codable, Hashable {
     public let id: String
     public let type: SDUINavigationLinkType
@@ -232,19 +161,22 @@ public struct SDUINavigationView: Codable, Hashable {
 // MARK: - SDUIScreen
 public struct SDUIScreen: Codable, Hashable {
     public let header: SDUIHeader?
+    public let id: String
     public let navigationView: SDUINavigationView?
     public let type: SDUIScreenType
     public let view: SDUIView?
 
     enum CodingKeys: String, CodingKey {
         case header = "header"
+        case id = "id"
         case navigationView = "navigation_view"
         case type = "type"
         case view = "view"
     }
 
-    public init(header: SDUIHeader?, navigationView: SDUINavigationView?, type: SDUIScreenType, view: SDUIView?) {
+    public init(header: SDUIHeader?, id: String, navigationView: SDUINavigationView?, type: SDUIScreenType, view: SDUIView?) {
         self.header = header
+        self.id = id
         self.navigationView = navigationView
         self.type = type
         self.view = view

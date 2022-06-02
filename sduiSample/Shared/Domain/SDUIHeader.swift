@@ -1,19 +1,19 @@
 //
-//  SDUIComponent.swift
+//  SDUIHeader.swift
 //  sdui (iOS)
 //
-//  Created by Dylan on 20/05/2022.
+//  Created by Dylan on 01/06/2022.
 //
 
 import Foundation
 import SDUI
 
-public enum SDUIComponent {
-    case product(SDUIProductComponent)
+public enum SDUIHeader {
+    case product(SDUIProductHeader)
     case empty(SDUIEmpty)
 }
 
-extension SDUIComponent: Codable, Equatable {
+extension SDUIHeader: Codable, Hashable {
     public init(from decoder: Decoder) throws {
         let type = try SDUIComponentType(rawValue: decoder.decodeType())
  
@@ -25,7 +25,7 @@ extension SDUIComponent: Codable, Equatable {
 
 }
 
-public enum SDUIComponentType: String, Codable, Hashable {
+public enum SDUIHeaderType: String, Codable, Hashable {
 //    case productList = "PRODUCT_LIST"
     case product = "PRODUCT"
 }

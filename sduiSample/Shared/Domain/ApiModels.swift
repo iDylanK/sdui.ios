@@ -12,12 +12,29 @@
 import Foundation
 import SDUI
 
-public enum SDUIComponentType: String, Codable, Hashable {
-//    case productList = "PRODUCT_LIST"
-    case product = "PRODUCT"
-}
 
 public struct SDUIProductComponent: Codable, Hashable{
+    public let id: String
+    public let type: String
+    public let action: SDUIAction?
+    public let product: SDUIProduct
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case type = "type"
+        case action = "action"
+        case product = "product"
+    }
+
+    public init(id: String, type: String, action: SDUIAction?, product: SDUIProduct) {
+        self.id = id
+        self.type = type
+        self.action = action
+        self.product = product
+    }
+}
+
+public struct SDUIProductHeader: Codable, Hashable{
     public let id: String
     public let type: String
     public let action: SDUIAction?
@@ -54,6 +71,6 @@ public struct SDUIProduct: Codable, Hashable {
     }
 }
 
-public struct SDUIEmpty: Codable {
+public struct SDUIEmpty: Codable, Hashable {
     
 }

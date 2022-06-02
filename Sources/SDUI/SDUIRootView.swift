@@ -8,9 +8,6 @@
 import SwiftUI
 
 public struct SDUIRootView: View {
-    @State var screen: SDUIScreen?
-    @State var navigationView: SDUINavigationView?
-    @State var isLoading: Bool = true
     @StateObject var state = SDUIState()
     
     var viewUrl: String?
@@ -22,53 +19,21 @@ public struct SDUIRootView: View {
     }
         
     public var body: some View {
-        if self.isLoading  {
+        if self.state.isLoading  {
             ProgressView().onAppear {
-                self.getView()
+                self.state.getView(viewUrl: viewUrl)
             }
         } else {
-            if let navigationView = navigationView {
-                NavigationView {
-                    ScreenView(screen: self.screen!)
-                        .environmentObject(state)
-                        .navigationTitle(navigationView.title)
-                }
-//                .if(self.screen?.view?.refreshable ?? false, transform: { view in
-//                        view.refreshable(action: {
-//                            self.getView()
-//                        })
-//                    })
-                    .navigationViewStyle(.stack)
-            } else {
-                ScreenView(screen: self.screen!) // TODO: bad practise '!'
-                    .environmentObject(state)
-                    .navigationBarTitle("", displayMode: .inline)
-//                    .navigationBarHidden(true)
-//                    .if(self.screen?.view?.refreshable ?? false, transform: { view in
-//                        view.refreshable(action: {
-//                            self.getView()
-//                        })
-//                    })
-                    .navigationViewStyle(.stack)
-            }
+            ScreenView()
+                .if(self.state.screen?.view?.refreshable ?? false, transform: { view in
+                    view.refreshable(action: {
+                        self.state.getView()
+                    })
+                })
+                .environmentObject(state)
+                .navigationViewStyle(.stack)
+                .navigationBarTitle(self.state.screen?.navigationView?.title ?? "", displayMode: .inline)
         }
     }
     
-    private func getView() {
-        ServerDrivenUI.shared.delegate?.getViewWith(uri: viewUrl, data: nil, completion: { screen in
-            DispatchQueue.main.async {
-                self.screen = screen
-                self.navigationView = screen.navigationView
-                self.isLoading = false
-            }
-        })
-    }
-
 }
-
-//struct SDUIView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SDUIView()
-//    }
-//}
-

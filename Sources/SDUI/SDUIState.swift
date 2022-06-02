@@ -10,9 +10,25 @@ import SwiftUI
 
 public class SDUIState: ObservableObject {
     @Published var alert: SDUIAction?
-    @Published public var sheet: SDUIAction?
+    @Published var sheet: SDUIAction?
+    
+    @Published var isLoading: Bool = true
+    @Published var screen: SDUIScreen?
+    
+    var viewUrl: String?
     
     public init() {}
+    
+    public func getView(viewUrl: String? = nil) {
+        if let url = viewUrl { self.viewUrl = url }
+        
+        ServerDrivenUI.shared.delegate?.getViewWith(uri: self.viewUrl, data: nil, completion: { screen in
+            DispatchQueue.main.async {
+                self.screen = screen
+                self.isLoading = false
+            }
+        })
+    }
     
     public func alertBinding() -> Binding<Bool> {
        return Binding(get: {

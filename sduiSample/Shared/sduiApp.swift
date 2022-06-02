@@ -21,7 +21,9 @@ struct sduiApp: App {
     var body: some Scene {
         WindowGroup {
             TabView(selection: $currentTab) {
-                SDUIRootView()
+                NavigationView {
+                    SDUIRootView()
+                }
                     .tabItem {
                         Label("SDUI Library", systemImage: "list.dash")
                     }

@@ -19,6 +19,10 @@
 		FC0EB23B27FDD51700834533 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB23927FDD51700834533 /* Api.swift */; };
 		FC16797628378EC200BA58E6 /* SDUIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC16797528378EC200BA58E6 /* SDUIComponent.swift */; };
 		FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC92728282BF17900678825 /* ProductListCell.swift */; };
+		FCA2F3B828475577005E1370 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B728475577005E1370 /* ProductHeader.swift */; };
+		FCA2F3B928475577005E1370 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B728475577005E1370 /* ProductHeader.swift */; };
+		FCA2F3BB2847578F005E1370 /* SDUIHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3BA2847578F005E1370 /* SDUIHeader.swift */; };
+		FCA2F3BC2847578F005E1370 /* SDUIHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3BA2847578F005E1370 /* SDUIHeader.swift */; };
 		FCFBDEF028169BE4002E3462 /* SDUI in Frameworks */ = {isa = PBXBuildFile; productRef = FCFBDEEF28169BE4002E3462 /* SDUI */; };
 		FCFBDEF92827D9DC002E3462 /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDEF82827D9DC002E3462 /* ApiModels.swift */; };
 		FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
@@ -58,6 +62,8 @@
 		FC0EB22327FDD32E00834533 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		FC0EB23927FDD51700834533 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		FC16797528378EC200BA58E6 /* SDUIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIComponent.swift; sourceTree = "<group>"; };
+		FCA2F3B728475577005E1370 /* ProductHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHeader.swift; sourceTree = "<group>"; };
+		FCA2F3BA2847578F005E1370 /* SDUIHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIHeader.swift; sourceTree = "<group>"; };
 		FCC92728282BF17900678825 /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
 		FCFBDEF42827C4AE002E3462 /* sdui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = sdui; path = ..; sourceTree = "<group>"; };
 		FCFBDEF82827D9DC002E3462 /* ApiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiModels.swift; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 		FCA2F3B328418CB4005E1370 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				FCA2F3B728475577005E1370 /* ProductHeader.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -198,6 +205,7 @@
 			children = (
 				FC16797528378EC200BA58E6 /* SDUIComponent.swift */,
 				FCFBDEF82827D9DC002E3462 /* ApiModels.swift */,
+				FCA2F3BA2847578F005E1370 /* SDUIHeader.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -365,9 +373,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA2F3B828475577005E1370 /* ProductHeader.swift in Sources */,
 				FCFBDF04282BE281002E3462 /* AppDelegate.swift in Sources */,
 				FC16797628378EC200BA58E6 /* SDUIComponent.swift in Sources */,
 				FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */,
+				FCA2F3BB2847578F005E1370 /* SDUIHeader.swift in Sources */,
 				FC0EB23A27FDD51700834533 /* Api.swift in Sources */,
 				FC0EB22527FDD32E00834533 /* sduiApp.swift in Sources */,
 				FCFBDEF92827D9DC002E3462 /* ApiModels.swift in Sources */,
@@ -379,6 +389,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA2F3B928475577005E1370 /* ProductHeader.swift in Sources */,
+				FCA2F3BC2847578F005E1370 /* SDUIHeader.swift in Sources */,
 				FCFBDF05282BE281002E3462 /* AppDelegate.swift in Sources */,
 				FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */,
 				FC0EB23B27FDD51700834533 /* Api.swift in Sources */,
