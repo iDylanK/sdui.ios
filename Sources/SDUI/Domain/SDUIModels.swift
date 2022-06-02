@@ -109,6 +109,19 @@ public enum SDUIColor: String, Codable, Hashable {
 // MARK: - SDUIComponent
 
 
+public enum SDUIDisplayMode: String, Codable, Hashable {
+    case automatic = "AUTOMATIC"
+    case inline = "INLINE"
+    case large = "LARGE"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIHeader
 
 
 public struct SDUINavigationLink: Codable, Hashable {
@@ -141,13 +154,16 @@ public enum SDUINavigationLinkType: String, Codable, Hashable {
 
 // MARK: - SDUINavigationView
 public struct SDUINavigationView: Codable, Hashable {
+    public let displayMode: SDUIDisplayMode?
     public let title: String
 
     enum CodingKeys: String, CodingKey {
+        case displayMode = "display_mode"
         case title = "title"
     }
 
-    public init(title: String) {
+    public init(displayMode: SDUIDisplayMode?, title: String) {
+        self.displayMode = displayMode
         self.title = title
     }
 }

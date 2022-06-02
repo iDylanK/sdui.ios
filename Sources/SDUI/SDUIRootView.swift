@@ -32,7 +32,8 @@ public struct SDUIRootView: View {
                 })
                 .environmentObject(state)
                 .navigationViewStyle(.stack)
-                .navigationBarTitle(self.state.screen?.navigationView?.title ?? "", displayMode: .inline)
+                .navigationBarTitle(self.state.screen?.navigationView?.title ?? "", displayMode:
+                        .sdui(self.state.screen?.navigationView?.displayMode))
         }
     }
     
