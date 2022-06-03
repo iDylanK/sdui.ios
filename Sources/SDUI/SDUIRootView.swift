@@ -11,11 +11,13 @@ public struct SDUIRootView: View {
     @StateObject var state = SDUIState()
     
     var viewUrl: String?
+    var placeHolder: SDUIPlaceHolder?
     
     public init() {}
     
-    public init(viewUrl: String?) {
+    public init(viewUrl: String?, placeHolder: SDUIPlaceHolder? = nil) {
         self.viewUrl = viewUrl
+        self.placeHolder = placeHolder
     }
         
     public var body: some View {

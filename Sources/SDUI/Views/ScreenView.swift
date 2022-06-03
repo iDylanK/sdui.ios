@@ -16,7 +16,7 @@ struct ScreenView: View {
                 HeaderView(header: header).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 100)
             }
             
-            if let screen = self.state.screen, let view = screen.view, let sections = view.sections {    
+            if let screen = self.state.screen, let view = screen.view, let sections = view.sections {
                 if screen.type == .list {
                     ListView(sections: sections)
                 } else if view.scrollable {
@@ -34,7 +34,7 @@ struct ScreenView: View {
         })
         
         .sheet(isPresented: self.state.sheetBinding()) {
-            SDUIRootView(viewUrl: self.state.sheet?.url)
+            SDUIRootView(viewUrl: self.state.sheet?.url, placeHolder: self.state.sheet?.placeHolder)
         }
     }
     

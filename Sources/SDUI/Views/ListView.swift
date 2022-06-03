@@ -8,39 +8,47 @@
 import SwiftUI
 
 struct ListView: View {
-    @EnvironmentObject var state: SDUIState
-
     var sections: [SDUISection]
     
     var body: some View {
-        List(sections[0].components ?? [], id: \.id) { component in
-            if component.action?.type == .navigationLink {
-                NavigationLink(destination: SDUIRootView(viewUrl: component.action?.url)) {
-                    ComponentView(component: component)
+        List(sections, id: \.self) { section in
+            if let header = section.title {
+                Section(header: Text(header)) {
+                   ListViewSection(section: section)
                 }
             } else {
-                Button(action: {
-                    switch component.action?.type {
-                        case .alert: state.alert = component.action
-                        case .sheet: state.sheet = component.action
-                        default: state.sheet = nil; state.alert = nil
-                    }
-                }) {
-                    ComponentView(component: component)
+                Section() {
+                   ListViewSection(section: section)
                 }
             }
-//            ComponentView(component: component.content!)
-        }
+            
+        }.listStyle(InsetGroupedListStyle())
         
     }
     
-//    private struct ListViewCell: View {
-//        var component: JSONAny
-//
-//        var body: some View {
-//            ForEach(cell.components ?? [], id: \.self) { component in
-//                ComponentView(component: component)
-//            }
-//        }
-//    }
+    private struct ListViewSection: View {
+        @EnvironmentObject var state: SDUIState
+        
+        var section: SDUISection
+
+        var body: some View {
+            ForEach(section.components  ?? [], id: \.self) { component in
+                if component.action?.type == .navigationLink {
+                    NavigationLink(destination: SDUIRootView(viewUrl: component.action?.url)) {
+                        ComponentView(component: component)
+                    }
+                } else {
+                    Button(action: {
+                        switch component.action?.type {
+                            case .alert: state.alert = component.action
+                            case .sheet: state.sheet = component.action
+                            default: state.sheet = nil; state.alert = nil
+                        }
+                    }) {
+                        ComponentView(component: component)
+                    }
+                }
+            }
+        }
+    }
 }

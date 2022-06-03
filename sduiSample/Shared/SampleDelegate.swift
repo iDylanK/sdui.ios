@@ -24,7 +24,7 @@ class SampleDelegate: SDUIDelegate {
         guard let header = header.decoded as? SDUIHeader else { return AnyView(ErrorView(error: "Decoding error")) }
         
         switch header {
-        case .product(_): return AnyView(ProductHeader())
+        case .product(let product): return AnyView(ProductHeader(product: product))
         case .empty(_): return AnyView(ErrorView(error: "Decoding error"))
         }
     }

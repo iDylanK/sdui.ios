@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ComponentView: View {
+struct ComponentView: View {    
     var component: SDUIComponent
     
     var body: some View {

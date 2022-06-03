@@ -9,9 +9,26 @@ import Foundation
 import SwiftUI
 
 struct ProductHeader: View {
+    var product: SDUIProductHeader
     
     var body: some View {
-        Text("Product Header")
+        AsyncImage(url: URL(string: product.product.image)) { image in
+            image.resizable()
+                .aspectRatio(contentMode: .fit)
+        } placeholder: {
+            ProgressView()
+        }.frame(height: 150)
+        
+        Spacer()
+        
+        Text(product.product.content).bold()
+        
+        Spacer()
+        
+        Button("In winkelmandje") {
+//            TODO: ...
+            print("TODO")
+        }
     }
     
 }

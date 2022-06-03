@@ -16,6 +16,7 @@ import Foundation
 
 public struct SDUIAction: Codable, Hashable {
     public let id: String
+    public let placeHolder: SDUIPlaceHolder?
     public let type: SDUIActionType
     public let url: String?
     public let message: String?
@@ -23,17 +24,41 @@ public struct SDUIAction: Codable, Hashable {
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
+        case placeHolder = "place_holder"
         case type = "type"
         case url = "url"
         case message = "message"
         case title = "title"
     }
 
-    public init(id: String, type: SDUIActionType, url: String?, message: String?, title: String?) {
+    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUIActionType, url: String?, message: String?, title: String?) {
         self.id = id
+        self.placeHolder = placeHolder
         self.type = type
         self.url = url
         self.message = message
+        self.title = title
+    }
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIPlaceHolder
+public struct SDUIPlaceHolder: Codable, Hashable {
+    public let image: String
+    public let title: String
+
+    enum CodingKeys: String, CodingKey {
+        case image = "image"
+        case title = "title"
+    }
+
+    public init(image: String, title: String) {
+        self.image = image
         self.title = title
     }
 }
@@ -53,13 +78,16 @@ public enum SDUIActionType: String, Codable, Hashable {
 // MARK: - SDUIActionBase
 public struct SDUIActionBase: Codable, Hashable {
     public let id: String
+    public let placeHolder: SDUIPlaceHolder?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
+        case placeHolder = "place_holder"
     }
 
-    public init(id: String) {
+    public init(id: String, placeHolder: SDUIPlaceHolder?) {
         self.id = id
+        self.placeHolder = placeHolder
     }
 }
 
@@ -73,19 +101,22 @@ public struct SDUIActionBase: Codable, Hashable {
 public struct SDUIAlert: Codable, Hashable {
     public let id: String
     public let message: String?
+    public let placeHolder: SDUIPlaceHolder?
     public let title: String?
     public let type: SDUIAlertType
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case message = "message"
+        case placeHolder = "place_holder"
         case title = "title"
         case type = "type"
     }
 
-    public init(id: String, message: String?, title: String?, type: SDUIAlertType) {
+    public init(id: String, message: String?, placeHolder: SDUIPlaceHolder?, title: String?, type: SDUIAlertType) {
         self.id = id
         self.message = message
+        self.placeHolder = placeHolder
         self.title = title
         self.type = type
     }
@@ -126,17 +157,20 @@ public enum SDUIDisplayMode: String, Codable, Hashable {
 
 public struct SDUINavigationLink: Codable, Hashable {
     public let id: String
+    public let placeHolder: SDUIPlaceHolder?
     public let type: SDUINavigationLinkType
     public let url: String
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
+        case placeHolder = "place_holder"
         case type = "type"
         case url = "url"
     }
 
-    public init(id: String, type: SDUINavigationLinkType, url: String) {
+    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUINavigationLinkType, url: String) {
         self.id = id
+        self.placeHolder = placeHolder
         self.type = type
         self.url = url
     }
@@ -238,13 +272,16 @@ public struct SDUIView: Codable, Hashable {
 // MARK: - SDUISection
 public struct SDUISection: Codable, Hashable {
     public let components: [SDUIComponent]?
+    public let title: String?
 
     enum CodingKeys: String, CodingKey {
         case components = "components"
+        case title = "title"
     }
 
-    public init(components: [SDUIComponent]?) {
+    public init(components: [SDUIComponent]?, title: String?) {
         self.components = components
+        self.title = title
     }
 }
 
@@ -257,17 +294,20 @@ public struct SDUISection: Codable, Hashable {
 // MARK: - SDUISheet
 public struct SDUISheet: Codable, Hashable {
     public let id: String
+    public let placeHolder: SDUIPlaceHolder?
     public let type: SDUISheetType
     public let url: String
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
+        case placeHolder = "place_holder"
         case type = "type"
         case url = "url"
     }
 
-    public init(id: String, type: SDUISheetType, url: String) {
+    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUISheetType, url: String) {
         self.id = id
+        self.placeHolder = placeHolder
         self.type = type
         self.url = url
     }
