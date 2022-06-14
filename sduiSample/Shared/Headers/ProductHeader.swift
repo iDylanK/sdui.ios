@@ -7,8 +7,11 @@
 
 import Foundation
 import SwiftUI
+import SDUI
 
 struct ProductHeader: View {
+    @EnvironmentObject var sduiData: SDUIData
+    
     var product: SDUIProductHeader
     
     var body: some View {
@@ -21,10 +24,14 @@ struct ProductHeader: View {
         
         Text(product.product.content).bold()
         
-        Button("In winkelmandje") {
-//            TODO: ...
-            print("TODO")
+        Button {
+            print(sduiData.shoppingCard)
+            sduiData.shoppingCard[product.product.id] = sduiData.shoppingCard[product.product.id] as? Bool != true
+        } label: {
+            if sduiData.shoppingCard[product.product.id] as? Bool == true { Text("Verwijder") }
+            else { Text("In winkelmandje!") }
         }
+
     }
     
 }

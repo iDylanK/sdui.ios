@@ -37,15 +37,18 @@ public enum SDUIActionType: String, Codable, Hashable {
 
 public struct SDUIProduct: Codable, Hashable {
     public let content: String
+    public let id: String
     public let image: String
 
     enum CodingKeys: String, CodingKey {
         case content = "content"
+        case id = "id"
         case image = "image"
     }
 
-    public init(content: String, image: String) {
+    public init(content: String, id: String, image: String) {
         self.content = content
+        self.id = id
         self.image = image
     }
 }

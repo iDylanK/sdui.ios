@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SDUI
 
 struct ProductListCell: View {
     var product: SDUIProduct
     var action: SDUIProductLike?
     
+    @EnvironmentObject var sduiData: SDUIData
     @State var bought = false
     
     var body: some View {
@@ -22,16 +24,14 @@ struct ProductListCell: View {
             }.frame(width: 50, height: 50, alignment: .top)
             Text(product.content).foregroundColor(.black)
             
-            if let action = action {
+            if action != nil {
                 Spacer()
                 Button {
-                    bought = !bought
+                    print(sduiData.shoppingCard)
+                    sduiData.shoppingCard[product.id] = sduiData.shoppingCard[product.id] as? Bool != true
                 } label: {
-                    if bought == true { Text("Remove") }
-                    else { Text("Buy") }
-                }
-                .onAppear {
-                    print(action)
+                    if sduiData.shoppingCard[product.id] as? Bool == true { Text("Verwijder") }
+                    else { Text("Koop!") }
                 }
             }
 

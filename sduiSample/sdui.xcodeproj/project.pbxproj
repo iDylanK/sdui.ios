@@ -19,6 +19,7 @@
 		FC0EB23B27FDD51700834533 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB23927FDD51700834533 /* Api.swift */; };
 		FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC92728282BF17900678825 /* ProductListCell.swift */; };
 		FC9A3F3328589E5B00903662 /* SDUIAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F3228589E5B00903662 /* SDUIAction.swift */; };
+		FC9A3F352858D0E200903662 /* SDUIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F342858D0E200903662 /* SDUIData.swift */; };
 		FCA2F3B828475577005E1370 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B728475577005E1370 /* ProductHeader.swift */; };
 		FCA2F3B928475577005E1370 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B728475577005E1370 /* ProductHeader.swift */; };
 		FCA2F3BB2847578F005E1370 /* SDUIHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3BA2847578F005E1370 /* SDUIHeader.swift */; };
@@ -62,6 +63,7 @@
 		FC0EB22327FDD32E00834533 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		FC0EB23927FDD51700834533 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		FC9A3F3228589E5B00903662 /* SDUIAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIAction.swift; sourceTree = "<group>"; };
+		FC9A3F342858D0E200903662 /* SDUIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIData.swift; sourceTree = "<group>"; };
 		FCA2F3B728475577005E1370 /* ProductHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHeader.swift; sourceTree = "<group>"; };
 		FCA2F3BA2847578F005E1370 /* SDUIHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIHeader.swift; sourceTree = "<group>"; };
 		FCC92728282BF17900678825 /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				FC0EB1FD27FDD32B00834533 /* sduiApp.swift */,
 				FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */,
 				FCFBDF03282BE281002E3462 /* AppDelegate.swift */,
+				FC9A3F342858D0E200903662 /* SDUIData.swift */,
 				FCFBDEFF282A95B5002E3462 /* Domain */,
 				FCDDC57427FF4AF400E8E4ED /* Api */,
 				FCA2F3B328418CB4005E1370 /* Headers */,
@@ -373,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC9A3F352858D0E200903662 /* SDUIData.swift in Sources */,
 				FC9A3F3328589E5B00903662 /* SDUIAction.swift in Sources */,
 				FCA2F3B828475577005E1370 /* ProductHeader.swift in Sources */,
 				FCFBDF04282BE281002E3462 /* AppDelegate.swift in Sources */,

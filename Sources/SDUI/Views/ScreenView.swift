@@ -13,7 +13,7 @@ struct ScreenView: View {
     var body: some View {
         VStack() {
             if let header = self.state.screen?.header, !header.scrollable {
-                HeaderView(header: header).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 100)
+                HeaderView(header: header)
             }
             
             if let screen = self.state.screen, let view = screen.view, let sections = view.sections {
