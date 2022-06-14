@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ProductListCell: View {
     var product: SDUIProduct
+    var action: SDUIProductLike?
+    
+    @State var bought = false
     
     var body: some View {
         HStack {
@@ -18,12 +21,20 @@ struct ProductListCell: View {
                 ProgressView()
             }.frame(width: 50, height: 50, alignment: .top)
             Text(product.content).foregroundColor(.black)
+            
+            if let action = action {
+                Spacer()
+                Button {
+                    bought = !bought
+                } label: {
+                    if bought == true { Text("Remove") }
+                    else { Text("Buy") }
+                }
+                .onAppear {
+                    print(action)
+                }
+            }
+
         }
     }
 }
-
-//struct ProductListCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProductListCell()
-//    }
-//}

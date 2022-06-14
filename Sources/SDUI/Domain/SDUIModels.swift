@@ -14,40 +14,6 @@ import Foundation
 // MARK: - SDUISchema
 
 
-public struct SDUIAction: Codable, Hashable {
-    public let id: String
-    public let placeHolder: SDUIPlaceHolder?
-    public let type: SDUIActionType
-    public let url: String?
-    public let message: String?
-    public let title: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case placeHolder = "place_holder"
-        case type = "type"
-        case url = "url"
-        case message = "message"
-        case title = "title"
-    }
-
-    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUIActionType, url: String?, message: String?, title: String?) {
-        self.id = id
-        self.placeHolder = placeHolder
-        self.type = type
-        self.url = url
-        self.message = message
-        self.title = title
-    }
-}
-
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
-// MARK: - SDUIPlaceHolder
 public struct SDUIPlaceHolder: Codable, Hashable {
     public let image: String
     public let title: String

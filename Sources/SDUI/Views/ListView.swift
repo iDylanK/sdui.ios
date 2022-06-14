@@ -8,20 +8,26 @@
 import SwiftUI
 
 struct ListView: View {
+    @EnvironmentObject var state: SDUIState
     var sections: [SDUISection]
     
     var body: some View {
-        List(sections, id: \.self) { section in
-            if let header = section.title {
-                Section(header: Text(header)) {
-                   ListViewSection(section: section)
-                }
-            } else {
-                Section() {
-                   ListViewSection(section: section)
+        
+        List {
+            if let header = self.state.screen?.header, header.scrollable {
+                HeaderView(header: header).listRowSeparator(.hidden)
+            }
+            ForEach(sections, id: \.self) { section in
+                if let header = section.title {
+                    Section(header: Text(header)) {
+                       ListViewSection(section: section)
+                    }
+                } else {
+                    Section() {
+                       ListViewSection(section: section)
+                    }
                 }
             }
-            
         }.listStyle(InsetGroupedListStyle())
         
     }
@@ -32,7 +38,7 @@ struct ListView: View {
         var section: SDUISection
 
         var body: some View {
-            ForEach(section.components  ?? [], id: \.self) { component in
+            ForEach(section.components  ?? [], id: \.id) { component in
                 if component.action?.type == .navigationLink {
                     NavigationLink(destination: SDUIRootView(viewUrl: component.action?.url)) {
                         ComponentView(component: component)

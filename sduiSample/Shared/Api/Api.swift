@@ -15,7 +15,7 @@ final class Api {
     private let baseUrl = "http://localhost:6060"
     
     public func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> ())) {
-        let url: URL = URL(string: "\(baseUrl)/\(uri ?? "home")")! //home
+        let url: URL = URL(string: "\(baseUrl)/\(uri ?? "library")")! //home
         
         get(url: url, type: SDUIScreen.self) { result in
             switch result {

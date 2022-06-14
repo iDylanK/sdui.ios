@@ -19,11 +19,7 @@ struct ProductHeader: View {
             ProgressView()
         }.frame(height: 150)
         
-        Spacer()
-        
         Text(product.product.content).bold()
-        
-        Spacer()
         
         Button("In winkelmandje") {
 //            TODO: ...
