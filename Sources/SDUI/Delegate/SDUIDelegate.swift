@@ -20,4 +20,6 @@ public protocol SDUIDelegate {
     func componentEquals(_ lhs: SDUIComponent, _ rhs: SDUIComponent) -> Bool
     func headerEquals(_ lhs: SDUIHeader, _ rhs: SDUIHeader) -> Bool
     func actionEquals(_ lhs: SDUIAction, _ rhs: SDUIAction) -> Bool
+    
+//    func componentSearch(_ components: [SDUIComponent], search: String) -> [SDUIComponent]
 }

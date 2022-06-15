@@ -106,6 +106,49 @@ public enum SDUIColor: String, Codable, Hashable {
 // MARK: - SDUIComponent
 
 
+public struct SDUIContent: Codable, Hashable {
+    public let refreshable: Bool
+    public let scrollable: Bool
+    public let searchable: Bool?
+    public let sections: [SDUISection]?
+
+    enum CodingKeys: String, CodingKey {
+        case refreshable = "refreshable"
+        case scrollable = "scrollable"
+        case searchable = "searchable"
+        case sections = "sections"
+    }
+
+    public init(refreshable: Bool, scrollable: Bool, searchable: Bool?, sections: [SDUISection]?) {
+        self.refreshable = refreshable
+        self.scrollable = scrollable
+        self.searchable = searchable
+        self.sections = sections
+    }
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUISection
+public struct SDUISection: Codable, Hashable {
+    public let components: [SDUIComponent]?
+    public let title: String?
+
+    enum CodingKeys: String, CodingKey {
+        case components = "components"
+        case title = "title"
+    }
+
+    public init(components: [SDUIComponent]?, title: String?) {
+        self.components = components
+        self.title = title
+    }
+}
+
 public enum SDUIDisplayMode: String, Codable, Hashable {
     case automatic = "AUTOMATIC"
     case inline = "INLINE"
@@ -120,6 +163,17 @@ public enum SDUIDisplayMode: String, Codable, Hashable {
 
 // MARK: - SDUIHeader
 
+public enum SDUIHeaderType: String, Codable, Hashable {
+    case header = "HEADER"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIHeaderBase
 
 public struct SDUINavigationLink: Codable, Hashable {
     public let id: String
@@ -152,103 +206,31 @@ public enum SDUINavigationLinkType: String, Codable, Hashable {
 // for types that require the use of JSONAny, nor will the implementation of Hashable be
 // synthesized for types that have collections (such as arrays or dictionaries).
 
-// MARK: - SDUINavigationView
-public struct SDUINavigationView: Codable, Hashable {
-    public let displayMode: SDUIDisplayMode?
-    public let title: String
-
-    enum CodingKeys: String, CodingKey {
-        case displayMode = "display_mode"
-        case title = "title"
-    }
-
-    public init(displayMode: SDUIDisplayMode?, title: String) {
-        self.displayMode = displayMode
-        self.title = title
-    }
-}
-
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 // MARK: - SDUIScreen
 public struct SDUIScreen: Codable, Hashable {
+    public let content: SDUIContent?
     public let header: SDUIHeader?
     public let id: String
-    public let navigationView: SDUINavigationView?
     public let type: SDUIScreenType
-    public let view: SDUIView?
 
     enum CodingKeys: String, CodingKey {
+        case content = "content"
         case header = "header"
         case id = "id"
-        case navigationView = "navigation_view"
         case type = "type"
-        case view = "view"
     }
 
-    public init(header: SDUIHeader?, id: String, navigationView: SDUINavigationView?, type: SDUIScreenType, view: SDUIView?) {
+    public init(content: SDUIContent?, header: SDUIHeader?, id: String, type: SDUIScreenType) {
+        self.content = content
         self.header = header
         self.id = id
-        self.navigationView = navigationView
         self.type = type
-        self.view = view
     }
 }
 
 public enum SDUIScreenType: String, Codable, Hashable {
+    case contentView = "CONTENT_VIEW"
     case list = "LIST"
-    case views = "VIEWS"
-}
-
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
-// MARK: - SDUIView
-public struct SDUIView: Codable, Hashable {
-    public let refreshable: Bool
-    public let scrollable: Bool
-    public let sections: [SDUISection]?
-
-    enum CodingKeys: String, CodingKey {
-        case refreshable = "refreshable"
-        case scrollable = "scrollable"
-        case sections = "sections"
-    }
-
-    public init(refreshable: Bool, scrollable: Bool, sections: [SDUISection]?) {
-        self.refreshable = refreshable
-        self.scrollable = scrollable
-        self.sections = sections
-    }
-}
-
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
-// MARK: - SDUISection
-public struct SDUISection: Codable, Hashable {
-    public let components: [SDUIComponent]?
-    public let title: String?
-
-    enum CodingKeys: String, CodingKey {
-        case components = "components"
-        case title = "title"
-    }
-
-    public init(components: [SDUIComponent]?, title: String?) {
-        self.components = components
-        self.title = title
-    }
 }
 
 //

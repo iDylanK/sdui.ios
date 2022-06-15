@@ -8,15 +8,16 @@
 import Foundation
 
 public struct SDUIComponent: Codable, Hashable {
-    public var id: String
-    public var rawType: String
-    public var action: SDUIAction?
+    public let id: String
+    public let action: SDUIAction?
+    public let searchable: String?
     
     public var decoded: Any?
     
     enum CodingKeys: String, CodingKey {
-        case action = "action"
         case id = "id"
+        case action = "action"
+        case searchable = "searchable"
     }
     
     public init(from decoder: Decoder) throws {
@@ -25,8 +26,7 @@ public struct SDUIComponent: Codable, Hashable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
         self.action = try? container.decode(SDUIAction.self, forKey: .action)
-        
-        self.rawType = try decoder.decodeType()
+        self.searchable = try? container.decode(String.self, forKey: .searchable)
     }
     
     public static func == (lhs: SDUIComponent, rhs: SDUIComponent) -> Bool {
@@ -39,8 +39,8 @@ public struct SDUIComponent: Codable, Hashable {
     
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-        hasher.combine(rawType)
         hasher.combine(action)
+        hasher.combine(searchable)
     }
 
 }

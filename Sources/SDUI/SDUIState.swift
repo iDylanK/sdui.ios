@@ -15,6 +15,8 @@ public class SDUIState: ObservableObject {
     @Published var isLoading: Bool = true
     @Published var screen: SDUIScreen?
     
+    @Published var search = ""
+    
     var viewUrl: String?
     
     public init() {}

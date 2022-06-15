@@ -12,30 +12,23 @@ public struct SDUIRootView: View {
     
     var viewUrl: String?
     var placeHolder: SDUIPlaceHolder?
+    var navigationView: Bool = false
     
     public init() {}
     
-    public init(viewUrl: String?, placeHolder: SDUIPlaceHolder? = nil) {
+    public init(viewUrl: String? = nil, placeHolder: SDUIPlaceHolder? = nil, navigationView: Bool = false) {
         self.viewUrl = viewUrl
         self.placeHolder = placeHolder
+        self.navigationView = navigationView
     }
         
     public var body: some View {
-        if self.state.isLoading  {
-            ProgressView().onAppear {
-                self.state.getView(viewUrl: viewUrl)
+        if navigationView {
+            NavigationView {
+                RootView(viewUrl: self.viewUrl)
             }
         } else {
-            ScreenView()
-                .if(self.state.screen?.view?.refreshable ?? false, transform: { view in
-                    view.refreshable(action: {
-                        self.state.getView()
-                    })
-                })
-                .environmentObject(state)
-                .navigationViewStyle(.stack)
-                .navigationBarTitle(self.state.screen?.navigationView?.title ?? "", displayMode:
-                        .sdui(self.state.screen?.navigationView?.displayMode))
+            RootView(viewUrl: self.viewUrl)
         }
     }
     

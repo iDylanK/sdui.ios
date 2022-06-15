@@ -14,47 +14,21 @@ struct ListView: View {
     var body: some View {
         
         List {
-            if let header = self.state.screen?.header, header.scrollable {
+            if let header = self.state.screen?.header, header.scrollable, header.decoded != nil {
                 HeaderView(header: header).listRowSeparator(.hidden)
             }
-            ForEach(sections, id: \.self) { section in
+            ForEach(sections.search(value: self.state.search), id: \.self) { section in
                 if let header = section.title {
                     Section(header: Text(header)) {
-                       ListViewSection(section: section)
+                        ListSectionView(section: section)
                     }
                 } else {
                     Section() {
-                       ListViewSection(section: section)
+                        ListSectionView(section: section)
                     }
                 }
             }
         }.listStyle(InsetGroupedListStyle())
         
-    }
-    
-    private struct ListViewSection: View {
-        @EnvironmentObject var state: SDUIState
-        
-        var section: SDUISection
-
-        var body: some View {
-            ForEach(section.components  ?? [], id: \.id) { component in
-                if component.action?.type == .navigationLink {
-                    NavigationLink(destination: SDUIRootView(viewUrl: component.action?.url)) {
-                        ComponentView(component: component)
-                    }
-                } else {
-                    Button(action: {
-                        switch component.action?.type {
-                            case .alert: state.alert = component.action
-                            case .sheet: state.sheet = component.action
-                            default: state.sheet = nil; state.alert = nil
-                        }
-                    }) {
-                        ComponentView(component: component)
-                    }
-                }
-            }
-        }
     }
 }

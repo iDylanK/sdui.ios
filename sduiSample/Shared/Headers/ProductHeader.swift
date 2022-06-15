@@ -12,7 +12,7 @@ import SDUI
 struct ProductHeader: View {
     @EnvironmentObject var sduiData: SDUIData
     
-    var product: SDUIProductHeader
+    var product: SDUIHeaderProduct
     
     var body: some View {
         AsyncImage(url: URL(string: product.product.image)) { image in

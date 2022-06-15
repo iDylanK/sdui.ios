@@ -11,9 +11,6 @@ struct HeaderView: View {
     var header: SDUIHeader
     
     var body: some View {
-        Spacer().frame(height: 20)
         ServerDrivenUI.shared.delegate?.headerView(header)
-        Spacer().frame(height: 20)
-        Divider()
     }
 }

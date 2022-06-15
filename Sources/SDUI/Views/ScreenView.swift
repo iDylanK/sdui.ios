@@ -12,19 +12,19 @@ struct ScreenView: View {
     
     var body: some View {
         VStack() {
-            if let header = self.state.screen?.header, !header.scrollable {
+            if let header = self.state.screen?.header, !header.scrollable, header.decoded != nil {
                 HeaderView(header: header)
             }
             
-            if let screen = self.state.screen, let view = screen.view, let sections = view.sections {
+            if let screen = self.state.screen, let content = screen.content, let sections = content.sections {
                 if screen.type == .list {
                     ListView(sections: sections)
-                } else if view.scrollable {
+                } else if content.scrollable {
                     RefreshableScrollView {
-                        ScreenBody(sections: sections)
+                        ContentView(sections: sections)
                     }
                 } else {
-                    ScreenBody(sections: sections)
+                    ContentView(sections: sections)
                 }
             }
         }
@@ -37,22 +37,4 @@ struct ScreenView: View {
             SDUIRootView(viewUrl: self.state.sheet?.url, placeHolder: self.state.sheet?.placeHolder)
         }
     }
-    
-    private struct ScreenBody: View {
-        @EnvironmentObject var state: SDUIState
-        
-        var sections: [SDUISection]
-        
-        var body: some View {
-            if let header = self.state.screen?.header, header.scrollable {
-                HeaderView(header: header)
-            }
-            ForEach(sections, id: \.self) { section in
-                SectionView(section: section).frame(minWidth: 0, maxWidth: .infinity)
-            }
-        }
-    }
-    
 }
-
-

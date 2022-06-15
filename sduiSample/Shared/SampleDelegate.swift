@@ -68,4 +68,18 @@ class SampleDelegate: SDUIDelegate {
         return lhs == rhs
     }
     
+    func componentSearch(_ components: [SDUI.SDUIComponent], search: String) -> [SDUI.SDUIComponent] {
+//        Only works for product search..
+        if search.isEmpty { return components }
+        
+        var cs: [SDUI.SDUIComponent] = []
+        for component in components {
+            guard let c = component.decoded as? SDUIComponent else { return components }
+            guard case .product(let product) = c else { return components }
+            if product.product.content.contains(search) { cs.append(component) }
+        }
+        
+        return cs
+    }
+    
 }
