@@ -9,9 +9,9 @@ import SwiftUI
 
 public struct ErrorView: View {
     var error: String
-    
+
     public init(error: String) { self.error = error }
-    
+
     public var body: some View {
         Text(error)
     }

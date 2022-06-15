@@ -11,10 +11,10 @@ import SDUI
 struct ProductListCell: View {
     var product: SDUIProduct
     var action: SDUIProductLike?
-    
+
     @EnvironmentObject var sduiData: SDUIData
     @State var bought = false
-    
+
     var body: some View {
         HStack {
             AsyncImage(url: URL(string: product.image)) { image in
@@ -23,15 +23,14 @@ struct ProductListCell: View {
                 ProgressView()
             }.frame(width: 50, height: 50, alignment: .top)
             Text(product.content).foregroundColor(.black)
-            
+
             if action != nil {
                 Spacer()
                 Button {
                     print(sduiData.shoppingCard)
                     sduiData.shoppingCard[product.id] = sduiData.shoppingCard[product.id] as? Bool != true
                 } label: {
-                    if sduiData.shoppingCard[product.id] as? Bool == true { Text("Verwijder") }
-                    else { Text("Koop!") }
+                    if sduiData.shoppingCard[product.id] as? Bool == true { Text("Verwijder") } else { Text("Koop!") }
                 }
             }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListSectionView: View {
     @EnvironmentObject var state: SDUIState
-    
+
     var section: SDUISection
 
     var body: some View {
@@ -19,13 +19,13 @@ struct ListSectionView: View {
                     ComponentView(component: component)
                 }
             } else {
-                Button(action: {
+                Button {
                     switch component.action?.type {
-                        case .alert: state.alert = component.action
-                        case .sheet: state.sheet = component.action
-                        default: state.sheet = nil; state.alert = nil
+                    case .alert: state.alert = component.action
+                    case .sheet: state.sheet = component.action
+                    default: state.sheet = nil; state.alert = nil
                     }
-                }) {
+                } label: {
                     ComponentView(component: component)
                 }
             }

@@ -9,6 +9,6 @@ import Foundation
 
 public class SDUIData: ObservableObject {
     @Published public var shoppingCard: [String: Any] = [:]
-    
+
     public init() {}
 }

@@ -110,7 +110,7 @@ class ScrollViewController<Content: View>: UIViewController, UIScrollViewDelegat
       hostingController.view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
       hostingController.view.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
       hostingController.view.topAnchor.constraint(equalTo: scrollView.topAnchor),
-      hostingController.view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+      hostingController.view.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
     ])
 
     // `addChild` must be called *after* the layout constraints have been set, or a layout bug will occur

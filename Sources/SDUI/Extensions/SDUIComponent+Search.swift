@@ -10,7 +10,7 @@ import Foundation
 extension Array where Element == SDUIComponent {
     func search(value: String) -> [SDUIComponent] {
         if value.isEmpty { return self }
-        
+
         return self.filter { component in
             component.searchable?.trimmingCharacters(in: .whitespaces)
                 .localizedCaseInsensitiveContains(value.trimmingCharacters(in: .whitespaces)) ?? false

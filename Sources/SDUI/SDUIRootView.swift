@@ -9,19 +9,19 @@ import SwiftUI
 
 public struct SDUIRootView: View {
     @StateObject var state = SDUIState()
-    
+
     var viewUrl: String?
     var placeHolder: SDUIPlaceHolder?
-    var navigationView: Bool = false
-    
+    var navigationView = false
+
     public init() {}
-    
+
     public init(viewUrl: String? = nil, placeHolder: SDUIPlaceHolder? = nil, navigationView: Bool = false) {
         self.viewUrl = viewUrl
         self.placeHolder = placeHolder
         self.navigationView = navigationView
     }
-        
+
     public var body: some View {
         if navigationView {
             NavigationView {
@@ -31,5 +31,5 @@ public struct SDUIRootView: View {
             RootView(viewUrl: self.viewUrl)
         }
     }
-    
+
 }

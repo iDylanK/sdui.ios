@@ -11,12 +11,12 @@ import SDUI
 
 final class Api {
     static let shared = Api()
-    
+
     private let baseUrl = "http://localhost:6060"
-    
-    public func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> ())) {
-        let url: URL = URL(string: "\(baseUrl)/\(uri ?? "library")")! //home
-        
+
+    public func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> Void)) {
+        guard let url = URL(string: "\(baseUrl)/\(uri ?? "library")") else { return }
+
         get(url: url, type: SDUIScreen.self) { result in
             switch result {
             case .success(let screen):
@@ -28,34 +28,33 @@ final class Api {
             }
         }
     }
-    
+
     private func get<T: Codable>(url: URL, type: T.Type, completion: @escaping (Result<T, SDUINetworkError>) -> Void) {
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-           
-           if let _ = error {
-               completion(.failure(.unableToComplete))
-               return
-           }
-                       
-           guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-               completion(.failure(.invalidResponse))
-               return
-           }
-           
-           guard let data = data else {
-               completion(.failure(.invalidData))
-               return
-           }
-           
-           if let decodedResponse = Api.decode(data: data, type: type) {
-               completion(.success(decodedResponse))
-           } else { completion(.failure(.invalidData)) }
-           
-       }
-       
-       task.resume()
+            if error != nil {
+                completion(.failure(.unableToComplete))
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+
+            if let decodedResponse = Api.decode(data: data, type: type) {
+                completion(.success(decodedResponse))
+            } else { completion(.failure(.invalidData)) }
+
+        }
+
+        task.resume()
     }
-    
+
     private static func decode<T: Codable>(data: Data, type: T.Type) -> T? {
         do {
             let decoder = JSONDecoder()
@@ -67,7 +66,7 @@ final class Api {
             return nil
         }
     }
-    
+
 }
 
 enum SDUINetworkError: Error {

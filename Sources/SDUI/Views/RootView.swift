@@ -9,28 +9,28 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject var state = SDUIState()
-    
+
     var viewUrl: String?
-    
+
     var body: some View {
-        if self.state.isLoading  {
+        if self.state.isLoading {
             ProgressView().onAppear {
                 self.state.getView(viewUrl: viewUrl)
             }
         } else {
             ScreenView()
-                .if(self.state.screen?.content?.searchable ?? false, transform: { view in
+                .if(self.state.screen?.content?.searchable ?? false) { view in
                     view.searchable(text: $state.search, prompt: "Zoek")
-                })
-                .if(self.state.screen?.content?.refreshable ?? false, transform: { view in
-                    view.refreshable(action: {
+                }
+                .if(self.state.screen?.content?.refreshable ?? false) { view in
+                    view.refreshable {
                         self.state.getView()
-                    })
-                })
+                    }
+                }
                 .environmentObject(state)
                 .navigationViewStyle(.stack)
                 .navigationBarTitle(self.state.screen?.header?.title ?? "", displayMode:
-                        .sdui(self.state.screen?.header?.displayMode))
+                    .sdui(self.state.screen?.header?.displayMode))
         }
     }
 }

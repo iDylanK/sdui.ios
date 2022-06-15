@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SectionView: View {
     @EnvironmentObject var state: SDUIState
-    
+
     var section: SDUISection
-    
+
     var body: some View {
         VStack {
             if let components = self.section.components {

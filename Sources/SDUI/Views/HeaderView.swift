@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HeaderView: View {
     var header: SDUIHeader
-    
+
     var body: some View {
         ServerDrivenUI.shared.delegate?.headerView(header)
     }

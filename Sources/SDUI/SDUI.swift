@@ -7,9 +7,9 @@
 
 public class ServerDrivenUI {
     public static var shared = ServerDrivenUI()
-    
+
     public var delegate: SDUIDelegate?
 
     public init() {}
-    
+
 }
