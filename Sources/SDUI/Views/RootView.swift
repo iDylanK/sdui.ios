@@ -27,6 +27,17 @@ struct RootView: View {
                         self.state.getView()
                     }
                 }
+                .if(self.state.screen?.header?.action?.share() != nil) { view in
+                    view.toolbar {
+                        Button {
+                            self.state.share = self.state.screen?.header?.action?.share()
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                    }
+                }
                 .environmentObject(state)
                 .navigationViewStyle(.stack)
                 .navigationBarTitle(self.state.screen?.header?.title ?? "", displayMode:

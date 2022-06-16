@@ -22,6 +22,7 @@ public enum SDUIActionType: String, Codable, Hashable {
     case navigationLink = "NAVIGATION_LINK"
     case productBuy = "PRODUCT_BUY"
     case productLike = "PRODUCT_LIKE"
+    case share = "SHARE"
     case sheet = "SHEET"
 }
 
@@ -32,6 +33,11 @@ public enum SDUIActionType: String, Codable, Hashable {
 // synthesized for types that have collections (such as arrays or dictionaries).
 
 // MARK: - SDUIActionBase
+
+
+public enum SDUIPurpleType: String, Codable, Hashable {
+    case alert = "ALERT"
+}
 
 
 
@@ -65,34 +71,7 @@ public enum SDUIComponentType: String, Codable, Hashable {
 
 // MARK: - SDUIComponentBase
 
-public struct SDUIComponentExample: Codable, Hashable {
-    public let action: SDUIAction?
-    public let content: String
-    public let id: String
-    public let searchable: String?
 
-    enum CodingKeys: String, CodingKey {
-        case action = "action"
-        case content = "content"
-        case id = "id"
-        case searchable = "searchable"
-    }
-
-    public init(action: SDUIAction?, content: String, id: String, searchable: String?) {
-        self.action = action
-        self.content = content
-        self.id = id
-        self.searchable = searchable
-    }
-}
-
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
-// MARK: - SDUIComponentProduct
 public struct SDUIComponentProduct: Codable, Hashable {
     public let action: SDUIAction?
     public let id: String
@@ -124,34 +103,6 @@ public struct SDUIComponentProduct: Codable, Hashable {
 // synthesized for types that have collections (such as arrays or dictionaries).
 
 // MARK: - SDUIContent
-public struct SDUIContent: Codable, Hashable {
-    public let refreshable: Bool
-    public let scrollable: Bool
-    public let searchable: Bool?
-    public let sections: [SDUISection]?
-
-    enum CodingKeys: String, CodingKey {
-        case refreshable = "refreshable"
-        case scrollable = "scrollable"
-        case searchable = "searchable"
-        case sections = "sections"
-    }
-
-    public init(refreshable: Bool, scrollable: Bool, searchable: Bool?, sections: [SDUISection]?) {
-        self.refreshable = refreshable
-        self.scrollable = scrollable
-        self.searchable = searchable
-        self.sections = sections
-    }
-}
-
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
-// MARK: - SDUISection
 
 
 
@@ -169,7 +120,7 @@ public enum SDUIHeaderType: String, Codable, Hashable {
 // MARK: - SDUIHeaderBase
 
 
-public enum SDUIPurpleType: String, Codable, Hashable {
+public enum SDUIFluffyType: String, Codable, Hashable {
     case header = "HEADER"
 }
 
@@ -181,6 +132,7 @@ public enum SDUIPurpleType: String, Codable, Hashable {
 
 // MARK: - SDUIHeaderProduct
 public struct SDUIHeaderProduct: Codable, Hashable {
+    public let action: SDUISheet?
     public let displayMode: SDUIDisplayMode?
     public let id: String
     public let product: SDUIProduct
@@ -189,6 +141,7 @@ public struct SDUIHeaderProduct: Codable, Hashable {
     public let type: SDUIComponentType
 
     enum CodingKeys: String, CodingKey {
+        case action = "action"
         case displayMode = "display_mode"
         case id = "id"
         case product = "product"
@@ -197,7 +150,8 @@ public struct SDUIHeaderProduct: Codable, Hashable {
         case type = "type"
     }
 
-    public init(displayMode: SDUIDisplayMode?, id: String, product: SDUIProduct, scrollable: Bool, title: String, type: SDUIComponentType) {
+    public init(action: SDUISheet?, displayMode: SDUIDisplayMode?, id: String, product: SDUIProduct, scrollable: Bool, title: String, type: SDUIComponentType) {
+        self.action = action
         self.displayMode = displayMode
         self.id = id
         self.product = product
@@ -215,13 +169,23 @@ public struct SDUIHeaderProduct: Codable, Hashable {
 
 // MARK: - SDUINavigationLink
 
+public enum SDUITentacledType: String, Codable, Hashable {
+    case navigationLink = "NAVIGATION_LINK"
+}
 
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIProductBuy
 public struct SDUIProductBuy: Codable, Hashable {
     public let id: String
     public let message: String?
     public let placeHolder: SDUIPlaceHolder?
     public let title: String?
-    public let type: SDUIProductBuyType
+    public let type: SDUIStickyType
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -231,7 +195,7 @@ public struct SDUIProductBuy: Codable, Hashable {
         case type = "type"
     }
 
-    public init(id: String, message: String?, placeHolder: SDUIPlaceHolder?, title: String?, type: SDUIProductBuyType) {
+    public init(id: String, message: String?, placeHolder: SDUIPlaceHolder?, title: String?, type: SDUIStickyType) {
         self.id = id
         self.message = message
         self.placeHolder = placeHolder
@@ -240,7 +204,7 @@ public struct SDUIProductBuy: Codable, Hashable {
     }
 }
 
-public enum SDUIProductBuyType: String, Codable, Hashable {
+public enum SDUIStickyType: String, Codable, Hashable {
     case productBuy = "PRODUCT_BUY"
 }
 
@@ -254,7 +218,7 @@ public enum SDUIProductBuyType: String, Codable, Hashable {
 public struct SDUIProductLike: Codable, Hashable {
     public let id: String
     public let placeHolder: SDUIPlaceHolder?
-    public let type: SDUIProductLikeType
+    public let type: SDUIIndigoType
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -262,14 +226,14 @@ public struct SDUIProductLike: Codable, Hashable {
         case type = "type"
     }
 
-    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUIProductLikeType) {
+    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUIIndigoType) {
         self.id = id
         self.placeHolder = placeHolder
         self.type = type
     }
 }
 
-public enum SDUIProductLikeType: String, Codable, Hashable {
+public enum SDUIIndigoType: String, Codable, Hashable {
     case productLike = "PRODUCT_LIKE"
 }
 
@@ -281,8 +245,41 @@ public enum SDUIProductLikeType: String, Codable, Hashable {
 
 // MARK: - SDUIScreen
 
+public struct SDUIShare: Codable, Hashable {
+    public let id: String
+    public let placeHolder: SDUIPlaceHolder?
+    public let type: SDUIIndecentType
+    public let url: String
 
-public enum SDUISheetType: String, Codable, Hashable {
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case placeHolder = "place_holder"
+        case type = "type"
+        case url = "url"
+    }
+
+    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUIIndecentType, url: String) {
+        self.id = id
+        self.placeHolder = placeHolder
+        self.type = type
+        self.url = url
+    }
+}
+
+public enum SDUIIndecentType: String, Codable, Hashable {
+    case share = "SHARE"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUISheetClass
+
+
+public enum SDUIHilariousType: String, Codable, Hashable {
     case sheet = "SHEET"
 }
 
@@ -318,6 +315,7 @@ public enum SDUIAction: Codable, Equatable, Hashable {
     case sheet(SDUISheet)
     case alert(SDUIAlert)
     case navigationLink(SDUINavigationLink)
+    case share(SDUIShare)
     case productBuy(SDUIProductBuy)
     case productLike(SDUIProductLike)
     case empty(SDUIEmpty)
@@ -329,6 +327,7 @@ public enum SDUIAction: Codable, Equatable, Hashable {
         case .sheet: self = try .sheet(decoder.decodeSingleValueContainer())
         case .alert: self = try .alert(decoder.decodeSingleValueContainer())
         case .navigationLink: self = try .navigationLink(decoder.decodeSingleValueContainer())
+        case .share: self = try .share(decoder.decodeSingleValueContainer())
         case .productBuy: self = try .productBuy(decoder.decodeSingleValueContainer())
         case .productLike: self = try .productLike(decoder.decodeSingleValueContainer())
         default: self = try .empty(decoder.decodeSingleValueContainer())

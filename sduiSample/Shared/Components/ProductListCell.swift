@@ -27,7 +27,6 @@ struct ProductListCell: View {
             if action != nil {
                 Spacer()
                 Button {
-                    print(sduiData.shoppingCard)
                     sduiData.shoppingCard[product.id] = sduiData.shoppingCard[product.id] as? Bool != true
                 } label: {
                     if sduiData.shoppingCard[product.id] as? Bool == true { Text("Verwijder") } else { Text("Koop!") }

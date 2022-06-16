@@ -20,6 +20,7 @@
 		FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC92728282BF17900678825 /* ProductListCell.swift */; };
 		FC9A3F352858D0E200903662 /* SDUIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F342858D0E200903662 /* SDUIData.swift */; };
 		FC9A3F3A285A346C00903662 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FC9A3F39285A346C00903662 /* .swiftlint.yml */; };
+		FC9A3F3C285A3D7C00903662 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F3B285A3D7C00903662 /* WebView.swift */; };
 		FCA2F3B828475577005E1370 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B728475577005E1370 /* ProductHeader.swift */; };
 		FCA2F3B928475577005E1370 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B728475577005E1370 /* ProductHeader.swift */; };
 		FCCE0CFA2852347000147406 /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE0CF82850D87600147406 /* ApiModels.swift */; };
@@ -62,6 +63,7 @@
 		FC0EB23927FDD51700834533 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		FC9A3F342858D0E200903662 /* SDUIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIData.swift; sourceTree = "<group>"; };
 		FC9A3F39285A346C00903662 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		FC9A3F3B285A3D7C00903662 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		FCA2F3B728475577005E1370 /* ProductHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHeader.swift; sourceTree = "<group>"; };
 		FCC92728282BF17900678825 /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
 		FCCE0CF82850D87600147406 /* ApiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiModels.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */,
 				FCFBDF03282BE281002E3462 /* AppDelegate.swift */,
 				FC9A3F342858D0E200903662 /* SDUIData.swift */,
+				FC9A3F3B285A3D7C00903662 /* WebView.swift */,
 				FCFBDEFF282A95B5002E3462 /* Domain */,
 				FCDDC57427FF4AF400E8E4ED /* Api */,
 				FCA2F3B328418CB4005E1370 /* Headers */,
@@ -294,7 +297,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					FC0EB20327FDD32E00834533 = {
 						CreatedOnToolsVersion = 13.3;
@@ -400,6 +403,7 @@
 				FCCE0CFA2852347000147406 /* ApiModels.swift in Sources */,
 				FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */,
 				FC0EB23A27FDD51700834533 /* Api.swift in Sources */,
+				FC9A3F3C285A3D7C00903662 /* WebView.swift in Sources */,
 				FC0EB22527FDD32E00834533 /* SDUIApp.swift in Sources */,
 				FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */,
 			);
@@ -625,6 +629,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -651,6 +656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

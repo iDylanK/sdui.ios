@@ -20,11 +20,11 @@ struct ListView: View {
             ForEach(sections.search(value: self.state.search), id: \.self) { section in
                 if let header = section.title {
                     Section(header: Text(header)) {
-                        ListSectionView(section: section)
+                        SectionView(section: section)
                     }
                 } else {
                     Section {
-                        ListSectionView(section: section)
+                        SectionView(section: section)
                     }
                 }
             }

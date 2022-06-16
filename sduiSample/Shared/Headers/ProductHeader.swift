@@ -25,7 +25,6 @@ struct ProductHeader: View {
         Text(product.product.content).bold()
 
         Button {
-            print(sduiData.shoppingCard)
             sduiData.shoppingCard[product.product.id] = sduiData.shoppingCard[product.product.id] as? Bool != true
         } label: {
             if sduiData.shoppingCard[product.product.id] as? Bool == true { Text("Verwijder") } else { Text("In winkelmandje!") }

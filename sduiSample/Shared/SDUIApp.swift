@@ -28,7 +28,7 @@ struct SDUIApp: App {
                     }
                     .tag(0)
 
-                Text("Documentation")
+                WebView(url: URL(string: "https://github.com/iDylanK/sdui.ios"))
                     .tabItem {
                         Label("Documentation", systemImage: "square.and.pencil")
                     }

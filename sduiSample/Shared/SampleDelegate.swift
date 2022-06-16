@@ -11,16 +11,15 @@ import SwiftUI
 
 class SampleDelegate: SDUIDelegate {
 
-    func componentView(_ component: SDUI.SDUIComponent) -> AnyView {
-        let action = component.action?.decoded as? SDUIAction
-        guard let component = component.decoded as? SDUIComponent else {
+    func componentView(_ component: SDUI.SDUIComponent, action: SDUICustomAction?) -> AnyView {
+        guard let componentDecoded = component.decoded as? SDUIComponent else {
             return AnyView(ErrorView(error: "Decoding error"))
         }
 
-        switch component {
+        switch componentDecoded {
         case .product(let product):
             var productAction: SDUIProductLike?
-            if case .productLike(let productLike) = action { productAction = productLike }
+            if case .productLike(let productLike) = action?.decoded as? SDUIAction { productAction = productLike }
             return AnyView(ProductListCell(product: product.product, action: productAction))
         case .empty:
             return AnyView(ErrorView(error: "Decoding error"))
@@ -64,7 +63,7 @@ class SampleDelegate: SDUIDelegate {
         return lhs == rhs
     }
 
-    func actionEquals(_ lhs: SDUI.SDUIAction, _ rhs: SDUI.SDUIAction) -> Bool {
+    func actionEquals(_ lhs: SDUI.SDUICustomAction, _ rhs: SDUI.SDUICustomAction) -> Bool {
         guard let lhs = lhs.decoded as? SDUIAction else { return false }
         guard let rhs = rhs.decoded as? SDUIAction else { return false }
         return lhs == rhs

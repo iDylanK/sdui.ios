@@ -10,7 +10,7 @@ import SwiftUI
 
 public protocol SDUIDelegate: AnyObject {
     func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> Void))
-    func componentView(_ component: SDUIComponent) -> AnyView
+    func componentView(_ component: SDUIComponent, action: SDUICustomAction?) -> AnyView
     func headerView(_ header: SDUIHeader) -> AnyView
 
     func decodeComponent(_ decoder: Decoder) throws -> Any
@@ -19,7 +19,7 @@ public protocol SDUIDelegate: AnyObject {
 
     func componentEquals(_ lhs: SDUIComponent, _ rhs: SDUIComponent) -> Bool
     func headerEquals(_ lhs: SDUIHeader, _ rhs: SDUIHeader) -> Bool
-    func actionEquals(_ lhs: SDUIAction, _ rhs: SDUIAction) -> Bool
+    func actionEquals(_ lhs: SDUICustomAction, _ rhs: SDUICustomAction) -> Bool
 
 //    func componentSearch(_ components: [SDUIComponent], search: String) -> [SDUIComponent]
 }

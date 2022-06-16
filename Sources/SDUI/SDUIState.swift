@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 public class SDUIState: ObservableObject {
-    @Published var alert: SDUIAction?
-    @Published var sheet: SDUIAction?
+    @Published var alert: SDUIAlert?
+    @Published var sheet: SDUISheet?
+    @Published var share: SDUIShare?
 
     @Published var isLoading = true
     @Published var screen: SDUIScreen?
@@ -45,6 +46,14 @@ public class SDUIState: ObservableObject {
             return self.sheet != nil
         }, set: { _ in
             self.sheet = nil
+        })
+    }
+
+    public func shareBinding() -> Binding<Bool> {
+        return Binding(get: {
+            return self.share != nil
+        }, set: { _ in
+            self.share = nil
         })
     }
 }

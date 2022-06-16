@@ -32,9 +32,11 @@ struct ScreenView: View {
         .alert(self.state.alert?.title ?? "", isPresented: self.state.alertBinding(), actions: {}, message: {
             Text(self.state.alert?.message ?? "")
         })
-
         .sheet(isPresented: self.state.sheetBinding()) {
             SDUIRootView(viewUrl: self.state.sheet?.url, placeHolder: self.state.sheet?.placeHolder)
+        }
+        .sheet(isPresented: self.state.shareBinding()) {
+            ShareView()
         }
     }
 }
