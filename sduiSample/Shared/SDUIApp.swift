@@ -27,6 +27,7 @@ struct SDUIApp: App {
                         Label("SDUI Library", systemImage: "list.dash")
                     }
                     .tag(0)
+                    .badge(sduiData.shoppingCard.filter { $0.value == true }.count)
 
                 WebView(url: URL(string: "https://github.com/iDylanK/sdui.ios"))
                     .tabItem {

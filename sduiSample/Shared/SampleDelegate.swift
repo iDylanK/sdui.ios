@@ -18,9 +18,7 @@ class SampleDelegate: SDUIDelegate {
 
         switch componentDecoded {
         case .product(let product):
-            var productAction: SDUIProductLike?
-            if case .productLike(let productLike) = action?.decoded as? SDUIAction { productAction = productLike }
-            return AnyView(ProductListCell(product: product.product, action: productAction))
+            return AnyView(ProductListCell(product: product))
         case .empty:
             return AnyView(ErrorView(error: "Decoding error"))
         }

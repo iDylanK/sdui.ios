@@ -9,28 +9,22 @@ import SwiftUI
 import SDUI
 
 struct ProductListCell: View {
-    var product: SDUIProduct
-    var action: SDUIProductLike?
-
     @EnvironmentObject var sduiData: SDUIData
-    @State var bought = false
+
+    var product: SDUIComponentProduct
 
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: product.image)) { image in
+            AsyncImage(url: URL(string: product.product.image)) { image in
                 image.resizable().aspectRatio(contentMode: .fit)
             } placeholder: {
                 ProgressView()
             }.frame(width: 50, height: 50, alignment: .top)
-            Text(product.content).foregroundColor(.black)
+            Text(product.product.content).foregroundColor(.black)
 
-            if action != nil {
+            if let primaryButton = product.primaryButton {
                 Spacer()
-                Button {
-                    sduiData.shoppingCard[product.id] = sduiData.shoppingCard[product.id] as? Bool != true
-                } label: {
-                    if sduiData.shoppingCard[product.id] as? Bool == true { Text("Verwijder") } else { Text("Koop!") }
-                }
+                PrimaryButtonView(button: primaryButton, product: product.product)
             }
 
         }
