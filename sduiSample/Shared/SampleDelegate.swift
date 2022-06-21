@@ -54,7 +54,7 @@ class SampleComponentDelegate: SDUIComponentDelegate {
     }
 }
 
-class HeaderDelegate: SDUIHeaderDelegate {
+class SampleHeaderDelegate: SDUIHeaderDelegate {
     func view(for header: SDUI.SDUICustomHeader) -> AnyView {
         guard let header = header.decoded as? SDUIHeader else { return AnyView(ErrorView(error: "Decoding error1")) }
 
