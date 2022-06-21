@@ -48,22 +48,18 @@ public enum SDUIHeader: Codable, Equatable, Hashable {
 
 public struct SDUICustomHeader: Codable, Hashable {
     public let base: SDUIBaseHeader
-    public var decoded: Any?
+    public var decoded: AnyHashable?
 
     public init(from decoder: Decoder) throws {
-        self.decoded = try ServerDrivenUI.shared.delegate?.decodeHeader(decoder)
+        self.decoded = try ServerDrivenUI.shared.headerDelegate?.decode(from: decoder)
         self.base = try SDUIHeader(baseDecoder: decoder).base()
     }
 
     public static func == (lhs: SDUICustomHeader, rhs: SDUICustomHeader) -> Bool {
-        return ServerDrivenUI.shared.delegate?.headerEquals(lhs, rhs) ?? false
+        return ServerDrivenUI.shared.headerDelegate?.equals(lhs, rhs) ?? false
     }
 //
     public func encode(to encoder: Encoder) throws {
-//        TODO: ...
-    }
-//
-    public func hash(into hasher: inout Hasher) {
 //        TODO: ...
     }
 }

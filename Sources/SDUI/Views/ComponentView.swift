@@ -12,7 +12,7 @@ struct ComponentView: View {
 
     var body: some View {
         if let component = component.custom() {
-            ServerDrivenUI.shared.delegate?.componentView(component, action: component.base.action?.custom())
+            ServerDrivenUI.shared.componentDelegate?.view(for: component, with: component.base.action?.custom())
         }
     }
 }

@@ -8,8 +8,11 @@
 public class ServerDrivenUI {
     public static var shared = ServerDrivenUI()
 
-    public var delegate: SDUIDelegate?
-    public var filterDelegate: SDUIFilterDelegate?
+    public var dataSource: SDUIDataSource?
+    public var componentDelegate: SDUIComponentDelegate?
+    public var headerDelegate: SDUIHeaderDelegate?
+    public var actionDelegate: SDUIActionDelegate?
+    public var placeHolderDelegate: SDUIPlaceHolderDelegate?
 
     public init() {}
 

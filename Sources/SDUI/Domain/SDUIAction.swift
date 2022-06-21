@@ -40,21 +40,18 @@ public enum SDUIAction: Codable, Equatable, Hashable {
 }
 
 public struct SDUICustomAction: Codable, Hashable {
-    public var decoded: Any?
+    public var decoded: AnyHashable?
 
     public init(from decoder: Decoder) throws {
-        self.decoded = try ServerDrivenUI.shared.delegate?.decodeAction(decoder)
+        self.decoded = try ServerDrivenUI.shared.actionDelegate?.decode(from: decoder)
     }
 
     public static func == (lhs: SDUICustomAction, rhs: SDUICustomAction) -> Bool {
-        return ServerDrivenUI.shared.delegate?.actionEquals(lhs, rhs) ?? false
+        return ServerDrivenUI.shared.actionDelegate?.equals(lhs, rhs) ?? false
     }
 //
     public func encode(to encoder: Encoder) throws {
 //        TODO: ...
     }
-//
-    public func hash(into hasher: inout Hasher) {
-//        TODO: ...
-    }
+
 }

@@ -17,7 +17,7 @@ struct RootView: View {
         if self.state.isLoading {
             if let placeHolder = placeHolder {
                 VStack {
-                    ServerDrivenUI.shared.delegate?.placeHolderView(placeHolder).onAppear {
+                    ServerDrivenUI.shared.placeHolderDelegate?.view(for: placeHolder).onAppear {
                         self.state.getView(viewUrl: viewUrl)
                     }
                     Spacer()

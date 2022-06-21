@@ -8,20 +8,26 @@
 import Foundation
 import SwiftUI
 
-public protocol SDUIDelegate: AnyObject {
-    func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> Void))
+public protocol SDUIComponentDelegate: AnyObject {
+    func view(for component: SDUI.SDUICustomComponent, with action: SDUICustomAction?) -> AnyView
+    func decode(from decoder: Decoder) throws -> AnyHashable
+    func equals(_ lhs: SDUICustomComponent, _ rhs: SDUICustomComponent) -> Bool
+    func filter(component: SDUICustomComponent) -> Bool
+}
 
-    func componentView(_ component: SDUICustomComponent, action: SDUICustomAction?) -> AnyView
-    func placeHolderView(_ placeHolder: SDUIPlaceHolder) -> AnyView
-    func headerView(_ header: SDUICustomHeader) -> AnyView
+public protocol SDUIHeaderDelegate: AnyObject {
+    func view(for header: SDUICustomHeader) -> AnyView
+    func decode(from decoder: Decoder) throws -> AnyHashable
+    func equals(_ lhs: SDUICustomHeader, _ rhs: SDUICustomHeader) -> Bool
+}
 
-    func decodeComponent(_ decoder: Decoder) throws -> Any
-    func decodeHeader(_ decoder: Decoder) throws -> Any
-    func decodePlaceHolder(_ decoder: Decoder) throws -> Any
-    func decodeAction(_ decoder: Decoder) throws -> Any
+public protocol SDUIActionDelegate: AnyObject {
+    func decode(from decoder: Decoder) throws -> AnyHashable
+    func equals(_ lhs: SDUICustomAction, _ rhs: SDUICustomAction) -> Bool
+}
 
-    func componentEquals(_ lhs: SDUICustomComponent, _ rhs: SDUICustomComponent) -> Bool
-    func headerEquals(_ lhs: SDUICustomHeader, _ rhs: SDUICustomHeader) -> Bool
-    func placeHolderEquals(_ lhs: SDUIPlaceHolder, _ rhs: SDUIPlaceHolder) -> Bool
-    func actionEquals(_ lhs: SDUICustomAction, _ rhs: SDUICustomAction) -> Bool
+public protocol SDUIPlaceHolderDelegate: AnyObject {
+    func view(for placeHolder: SDUIPlaceHolder) -> AnyView
+    func decode(from decoder: Decoder) throws -> AnyHashable
+    func equals(_ lhs: SDUIPlaceHolder, _ rhs: SDUIPlaceHolder) -> Bool
 }

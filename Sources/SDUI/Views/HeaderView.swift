@@ -14,7 +14,7 @@ struct HeaderView: View {
 
     var body: some View {
         if let header = self.state.screen?.header?.custom(), header.base.scrollable == scrollable {
-            ServerDrivenUI.shared.delegate?.headerView(header)
+            ServerDrivenUI.shared.headerDelegate?.view(for: header)
         }
     }
 }

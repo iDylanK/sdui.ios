@@ -8,21 +8,18 @@
 import Foundation
 
 public struct SDUIPlaceHolder: Codable, Hashable {
-    public var decoded: Any?
+    public var decoded: AnyHashable?
 
     public init(from decoder: Decoder) throws {
-        self.decoded = try ServerDrivenUI.shared.delegate?.decodePlaceHolder(decoder)
+        self.decoded = try ServerDrivenUI.shared.placeHolderDelegate?.decode(from: decoder)
     }
 
     public static func == (lhs: SDUIPlaceHolder, rhs: SDUIPlaceHolder) -> Bool {
-        return ServerDrivenUI.shared.delegate?.placeHolderEquals(lhs, rhs) ?? false
+        return ServerDrivenUI.shared.placeHolderDelegate?.equals(lhs, rhs) ?? false
     }
 
     public func encode(to encoder: Encoder) throws {
 //        TODO: ...
-    }
-
-    public func hash(into hasher: inout Hasher) {
     }
 
 }

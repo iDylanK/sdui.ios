@@ -24,13 +24,13 @@ extension Array where Element == SDUISection {
     }
 
     func filter() -> [SDUISection] {
-        guard let delegate = ServerDrivenUI.shared.filterDelegate else { return self }
+        guard let delegate = ServerDrivenUI.shared.componentDelegate else { return self }
 
         return self.map { section -> SDUISection in
             var section: SDUISection = section
             section.components = section.components?.filter { component in
                 guard let custom = component.custom() else { return true }
-                return delegate.componentFilter(custom)
+                return delegate.filter(component: custom)
             }
             return section
         }

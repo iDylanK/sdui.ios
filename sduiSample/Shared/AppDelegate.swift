@@ -9,12 +9,12 @@ import UIKit
 import SDUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    var delegate = SampleDelegate()
-    var filterDelegate = SampleFilterDelegate()
+    var dataSource = SampleDataSource()
+    var componentDelegate = SampleComponentDelegate()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        ServerDrivenUI.shared.delegate = self.delegate
-        ServerDrivenUI.shared.filterDelegate = self.filterDelegate
+        ServerDrivenUI.shared.dataSource = self.dataSource
+        ServerDrivenUI.shared.componentDelegate = self.componentDelegate
         return true
     }
 }
