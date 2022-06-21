@@ -18,18 +18,32 @@ class SampleDelegate: SDUIDelegate {
 
         switch componentDecoded {
         case .product(let product):
-            return AnyView(ProductListCell(product: product))
+            return AnyView(ProductComponent(component: product))
         case .empty:
             return AnyView(ErrorView(error: "Decoding error"))
         }
     }
 
-    func headerView(_ header: SDUI.SDUIHeader) -> AnyView {
-        guard let header = header.decoded as? SDUIHeader else { return AnyView(ErrorView(error: "Decoding error")) }
+    func headerView(_ header: SDUI.SDUICustomHeader) -> AnyView {
+        guard let header = header.decoded as? SDUIHeader else { return AnyView(ErrorView(error: "Decoding error1")) }
 
         switch header {
-        case .product(let product): return AnyView(ProductHeader(product: product))
-        case .empty: return AnyView(ErrorView(error: "Decoding error"))
+        case .product(let product): return AnyView(ProductHeader(header: product))
+        case .filter(let filter): return AnyView(FilterHeader(header: filter))
+        case .empty: return AnyView(ErrorView(error: "Decoding error2"))
+        }
+    }
+
+    func placeHolderView(_ placeHolder: SDUI.SDUIPlaceHolder) -> AnyView {
+        guard let placeHolder = placeHolder.decoded as? SDUIPlaceHolder else {
+            return AnyView(ErrorView(error: "Decoding error"))
+        }
+
+        switch placeHolder {
+        case .product(let product):
+            return AnyView(ProductHeader(placeHolder: product))
+        case .empty:
+            return AnyView(ErrorView(error: "Decoding error"))
         }
     }
 
@@ -45,6 +59,10 @@ class SampleDelegate: SDUIDelegate {
         return try SDUIHeader(from: decoder)
     }
 
+    func decodePlaceHolder(_ decoder: Decoder) throws -> Any {
+        return try SDUIPlaceHolder(from: decoder)
+    }
+
     func decodeAction(_ decoder: Decoder) throws -> Any {
         return try SDUIAction(from: decoder)
     }
@@ -55,9 +73,15 @@ class SampleDelegate: SDUIDelegate {
         return lhs == rhs
     }
 
-    func headerEquals(_ lhs: SDUI.SDUIHeader, _ rhs: SDUI.SDUIHeader) -> Bool {
+    func headerEquals(_ lhs: SDUI.SDUICustomHeader, _ rhs: SDUI.SDUICustomHeader) -> Bool {
         guard let lhs = lhs.decoded as? SDUIHeader else { return false }
         guard let rhs = rhs.decoded as? SDUIHeader else { return false }
+        return lhs == rhs
+    }
+
+    func placeHolderEquals(_ lhs: SDUI.SDUIPlaceHolder, _ rhs: SDUI.SDUIPlaceHolder) -> Bool {
+        guard let lhs = lhs.decoded as? SDUIPlaceHolder else { return false }
+        guard let rhs = rhs.decoded as? SDUIPlaceHolder else { return false }
         return lhs == rhs
     }
 
@@ -67,18 +91,26 @@ class SampleDelegate: SDUIDelegate {
         return lhs == rhs
     }
 
-    func componentSearch(_ components: [SDUI.SDUIComponent], search: String) -> [SDUI.SDUIComponent] {
-        // Only works for product search..
-        if search.isEmpty { return components }
+}
 
-        var searchComponents: [SDUI.SDUIComponent] = []
-        for component in components {
-            guard let componentDecoded = component.decoded as? SDUIComponent else { return components }
-            guard case .product(let product) = componentDecoded else { return components }
-            if product.product.content.contains(search) { searchComponents.append(component) }
+class SampleFilterDelegate: SDUIFilterDelegate {
+    func componentFilter(_ components: [SDUI.SDUIComponent]) -> [SDUI.SDUIComponent] {
+        // Only works for product search..
+        if SDUIData.shared.filters.isEmpty || SDUIData.shared.filters.allSatisfy({ filter in
+            !filter.value
+        }) {
+            return components
         }
 
-        return searchComponents
-    }
+        var filterComponents: [SDUI.SDUIComponent] = []
+        for component in components {
+            guard let componentDecoded = component.decoded as? SDUIComponent else { return components }
+            guard case .product(let productComponent) = componentDecoded else { return components }
+            if SDUIData.shared.filters[productComponent.product.category] == true {
+                filterComponents.append(component)
+            }
+        }
 
+        return filterComponents
+    }
 }

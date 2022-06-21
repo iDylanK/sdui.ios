@@ -7,60 +7,63 @@
 
 import Foundation
 
-public struct SDUIHeader: Codable, Hashable {
-    public let id: String
-    public let type: SDUIHeaderType?
-    public let title: String
-    public let action: SDUIAction?
-    public let scrollable: Bool
-    public let displayMode: SDUIDisplayMode?
-
-    public var decoded: Any?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case type = "type"
-        case title = "title"
-        case action = "action"
-        case scrollable = "scrollable"
-        case displayMode = "display_mode"
-    }
+public enum SDUIHeader: Codable, Equatable, Hashable {
+    case custom(SDUICustomHeader)
+    case base(SDUIBaseHeader)
 
     public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.action = try? container.decode(SDUIAction.self, forKey: .action)
-        self.scrollable = try container.decode(Bool.self, forKey: .scrollable)
-        self.displayMode = try? container.decode(SDUIDisplayMode.self, forKey: .displayMode)
+        let type = try SDUIHeaderType(rawValue: decoder.decodeType())
+        if case .header = type {
+            self = try .base(decoder.decodeSingleValueContainer())
+            return
+        }
 
         do {
-            self.type = try container.decode(SDUIHeaderType.self, forKey: .type)
+            self = try .custom(decoder.decodeSingleValueContainer())
         } catch {
-            self.decoded = try ServerDrivenUI.shared.delegate?.decodeHeader(decoder)
-            self.type = nil
+            self = try .base(decoder.decodeSingleValueContainer())
+        }
+
+    }
+
+    public init(baseDecoder: Decoder) throws {
+        self = try .base(baseDecoder.decodeSingleValueContainer())
+    }
+
+    public func custom() -> SDUICustomHeader? {
+        var header: SDUICustomHeader?
+        if case .custom(let custom) = self { header = custom }
+        return header
+    }
+
+    func base() -> SDUIBaseHeader {
+        switch self {
+        case .custom(let header):
+            return header.base
+        case .base(let base):
+            return base
         }
     }
+}
 
-    public static func == (lhs: SDUIHeader, rhs: SDUIHeader) -> Bool {
-        if lhs.type == nil && rhs.type != nil { return false }
-        if lhs.type != nil && rhs.type == nil { return false }
-        if lhs.type == nil && rhs.type != nil { return ServerDrivenUI.shared.delegate?.headerEquals(lhs, rhs) ?? false }
+public struct SDUICustomHeader: Codable, Hashable {
+    public let base: SDUIBaseHeader
+    public var decoded: Any?
 
-        return lhs.id == rhs.id && lhs.title == rhs.title &&
-            lhs.action == rhs.action && lhs.scrollable == rhs.scrollable &&
-            lhs.displayMode == rhs.displayMode
+    public init(from decoder: Decoder) throws {
+        self.decoded = try ServerDrivenUI.shared.delegate?.decodeHeader(decoder)
+        self.base = try SDUIHeader(baseDecoder: decoder).base()
     }
 
+    public static func == (lhs: SDUICustomHeader, rhs: SDUICustomHeader) -> Bool {
+        return ServerDrivenUI.shared.delegate?.headerEquals(lhs, rhs) ?? false
+    }
+//
     public func encode(to encoder: Encoder) throws {
 //        TODO: ...
     }
-
+//
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-        hasher.combine(type)
-        hasher.combine(action)
-        hasher.combine(scrollable)
+//        TODO: ...
     }
-
 }

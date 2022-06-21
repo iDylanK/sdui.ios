@@ -14,8 +14,6 @@ public struct SDUIRootView: View {
     var placeHolder: SDUIPlaceHolder?
     var navigationView = false
 
-    public init() {}
-
     public init(viewUrl: String? = nil, placeHolder: SDUIPlaceHolder? = nil, navigationView: Bool = false) {
         self.viewUrl = viewUrl
         self.placeHolder = placeHolder
@@ -25,10 +23,10 @@ public struct SDUIRootView: View {
     public var body: some View {
         if navigationView {
             NavigationView {
-                RootView(viewUrl: self.viewUrl)
+                RootView(viewUrl: self.viewUrl, placeHolder: placeHolder)
             }
         } else {
-            RootView(viewUrl: self.viewUrl)
+            RootView(viewUrl: self.viewUrl, placeHolder: placeHolder)
         }
     }
 

@@ -17,14 +17,16 @@
 		FC0EB22A27FDD32E00834533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC0EB1FF27FDD32E00834533 /* Assets.xcassets */; };
 		FC0EB23A27FDD51700834533 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB23927FDD51700834533 /* Api.swift */; };
 		FC0EB23B27FDD51700834533 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0EB23927FDD51700834533 /* Api.swift */; };
-		FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC92728282BF17900678825 /* ProductListCell.swift */; };
-		FC9A3F352858D0E200903662 /* SDUIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F342858D0E200903662 /* SDUIData.swift */; };
+		FC1679782837AC3800BA58E6 /* ProductComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC92728282BF17900678825 /* ProductComponent.swift */; };
 		FC9A3F3A285A346C00903662 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FC9A3F39285A346C00903662 /* .swiftlint.yml */; };
 		FC9A3F3C285A3D7C00903662 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A3F3B285A3D7C00903662 /* WebView.swift */; };
 		FCA2F3B828475577005E1370 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B728475577005E1370 /* ProductHeader.swift */; };
 		FCA2F3B928475577005E1370 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2F3B728475577005E1370 /* ProductHeader.swift */; };
 		FCCE0CFA2852347000147406 /* ApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE0CF82850D87600147406 /* ApiModels.swift */; };
-		FCCE4CDF285B86D50048E809 /* PrimaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE4CDE285B86D50048E809 /* PrimaryButtonView.swift */; };
+		FCCE4CDF285B86D50048E809 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE4CDE285B86D50048E809 /* PrimaryButton.swift */; };
+		FCCE4CE428606A450048E809 /* FilterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE4CE328606A450048E809 /* FilterHeader.swift */; };
+		FCCE4CE528606A450048E809 /* FilterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE4CE328606A450048E809 /* FilterHeader.swift */; };
+		FCCE4CE728609BFA0048E809 /* SDUIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCE4CE628609BFA0048E809 /* SDUIData.swift */; };
 		FCFBDEF028169BE4002E3462 /* SDUI in Frameworks */ = {isa = PBXBuildFile; productRef = FCFBDEEF28169BE4002E3462 /* SDUI */; };
 		FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
 		FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */; };
@@ -62,13 +64,14 @@
 		FC0EB22127FDD32E00834533 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		FC0EB22327FDD32E00834533 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		FC0EB23927FDD51700834533 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		FC9A3F342858D0E200903662 /* SDUIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIData.swift; sourceTree = "<group>"; };
 		FC9A3F39285A346C00903662 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		FC9A3F3B285A3D7C00903662 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		FCA2F3B728475577005E1370 /* ProductHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHeader.swift; sourceTree = "<group>"; };
-		FCC92728282BF17900678825 /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
+		FCC92728282BF17900678825 /* ProductComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductComponent.swift; sourceTree = "<group>"; };
 		FCCE0CF82850D87600147406 /* ApiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiModels.swift; sourceTree = "<group>"; };
-		FCCE4CDE285B86D50048E809 /* PrimaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonView.swift; sourceTree = "<group>"; };
+		FCCE4CDE285B86D50048E809 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		FCCE4CE328606A450048E809 /* FilterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeader.swift; sourceTree = "<group>"; };
+		FCCE4CE628609BFA0048E809 /* SDUIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDUIData.swift; sourceTree = "<group>"; };
 		FCFBDEF42827C4AE002E3462 /* sdui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = sdui; path = ..; sourceTree = "<group>"; };
 		FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDelegate.swift; sourceTree = "<group>"; };
 		FCFBDF03282BE281002E3462 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,12 +130,13 @@
 				FC0EB1FD27FDD32B00834533 /* SDUIApp.swift */,
 				FCFBDF00282A95DE002E3462 /* SampleDelegate.swift */,
 				FCFBDF03282BE281002E3462 /* AppDelegate.swift */,
-				FC9A3F342858D0E200903662 /* SDUIData.swift */,
+				FCCE4CE628609BFA0048E809 /* SDUIData.swift */,
 				FC9A3F3B285A3D7C00903662 /* WebView.swift */,
 				FCFBDEFF282A95B5002E3462 /* Domain */,
 				FCDDC57427FF4AF400E8E4ED /* Api */,
 				FCA2F3B328418CB4005E1370 /* Headers */,
 				FC16797728378FFE00BA58E6 /* Components */,
+				FCCE4CE2285CC45C0048E809 /* Views */,
 				FC0EB1FF27FDD32E00834533 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -178,8 +182,7 @@
 		FC16797728378FFE00BA58E6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				FCC92728282BF17900678825 /* ProductListCell.swift */,
-				FCCE4CDE285B86D50048E809 /* PrimaryButtonView.swift */,
+				FCC92728282BF17900678825 /* ProductComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -194,9 +197,18 @@
 		FCA2F3B328418CB4005E1370 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				FCCE4CE328606A450048E809 /* FilterHeader.swift */,
 				FCA2F3B728475577005E1370 /* ProductHeader.swift */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		FCCE4CE2285CC45C0048E809 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCCE4CDE285B86D50048E809 /* PrimaryButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FCDDC57427FF4AF400E8E4ED /* Api */ = {
@@ -400,16 +412,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC9A3F352858D0E200903662 /* SDUIData.swift in Sources */,
+				FCCE4CE528606A450048E809 /* FilterHeader.swift in Sources */,
 				FCA2F3B828475577005E1370 /* ProductHeader.swift in Sources */,
 				FCFBDF04282BE281002E3462 /* AppDelegate.swift in Sources */,
 				FCCE0CFA2852347000147406 /* ApiModels.swift in Sources */,
 				FCFBDF01282A95DE002E3462 /* SampleDelegate.swift in Sources */,
 				FC0EB23A27FDD51700834533 /* Api.swift in Sources */,
 				FC9A3F3C285A3D7C00903662 /* WebView.swift in Sources */,
-				FCCE4CDF285B86D50048E809 /* PrimaryButtonView.swift in Sources */,
+				FCCE4CDF285B86D50048E809 /* PrimaryButton.swift in Sources */,
 				FC0EB22527FDD32E00834533 /* SDUIApp.swift in Sources */,
-				FC1679782837AC3800BA58E6 /* ProductListCell.swift in Sources */,
+				FC1679782837AC3800BA58E6 /* ProductComponent.swift in Sources */,
+				FCCE4CE728609BFA0048E809 /* SDUIData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +434,7 @@
 				FCFBDF05282BE281002E3462 /* AppDelegate.swift in Sources */,
 				FCFBDF02282A95DE002E3462 /* SampleDelegate.swift in Sources */,
 				FC0EB23B27FDD51700834533 /* Api.swift in Sources */,
+				FCCE4CE428606A450048E809 /* FilterHeader.swift in Sources */,
 				FC0EB22627FDD32E00834533 /* SDUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

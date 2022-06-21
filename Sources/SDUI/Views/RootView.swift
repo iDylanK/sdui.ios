@@ -11,26 +11,40 @@ struct RootView: View {
     @StateObject var state = SDUIState()
 
     var viewUrl: String?
+    var placeHolder: SDUIPlaceHolder?
 
     var body: some View {
         if self.state.isLoading {
-            ProgressView().onAppear {
-                self.state.getView(viewUrl: viewUrl)
+            if let placeHolder = placeHolder {
+                VStack {
+                    ServerDrivenUI.shared.delegate?.placeHolderView(placeHolder).onAppear {
+                        self.state.getView(viewUrl: viewUrl)
+                    }
+                    Spacer()
+                }
+            } else {
+                ProgressView().onAppear {
+                    self.state.getView(viewUrl: viewUrl)
+                }
             }
         } else {
             ScreenView()
                 .if(self.state.screen?.content?.searchable ?? false) { view in
-                    view.searchable(text: $state.search, prompt: "Zoek")
+                    view
+                        .searchable(text: $state.search, prompt: "Zoek")
+                        .onChange(of: state.search) { _ in
+                            state.searchSections()
+                        }
                 }
                 .if(self.state.screen?.content?.refreshable ?? false) { view in
                     view.refreshable {
                         self.state.getView()
                     }
                 }
-                .if(self.state.screen?.header?.action?.share() != nil) { view in
+                .if(self.state.screen?.header?.base().action?.share() != nil) { view in
                     view.toolbar {
                         Button {
-                            self.state.share = self.state.screen?.header?.action?.share()
+                            self.state.share = self.state.screen?.header?.base().action?.share()
                         } label: {
                             Image(systemName: "square.and.arrow.up")
                                 .resizable()
@@ -40,8 +54,8 @@ struct RootView: View {
                 }
                 .environmentObject(state)
                 .navigationViewStyle(.stack)
-                .navigationBarTitle(self.state.screen?.header?.title ?? "", displayMode:
-                    .sdui(self.state.screen?.header?.displayMode))
+                .navigationBarTitle(self.state.screen?.header?.base().title ?? "", displayMode:
+                    .sdui(self.state.screen?.header?.base().displayMode))
         }
     }
 }

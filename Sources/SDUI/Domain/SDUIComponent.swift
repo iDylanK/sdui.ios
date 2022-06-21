@@ -8,9 +8,9 @@
 import Foundation
 
 public struct SDUIComponent: Codable, Hashable {
-    public let id: String
-    public let action: SDUIAction?
-    public let searchable: String?
+    public var id: String
+    public var action: SDUIAction?
+    public var searchable: String?
 
     public var decoded: Any?
 

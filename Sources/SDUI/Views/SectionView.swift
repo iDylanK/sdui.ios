@@ -9,13 +9,16 @@ import SwiftUI
 
 struct SectionView: View {
     @EnvironmentObject var state: SDUIState
+    @EnvironmentObject var sduiState: SDUIState
 
     var section: SDUISection
 
     var body: some View {
-        ForEach((section.components ?? []).search(value: self.state.search), id: \.id) { component in
+        ForEach(section.components ?? [], id: \.id) { component in
             if case .navigationLink(let navigationLink) = component.action {
-                NavigationLink(destination: SDUIRootView(viewUrl: navigationLink.url)) {
+                NavigationLink(
+                    destination: SDUIRootView(viewUrl: navigationLink.url, placeHolder: navigationLink.placeHolder)
+                ) {
                     ComponentView(component: component)
                 }
             } else {

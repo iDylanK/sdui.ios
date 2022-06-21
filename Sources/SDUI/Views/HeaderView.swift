@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct HeaderView: View {
-    var header: SDUIHeader
+    @EnvironmentObject var state: SDUIState
+
+    var scrollable: Bool
 
     var body: some View {
-        ServerDrivenUI.shared.delegate?.headerView(header)
+        if let header = self.state.screen?.header?.custom(), header.base.scrollable == scrollable {
+            ServerDrivenUI.shared.delegate?.headerView(header)
+        }
     }
 }

@@ -16,21 +16,45 @@ public class SDUIState: ObservableObject {
     @Published var isLoading = true
     @Published var screen: SDUIScreen?
 
+    @Published var sections: [SDUISection]?
+
     @Published var search = ""
 
     var viewUrl: String?
 
-    public init() {}
+    public init() { }
 
     public func getView(viewUrl: String? = nil) {
         if let url = viewUrl { self.viewUrl = url }
 
-        ServerDrivenUI.shared.delegate?.getViewWith(uri: self.viewUrl, data: nil) { screen in
-            DispatchQueue.main.async {
-                self.screen = screen
-                self.isLoading = false
+        // MARK: Timer is here for placeholder testing
+        Timer.scheduledTimer(withTimeInterval: 0.0, repeats: false) { _ in
+            ServerDrivenUI.shared.delegate?.getViewWith(uri: self.viewUrl, data: nil) { screen in
+                DispatchQueue.main.async {
+                    self.screen = screen
+                    self.isLoading = false
+                    self.sections = screen.content?.sections
+                }
             }
         }
+    }
+
+    func searchSections(filter: Bool = true) {
+        if search.isEmpty { sections = self.screen?.content?.sections; filterSections(search: false); return }
+        if filter { self.sections = self.screen?.content?.sections }
+        self.sections = sections?.search(value: search)
+        if filter { filterSections(search: false) }
+    }
+
+    public func filterSections(search: Bool = true) {
+        if search { self.sections = self.screen?.content?.sections }
+        self.sections = sections?.filter()
+        if search { searchSections(filter: false) }
+    }
+
+    public func resetFilters() {
+        self.sections = self.screen?.content?.sections
+        searchSections()
     }
 
     public func alertBinding() -> Binding<Bool> {

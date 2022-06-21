@@ -12,19 +12,17 @@ struct ScreenView: View {
 
     var body: some View {
         VStack {
-            if let header = self.state.screen?.header, !header.scrollable, header.decoded != nil {
-                HeaderView(header: header)
-            }
+            HeaderView(scrollable: false)
 
-            if let screen = self.state.screen, let content = screen.content, let sections = content.sections {
+            if let screen = self.state.screen, let content = screen.content, state.sections != nil {
                 if screen.type == .list {
-                    ListView(sections: sections)
+                    ListView()
                 } else if content.scrollable {
                     RefreshableScrollView {
-                        ContentView(sections: sections)
+                        ContentView()
                     }
                 } else {
-                    ContentView(sections: sections)
+                    ContentView()
                 }
             }
         }

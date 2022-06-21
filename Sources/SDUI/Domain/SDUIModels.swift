@@ -14,19 +14,9 @@ import Foundation
 // MARK: - SDUISchema
 
 
-public struct SDUIPlaceHolder: Codable, Hashable {
-    public let image: String
-    public let title: String
 
-    enum CodingKeys: String, CodingKey {
-        case image = "image"
-        case title = "title"
-    }
-
-    public init(image: String, title: String) {
-        self.image = image
-        self.title = title
-    }
+public enum SDUIPlaceHolderType: String, Codable, Hashable {
+    case example = "EXAMPLE"
 }
 
 public enum SDUIActionType: String, Codable, Hashable {
@@ -44,8 +34,8 @@ public enum SDUIActionType: String, Codable, Hashable {
 
 // MARK: - SDUIActionBase
 public struct SDUIActionBase: Codable, Hashable {
-    public let id: String
-    public let placeHolder: SDUIPlaceHolder?
+    public var id: String
+    public var placeHolder: SDUIPlaceHolder?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -66,11 +56,11 @@ public struct SDUIActionBase: Codable, Hashable {
 
 // MARK: - SDUIAlert
 public struct SDUIAlert: Codable, Hashable {
-    public let id: String
-    public let message: String?
-    public let placeHolder: SDUIPlaceHolder?
-    public let title: String?
-    public let type: SDUIPurpleType
+    public var id: String
+    public var message: String?
+    public var placeHolder: SDUIPlaceHolder?
+    public var title: String?
+    public var type: SDUIAlertType
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -80,7 +70,7 @@ public struct SDUIAlert: Codable, Hashable {
         case type = "type"
     }
 
-    public init(id: String, message: String?, placeHolder: SDUIPlaceHolder?, title: String?, type: SDUIPurpleType) {
+    public init(id: String, message: String?, placeHolder: SDUIPlaceHolder?, title: String?, type: SDUIAlertType) {
         self.id = id
         self.message = message
         self.placeHolder = placeHolder
@@ -89,8 +79,70 @@ public struct SDUIAlert: Codable, Hashable {
     }
 }
 
-public enum SDUIPurpleType: String, Codable, Hashable {
+public enum SDUIAlertType: String, Codable, Hashable {
     case alert = "ALERT"
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIBaseComponent
+public struct SDUIBaseComponent: Codable, Hashable {
+    public var action: SDUIAction?
+    public var id: String
+    public var searchable: String?
+
+    enum CodingKeys: String, CodingKey {
+        case action = "action"
+        case id = "id"
+        case searchable = "searchable"
+    }
+
+    public init(action: SDUIAction?, id: String, searchable: String?) {
+        self.action = action
+        self.id = id
+        self.searchable = searchable
+    }
+}
+
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIBaseHeader
+public struct SDUIBaseHeader: Codable, Hashable {
+    public var action: SDUIAction?
+    public var displayMode: SDUIDisplayMode?
+    public var id: String
+    public var scrollable: Bool
+    public var title: String
+
+    enum CodingKeys: String, CodingKey {
+        case action = "action"
+        case displayMode = "display_mode"
+        case id = "id"
+        case scrollable = "scrollable"
+        case title = "title"
+    }
+
+    public init(action: SDUIAction?, displayMode: SDUIDisplayMode?, id: String, scrollable: Bool, title: String) {
+        self.action = action
+        self.displayMode = displayMode
+        self.id = id
+        self.scrollable = scrollable
+        self.title = title
+    }
+}
+
+public enum SDUIDisplayMode: String, Codable, Hashable {
+    case automatic = "AUTOMATIC"
+    case inline = "INLINE"
+    case large = "LARGE"
 }
 
 public enum SDUIColor: String, Codable, Hashable {
@@ -106,12 +158,11 @@ public enum SDUIColor: String, Codable, Hashable {
 
 // MARK: - SDUIComponent
 
-
 public struct SDUIContent: Codable, Hashable {
-    public let refreshable: Bool
-    public let scrollable: Bool
-    public let searchable: Bool?
-    public let sections: [SDUISection]?
+    public var refreshable: Bool
+    public var scrollable: Bool
+    public var searchable: Bool?
+    public var sections: [SDUISection]?
 
     enum CodingKeys: String, CodingKey {
         case refreshable = "refreshable"
@@ -136,8 +187,8 @@ public struct SDUIContent: Codable, Hashable {
 
 // MARK: - SDUISection
 public struct SDUISection: Codable, Hashable {
-    public let components: [SDUIComponent]?
-    public let title: String?
+    public var components: [SDUIComponent]?
+    public var title: String?
 
     enum CodingKeys: String, CodingKey {
         case components = "components"
@@ -150,12 +201,6 @@ public struct SDUISection: Codable, Hashable {
     }
 }
 
-public enum SDUIDisplayMode: String, Codable, Hashable {
-    case automatic = "AUTOMATIC"
-    case inline = "INLINE"
-    case large = "LARGE"
-}
-
 //
 // Hashable or Equatable:
 // The compiler will not be able to synthesize the implementation of Hashable or Equatable
@@ -163,33 +208,6 @@ public enum SDUIDisplayMode: String, Codable, Hashable {
 // synthesized for types that have collections (such as arrays or dictionaries).
 
 // MARK: - SDUIHeader
-
-public struct SDUISheet: Codable, Hashable {
-    public let id: String
-    public let placeHolder: SDUIPlaceHolder?
-    public let type: SDUIActionType
-    public let url: String?
-    public let message: String?
-    public let title: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case placeHolder = "place_holder"
-        case type = "type"
-        case url = "url"
-        case message = "message"
-        case title = "title"
-    }
-
-    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUIActionType, url: String?, message: String?, title: String?) {
-        self.id = id
-        self.placeHolder = placeHolder
-        self.type = type
-        self.url = url
-        self.message = message
-        self.title = title
-    }
-}
 
 public enum SDUIHeaderType: String, Codable, Hashable {
     case header = "HEADER"
@@ -201,13 +219,12 @@ public enum SDUIHeaderType: String, Codable, Hashable {
 // for types that require the use of JSONAny, nor will the implementation of Hashable be
 // synthesized for types that have collections (such as arrays or dictionaries).
 
-// MARK: - SDUIHeaderBase
-
+// MARK: - SDUINavigationLink
 public struct SDUINavigationLink: Codable, Hashable {
-    public let id: String
-    public let placeHolder: SDUIPlaceHolder?
-    public let type: SDUIFluffyType
-    public let url: String
+    public var id: String
+    public var placeHolder: SDUIPlaceHolder?
+    public var type: SDUINavigationLinkType
+    public var url: String
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -216,7 +233,7 @@ public struct SDUINavigationLink: Codable, Hashable {
         case url = "url"
     }
 
-    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUIFluffyType, url: String) {
+    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUINavigationLinkType, url: String) {
         self.id = id
         self.placeHolder = placeHolder
         self.type = type
@@ -224,7 +241,7 @@ public struct SDUINavigationLink: Codable, Hashable {
     }
 }
 
-public enum SDUIFluffyType: String, Codable, Hashable {
+public enum SDUINavigationLinkType: String, Codable, Hashable {
     case navigationLink = "NAVIGATION_LINK"
 }
 
@@ -236,10 +253,10 @@ public enum SDUIFluffyType: String, Codable, Hashable {
 
 // MARK: - SDUIScreen
 public struct SDUIScreen: Codable, Hashable {
-    public let content: SDUIContent?
-    public let header: SDUIHeader?
-    public let id: String
-    public let type: SDUIScreenType
+    public var content: SDUIContent?
+    public var header: SDUIHeader?
+    public var id: String
+    public var type: SDUIScreenType
 
     enum CodingKeys: String, CodingKey {
         case content = "content"
@@ -269,10 +286,10 @@ public enum SDUIScreenType: String, Codable, Hashable {
 
 // MARK: - SDUIShare
 public struct SDUIShare: Codable, Hashable {
-    public let id: String
-    public let placeHolder: SDUIPlaceHolder?
-    public let type: SDUITentacledType
-    public let url: String
+    public var id: String
+    public var placeHolder: SDUIPlaceHolder?
+    public var type: SDUIShareType
+    public var url: String
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -281,7 +298,7 @@ public struct SDUIShare: Codable, Hashable {
         case url = "url"
     }
 
-    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUITentacledType, url: String) {
+    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUIShareType, url: String) {
         self.id = id
         self.placeHolder = placeHolder
         self.type = type
@@ -289,7 +306,7 @@ public struct SDUIShare: Codable, Hashable {
     }
 }
 
-public enum SDUITentacledType: String, Codable, Hashable {
+public enum SDUIShareType: String, Codable, Hashable {
     case share = "SHARE"
 }
 
@@ -299,9 +316,28 @@ public enum SDUITentacledType: String, Codable, Hashable {
 // for types that require the use of JSONAny, nor will the implementation of Hashable be
 // synthesized for types that have collections (such as arrays or dictionaries).
 
-// MARK: - SDUISheetClass
+// MARK: - SDUISheet
+public struct SDUISheet: Codable, Hashable {
+    public var id: String
+    public var placeHolder: SDUIPlaceHolder?
+    public var type: SDUISheetType
+    public var url: String
 
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case placeHolder = "place_holder"
+        case type = "type"
+        case url = "url"
+    }
 
-public enum SDUIStickyType: String, Codable, Hashable {
+    public init(id: String, placeHolder: SDUIPlaceHolder?, type: SDUISheetType, url: String) {
+        self.id = id
+        self.placeHolder = placeHolder
+        self.type = type
+        self.url = url
+    }
+}
+
+public enum SDUISheetType: String, Codable, Hashable {
     case sheet = "SHEET"
 }

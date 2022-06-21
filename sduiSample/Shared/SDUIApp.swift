@@ -13,7 +13,8 @@ import UIKit
 struct SDUIApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var currentTab = 0
-    @StateObject var sduiData = SDUIData()
+
+    @StateObject var sduiData = SDUIData.shared
 
     init() {
         UITabBar.appearance().backgroundColor = .white

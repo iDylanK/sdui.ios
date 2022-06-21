@@ -9,10 +9,29 @@ import Foundation
 
 extension Array where Element == SDUISection {
     func search(value: String) -> [SDUISection] {
-        if value.isEmpty { return self }
+        self.map { section in
+            var section = section
+            section.components = section.components?.filter { component in
+                return component.searchable?.trimmingCharacters(in: .whitespaces)
+                    .localizedCaseInsensitiveContains(value.trimmingCharacters(in: .whitespaces)) ?? false
+            }
+            return section
+        }
+        .filter { section in
+            section.components?.isEmpty != true
+        }
+    }
 
-        return self.filter { section in
-            !(section.components ?? []).search(value: value).isEmpty
+    func filter() -> [SDUISection] {
+        guard let delegate = ServerDrivenUI.shared.filterDelegate else { return self }
+
+        return self.map { section -> SDUISection in
+            var section: SDUISection = section
+            section.components = delegate.componentFilter(section.components ?? []) as [SDUIComponent]
+            return section
+        }
+        .filter { section in
+            section.components?.isEmpty != true
         }
     }
 }
