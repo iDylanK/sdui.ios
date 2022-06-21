@@ -12,7 +12,8 @@ extension Array where Element == SDUISection {
         self.map { section in
             var section = section
             section.components = section.components?.filter { component in
-                return component.searchable?.trimmingCharacters(in: .whitespaces)
+                return component.base().searchable?
+                    .trimmingCharacters(in: .whitespaces)
                     .localizedCaseInsensitiveContains(value.trimmingCharacters(in: .whitespaces)) ?? false
             }
             return section
@@ -27,7 +28,10 @@ extension Array where Element == SDUISection {
 
         return self.map { section -> SDUISection in
             var section: SDUISection = section
-            section.components = delegate.componentFilter(section.components ?? []) as [SDUIComponent]
+            section.components = section.components?.filter { component in
+                guard let custom = component.custom() else { return true }
+                return delegate.componentFilter(custom)
+            }
             return section
         }
         .filter { section in

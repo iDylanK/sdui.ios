@@ -14,17 +14,17 @@ struct SectionView: View {
     var section: SDUISection
 
     var body: some View {
-        ForEach(section.components ?? [], id: \.id) { component in
-            if case .navigationLink(let navigationLink) = component.action {
+        ForEach(section.components ?? [], id: \.self) { component in
+            if case .navigationLink(let navigationLink) = component.base().action {
                 NavigationLink(
                     destination: SDUIRootView(viewUrl: navigationLink.url, placeHolder: navigationLink.placeHolder)
                 ) {
                     ComponentView(component: component)
                 }
             } else {
-                if component.action != nil {
+                if component.base().action != nil {
                     Button {
-                        switch component.action {
+                        switch component.base().action {
                         case .alert(let alert): state.alert = alert
                         case .sheet(let sheet): state.sheet = sheet
                         case .share(let share): state.share = share

@@ -11,7 +11,7 @@ import SwiftUI
 
 class SampleDelegate: SDUIDelegate {
 
-    func componentView(_ component: SDUI.SDUIComponent, action: SDUICustomAction?) -> AnyView {
+    func componentView(_ component: SDUI.SDUICustomComponent, action: SDUICustomAction?) -> AnyView {
         guard let componentDecoded = component.decoded as? SDUIComponent else {
             return AnyView(ErrorView(error: "Decoding error"))
         }
@@ -67,7 +67,7 @@ class SampleDelegate: SDUIDelegate {
         return try SDUIAction(from: decoder)
     }
 
-    func componentEquals(_ lhs: SDUI.SDUIComponent, _ rhs: SDUI.SDUIComponent) -> Bool {
+    func componentEquals(_ lhs: SDUI.SDUICustomComponent, _ rhs: SDUI.SDUICustomComponent) -> Bool {
         guard let lhs = lhs.decoded as? SDUIComponent else { return false }
         guard let rhs = rhs.decoded as? SDUIComponent else { return false }
         return lhs == rhs
@@ -94,23 +94,17 @@ class SampleDelegate: SDUIDelegate {
 }
 
 class SampleFilterDelegate: SDUIFilterDelegate {
-    func componentFilter(_ components: [SDUI.SDUIComponent]) -> [SDUI.SDUIComponent] {
+    func componentFilter(_ component: SDUI.SDUICustomComponent) -> Bool {
         // Only works for product search..
         if SDUIData.shared.filters.isEmpty || SDUIData.shared.filters.allSatisfy({ filter in
             !filter.value
         }) {
-            return components
+            return true
         }
 
-        var filterComponents: [SDUI.SDUIComponent] = []
-        for component in components {
-            guard let componentDecoded = component.decoded as? SDUIComponent else { return components }
-            guard case .product(let productComponent) = componentDecoded else { return components }
-            if SDUIData.shared.filters[productComponent.product.category] == true {
-                filterComponents.append(component)
-            }
-        }
+        guard let componentDecoded = component.decoded as? SDUIComponent else { return true }
+        guard case .product(let productComponent) = componentDecoded else { return true }
 
-        return filterComponents
+        return SDUIData.shared.filters[productComponent.product.category] == true
     }
 }

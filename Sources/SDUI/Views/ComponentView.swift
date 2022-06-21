@@ -11,6 +11,8 @@ struct ComponentView: View {
     var component: SDUIComponent
 
     var body: some View {
-        ServerDrivenUI.shared.delegate?.componentView(component, action: component.action?.custom())
+        if let component = component.custom() {
+            ServerDrivenUI.shared.delegate?.componentView(component, action: component.base.action?.custom())
+        }
     }
 }

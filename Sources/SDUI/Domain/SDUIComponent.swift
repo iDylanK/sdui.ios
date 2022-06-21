@@ -7,40 +7,60 @@
 
 import Foundation
 
-public struct SDUIComponent: Codable, Hashable {
-    public var id: String
-    public var action: SDUIAction?
-    public var searchable: String?
+public enum SDUIComponent: Codable, Hashable {
+    case custom(SDUICustomComponent)
+    case base(SDUIBaseComponent)
 
-    public var decoded: Any?
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case action
-        case searchable
+    public init(from decoder: Decoder) throws {
+        do {
+            self = try .custom(decoder.decodeSingleValueContainer())
+        } catch {
+            self = try .base(decoder.decodeSingleValueContainer())
+        }
     }
+
+    public init(baseDecoder: Decoder) throws {
+        self = try .base(baseDecoder.decodeSingleValueContainer())
+    }
+
+    public init(from custom: SDUICustomComponent) {
+        self = .custom(custom)
+    }
+
+    public func custom() -> SDUICustomComponent? {
+        var component: SDUICustomComponent?
+        if case .custom(let custom) = self { component = custom }
+        return component
+    }
+
+    func base() -> SDUIBaseComponent {
+        switch self {
+        case .custom(let component):
+            return component.base
+        case .base(let base):
+            return base
+        }
+    }
+}
+
+public struct SDUICustomComponent: Codable, Hashable {
+    public let base: SDUIBaseComponent
+    public var decoded: Any?
 
     public init(from decoder: Decoder) throws {
         self.decoded = try ServerDrivenUI.shared.delegate?.decodeComponent(decoder)
-
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.action = try? container.decode(SDUIAction.self, forKey: .action)
-        self.searchable = try? container.decode(String.self, forKey: .searchable)
+        self.base = try SDUIComponent(baseDecoder: decoder).base()
     }
 
-    public static func == (lhs: SDUIComponent, rhs: SDUIComponent) -> Bool {
+    public static func == (lhs: SDUICustomComponent, rhs: SDUICustomComponent) -> Bool {
         return ServerDrivenUI.shared.delegate?.componentEquals(lhs, rhs) ?? false
     }
-
+//
     public func encode(to encoder: Encoder) throws {
 //        TODO: ...
     }
-
+//
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-        hasher.combine(action)
-        hasher.combine(searchable)
+//        TODO: ...
     }
-
 }

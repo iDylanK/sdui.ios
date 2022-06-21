@@ -11,7 +11,7 @@ import SwiftUI
 public protocol SDUIDelegate: AnyObject {
     func getViewWith(uri: String?, data: String?, completion: @escaping ((SDUIScreen) -> Void))
 
-    func componentView(_ component: SDUIComponent, action: SDUICustomAction?) -> AnyView
+    func componentView(_ component: SDUICustomComponent, action: SDUICustomAction?) -> AnyView
     func placeHolderView(_ placeHolder: SDUIPlaceHolder) -> AnyView
     func headerView(_ header: SDUICustomHeader) -> AnyView
 
@@ -20,7 +20,7 @@ public protocol SDUIDelegate: AnyObject {
     func decodePlaceHolder(_ decoder: Decoder) throws -> Any
     func decodeAction(_ decoder: Decoder) throws -> Any
 
-    func componentEquals(_ lhs: SDUIComponent, _ rhs: SDUIComponent) -> Bool
+    func componentEquals(_ lhs: SDUICustomComponent, _ rhs: SDUICustomComponent) -> Bool
     func headerEquals(_ lhs: SDUICustomHeader, _ rhs: SDUICustomHeader) -> Bool
     func placeHolderEquals(_ lhs: SDUIPlaceHolder, _ rhs: SDUIPlaceHolder) -> Bool
     func actionEquals(_ lhs: SDUICustomAction, _ rhs: SDUICustomAction) -> Bool

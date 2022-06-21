@@ -8,5 +8,5 @@
 import SwiftUI
 
 public protocol SDUIFilterDelegate: AnyObject {
-    func componentFilter(_ components: [SDUIComponent]) -> [SDUIComponent]
+    func componentFilter(_ component: SDUICustomComponent) -> Bool
 }
