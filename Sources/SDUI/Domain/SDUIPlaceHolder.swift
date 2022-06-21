@@ -19,7 +19,7 @@ public struct SDUIPlaceHolder: Codable, Hashable {
     }
 
     public func encode(to encoder: Encoder) throws {
-//        TODO: ...
+        // TODO: Encode using delegate?
     }
 
 }

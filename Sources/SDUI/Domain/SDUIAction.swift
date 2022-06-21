@@ -49,9 +49,9 @@ public struct SDUICustomAction: Codable, Hashable {
     public static func == (lhs: SDUICustomAction, rhs: SDUICustomAction) -> Bool {
         return ServerDrivenUI.shared.actionDelegate?.equals(lhs, rhs) ?? false
     }
-//
+
     public func encode(to encoder: Encoder) throws {
-//        TODO: ...
+        // TODO: Encode using delegate?
     }
 
 }

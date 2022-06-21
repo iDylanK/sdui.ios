@@ -41,17 +41,6 @@ public enum SDUIComponent: Codable, Hashable {
             return base
         }
     }
-
-    // Needed to get ForEach working properly..
-//    public func hash(into hasher: inout Hasher) {
-////        hasher.combine(self)
-//        switch self {
-//        case .custom(let component):
-//            hasher.combine("2")
-//        case .base(let base):
-//            hasher.combine("1")
-//        }
-//    }
 }
 
 public struct SDUICustomComponent: Codable, Hashable {
@@ -66,8 +55,9 @@ public struct SDUICustomComponent: Codable, Hashable {
     public static func == (lhs: SDUICustomComponent, rhs: SDUICustomComponent) -> Bool {
         return ServerDrivenUI.shared.componentDelegate?.equals(lhs, rhs) ?? false
     }
-//
+
     public func encode(to encoder: Encoder) throws {
-//        TODO: ...
+        // TODO: Encode using delegate?
+        try encoder.encodeSingleValueContainer(value: base)
     }
 }

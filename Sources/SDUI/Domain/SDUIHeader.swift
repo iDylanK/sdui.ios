@@ -58,8 +58,9 @@ public struct SDUICustomHeader: Codable, Hashable {
     public static func == (lhs: SDUICustomHeader, rhs: SDUICustomHeader) -> Bool {
         return ServerDrivenUI.shared.headerDelegate?.equals(lhs, rhs) ?? false
     }
-//
+
     public func encode(to encoder: Encoder) throws {
-//        TODO: ...
+        // TODO: Encode using delegate?
+        try encoder.encodeSingleValueContainer(value: base)
     }
 }
