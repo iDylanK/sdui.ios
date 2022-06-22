@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDUI
 
 @main
 struct SDUIValidationApp: App {

@@ -13,6 +13,7 @@
 		FC230899286342B500186843 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC230887286342B200186843 /* ContentView.swift */; };
 		FC23089A286342B500186843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC230888286342B500186843 /* Assets.xcassets */; };
 		FC23089B286342B500186843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC230888286342B500186843 /* Assets.xcassets */; };
+		FC2308A82863439300186843 /* SDUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC2308A72863439300186843 /* SDUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		FC23088D286342B500186843 /* SDUIValidation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDUIValidation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC230893286342B500186843 /* SDUIValidation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDUIValidation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC230895286342B500186843 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		FC2308A52863433100186843 /* sdui.validation.ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = sdui.validation.ios; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC2308A82863439300186843 /* SDUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,9 +48,11 @@
 		FC230880286342B100186843 = {
 			isa = PBXGroup;
 			children = (
+				FC2308A42863433100186843 /* Packages */,
 				FC230885286342B200186843 /* Shared */,
 				FC230894286342B500186843 /* macOS */,
 				FC23088E286342B500186843 /* Products */,
+				FC2308A62863439300186843 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +83,21 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		FC2308A42863433100186843 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				FC2308A52863433100186843 /* sdui.validation.ios */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		FC2308A62863439300186843 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -94,6 +114,9 @@
 			dependencies = (
 			);
 			name = "SDUIValidation (iOS)";
+			packageProductDependencies = (
+				FC2308A72863439300186843 /* SDUI */,
+			);
 			productName = "SDUIValidation (iOS)";
 			productReference = FC23088D286342B500186843 /* SDUIValidation.app */;
 			productType = "com.apple.product-type.application";
@@ -450,6 +473,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FC2308A72863439300186843 /* SDUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SDUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FC230881286342B100186843 /* Project object */;
 }
