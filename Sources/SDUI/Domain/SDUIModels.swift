@@ -145,6 +145,41 @@ public enum SDUIDisplayMode: String, Codable, Hashable {
     case large = "LARGE"
 }
 
+//
+// Hashable or Equatable:
+// The compiler will not be able to synthesize the implementation of Hashable or Equatable
+// for types that require the use of JSONAny, nor will the implementation of Hashable be
+// synthesized for types that have collections (such as arrays or dictionaries).
+
+// MARK: - SDUIComponent
+public struct SDUIBasicComponent: Codable, Hashable {
+    public var action: SDUIAction?
+    public var content: String
+    public var id: String
+    public var searchable: String?
+    public var type: SDUIBasicComponentType
+
+    enum CodingKeys: String, CodingKey {
+        case action = "action"
+        case content = "content"
+        case id = "id"
+        case searchable = "searchable"
+        case type = "type"
+    }
+
+    public init(action: SDUIAction?, content: String, id: String, searchable: String?, type: SDUIBasicComponentType) {
+        self.action = action
+        self.content = content
+        self.id = id
+        self.searchable = searchable
+        self.type = type
+    }
+}
+
+public enum SDUIBasicComponentType: String, Codable, Hashable {
+    case basic = "BASIC"
+}
+
 public enum SDUIColor: String, Codable, Hashable {
     case blue = "BLUE"
     case red = "RED"
@@ -156,8 +191,7 @@ public enum SDUIColor: String, Codable, Hashable {
 // for types that require the use of JSONAny, nor will the implementation of Hashable be
 // synthesized for types that have collections (such as arrays or dictionaries).
 
-// MARK: - SDUIComponent
-
+// MARK: - SDUIContent
 public struct SDUIContent: Codable, Hashable {
     public var refreshable: Bool
     public var scrollable: Bool

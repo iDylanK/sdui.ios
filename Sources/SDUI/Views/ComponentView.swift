@@ -13,6 +13,8 @@ struct ComponentView: View {
     var body: some View {
         if let component = component.custom() {
             ServerDrivenUI.shared.componentDelegate?.view(for: component, with: component.base.action?.custom())
+        } else if let component = component.basic() {
+            Text(component.content)
         }
     }
 }

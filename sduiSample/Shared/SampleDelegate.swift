@@ -10,8 +10,8 @@ import SDUI
 import SwiftUI
 
 class SampleDataSource: SDUIDataSource {
-    func getView(with url: String?, data: String?, completion: @escaping ((SDUIScreen) -> Void)) {
-        Api.shared.getView(with: url, data: data, completion: completion)
+    func getView(with url: String?, completion: @escaping ((SDUIScreen) -> Void)) {
+        Api.shared.getView(with: url, completion: completion)
     }
 }
 

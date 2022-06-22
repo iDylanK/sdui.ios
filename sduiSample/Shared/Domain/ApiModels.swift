@@ -91,6 +91,7 @@ public enum SDUIProductCategory: String, Codable, Hashable {
 }
 
 public enum SDUIComponentType: String, Codable, Hashable {
+    case basic = "BASIC"
     case product = "PRODUCT"
 }
 
@@ -101,7 +102,6 @@ public enum SDUIComponentType: String, Codable, Hashable {
 // synthesized for types that have collections (such as arrays or dictionaries).
 
 // MARK: - SDUIContent
-
 
 
 public enum SDUIPurpleType: String, Codable, Hashable {
@@ -210,7 +210,7 @@ public struct SDUIProductComponent: Codable, Hashable {
     public let primaryButton: SDUIPrimaryButton?
     public let product: SDUIProduct
     public let searchable: String?
-    public let type: SDUIComponentType
+    public let type: SDUIProductComponentType
 
     enum CodingKeys: String, CodingKey {
         case action = "action"
@@ -221,7 +221,7 @@ public struct SDUIProductComponent: Codable, Hashable {
         case type = "type"
     }
 
-    public init(action: SDUIAction?, id: String, primaryButton: SDUIPrimaryButton?, product: SDUIProduct, searchable: String?, type: SDUIComponentType) {
+    public init(action: SDUIAction?, id: String, primaryButton: SDUIPrimaryButton?, product: SDUIProduct, searchable: String?, type: SDUIProductComponentType) {
         self.action = action
         self.id = id
         self.primaryButton = primaryButton
@@ -229,6 +229,10 @@ public struct SDUIProductComponent: Codable, Hashable {
         self.searchable = searchable
         self.type = type
     }
+}
+
+public enum SDUIProductComponentType: String, Codable, Hashable {
+    case product = "PRODUCT"
 }
 
 //
@@ -246,7 +250,7 @@ public struct SDUIProductHeader: Codable, Hashable {
     public let product: SDUIProduct
     public let scrollable: Bool
     public let title: String
-    public let type: SDUIComponentType
+    public let type: SDUIProductComponentType
 
     enum CodingKeys: String, CodingKey {
         case action = "action"
@@ -259,7 +263,7 @@ public struct SDUIProductHeader: Codable, Hashable {
         case type = "type"
     }
 
-    public init(action: SDUIAction?, displayMode: SDUIDisplayMode?, id: String, primaryButton: SDUIPrimaryButton, product: SDUIProduct, scrollable: Bool, title: String, type: SDUIComponentType) {
+    public init(action: SDUIAction?, displayMode: SDUIDisplayMode?, id: String, primaryButton: SDUIPrimaryButton, product: SDUIProduct, scrollable: Bool, title: String, type: SDUIProductComponentType) {
         self.action = action
         self.displayMode = displayMode
         self.id = id
@@ -281,7 +285,7 @@ public struct SDUIProductHeader: Codable, Hashable {
 public struct SDUIProductPlaceHolder: Codable, Hashable {
     public let image: String
     public let title: String
-    public let type: SDUIComponentType
+    public let type: SDUIProductComponentType
 
     enum CodingKeys: String, CodingKey {
         case image = "image"
@@ -289,7 +293,7 @@ public struct SDUIProductPlaceHolder: Codable, Hashable {
         case type = "type"
     }
 
-    public init(image: String, title: String, type: SDUIComponentType) {
+    public init(image: String, title: String, type: SDUIProductComponentType) {
         self.image = image
         self.title = title
         self.type = type

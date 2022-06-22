@@ -10,8 +10,15 @@ import Foundation
 public enum SDUIComponent: Codable, Hashable {
     case custom(SDUICustomComponent)
     case base(SDUIBaseComponent)
+    case basic(SDUIBasicComponent)
 
     public init(from decoder: Decoder) throws {
+        let type = try SDUIBasicComponentType(rawValue: decoder.decodeType())
+        if case .basic = type {
+            self = try .basic(decoder.decodeSingleValueContainer())
+            return
+        }
+
         do {
             self = try .custom(decoder.decodeSingleValueContainer())
         } catch {
@@ -33,12 +40,20 @@ public enum SDUIComponent: Codable, Hashable {
         return component
     }
 
+    public func basic() -> SDUIBasicComponent? {
+        var component: SDUIBasicComponent?
+        if case .basic(let basic) = self { component = basic }
+        return component
+    }
+
     func base() -> SDUIBaseComponent {
         switch self {
         case .custom(let component):
             return component.base
         case .base(let base):
             return base
+        case .basic(let basic):
+            return SDUIBaseComponent(action: basic.action, id: basic.id, searchable: basic.searchable)
         }
     }
 }

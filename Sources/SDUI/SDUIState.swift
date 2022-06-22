@@ -29,7 +29,7 @@ public class SDUIState: ObservableObject {
 
         // MARK: Timer is here for placeholder testing
         Timer.scheduledTimer(withTimeInterval: 0.0, repeats: false) { _ in
-            ServerDrivenUI.shared.dataSource?.getView(with: self.viewUrl, data: nil) { screen in
+            ServerDrivenUI.shared.dataSource?.getView(with: self.viewUrl) { screen in
                 DispatchQueue.main.async {
                     self.screen = screen
                     self.isLoading = false
