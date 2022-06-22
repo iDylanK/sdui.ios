@@ -193,8 +193,8 @@ public enum SDUIColor: String, Codable, Hashable {
 
 // MARK: - SDUIContent
 public struct SDUIContent: Codable, Hashable {
-    public var refreshable: Bool
-    public var scrollable: Bool
+    public var refreshable: Bool?
+    public var scrollable: Bool?
     public var searchable: Bool?
     public var sections: [SDUISection]?
 
@@ -205,7 +205,7 @@ public struct SDUIContent: Codable, Hashable {
         case sections = "sections"
     }
 
-    public init(refreshable: Bool, scrollable: Bool, searchable: Bool?, sections: [SDUISection]?) {
+    public init(refreshable: Bool?, scrollable: Bool?, searchable: Bool?, sections: [SDUISection]?) {
         self.refreshable = refreshable
         self.scrollable = scrollable
         self.searchable = searchable

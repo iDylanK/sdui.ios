@@ -17,7 +17,7 @@ struct ScreenView: View {
             if let screen = self.state.screen, let content = screen.content, state.sections != nil {
                 if screen.type == .list {
                     ListView()
-                } else if content.scrollable {
+                } else if let scrollable = content.scrollable, scrollable {
                     RefreshableScrollView {
                         ContentView()
                     }
