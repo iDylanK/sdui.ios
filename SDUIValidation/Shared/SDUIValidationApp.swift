@@ -10,9 +10,16 @@ import SDUI
 
 @main
 struct SDUIValidationApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    @StateObject var sduiData = SDUIData.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                Text("Implement...")
+            }
+            .environmentObject(sduiData)
         }
     }
 }

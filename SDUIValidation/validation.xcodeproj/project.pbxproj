@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		FC230896286342B500186843 /* SDUIValidationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC230886286342B200186843 /* SDUIValidationApp.swift */; };
 		FC230897286342B500186843 /* SDUIValidationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC230886286342B200186843 /* SDUIValidationApp.swift */; };
-		FC230898286342B500186843 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC230887286342B200186843 /* ContentView.swift */; };
-		FC230899286342B500186843 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC230887286342B200186843 /* ContentView.swift */; };
 		FC23089A286342B500186843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC230888286342B500186843 /* Assets.xcassets */; };
 		FC23089B286342B500186843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC230888286342B500186843 /* Assets.xcassets */; };
 		FC2308A82863439300186843 /* SDUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC2308A72863439300186843 /* SDUI */; };
+		FC2308AB2863466600186843 /* SDUIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308AA2863466600186843 /* SDUIData.swift */; };
+		FC2308AC2863466600186843 /* SDUIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308AA2863466600186843 /* SDUIData.swift */; };
+		FC2308AE286346D800186843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308AD286346D800186843 /* AppDelegate.swift */; };
+		FC2308AF286346D800186843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308AD286346D800186843 /* AppDelegate.swift */; };
+		FC2308B1286347B900186843 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308B0286347B900186843 /* Api.swift */; };
+		FC2308B2286347B900186843 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308B0286347B900186843 /* Api.swift */; };
+		FC2308B528634A8B00186843 /* ComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308B428634A8B00186843 /* ComponentDelegate.swift */; };
+		FC2308B628634A8B00186843 /* ComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308B428634A8B00186843 /* ComponentDelegate.swift */; };
+		FC2308B828634CB600186843 /* ProductComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308B728634CB500186843 /* ProductComponent.swift */; };
+		FC2308B928634CB600186843 /* ProductComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2308B728634CB500186843 /* ProductComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FC230886286342B200186843 /* SDUIValidationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIValidationApp.swift; sourceTree = "<group>"; };
-		FC230887286342B200186843 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FC230888286342B500186843 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC23088D286342B500186843 /* SDUIValidation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDUIValidation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC230893286342B500186843 /* SDUIValidation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDUIValidation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC230895286342B500186843 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		FC2308A52863433100186843 /* sdui.validation.ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = sdui.validation.ios; path = ..; sourceTree = "<group>"; };
+		FC2308AA2863466600186843 /* SDUIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDUIData.swift; sourceTree = "<group>"; };
+		FC2308AD286346D800186843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FC2308B0286347B900186843 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		FC2308B428634A8B00186843 /* ComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDelegate.swift; sourceTree = "<group>"; };
+		FC2308B728634CB500186843 /* ProductComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +72,11 @@
 			isa = PBXGroup;
 			children = (
 				FC230886286342B200186843 /* SDUIValidationApp.swift */,
-				FC230887286342B200186843 /* ContentView.swift */,
+				FC2308AD286346D800186843 /* AppDelegate.swift */,
+				FC2308B0286347B900186843 /* Api.swift */,
+				FC2308AA2863466600186843 /* SDUIData.swift */,
+				FC2308B328634A7600186843 /* Delegate */,
+				FC2308A92863465000186843 /* Components */,
 				FC230888286342B500186843 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -96,6 +112,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC2308A92863465000186843 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FC2308B728634CB500186843 /* ProductComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FC2308B328634A7600186843 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				FC2308B428634A8B00186843 /* ComponentDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,7 +188,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FC230884286342B100186843 /* Build configuration list for PBXProject "SDUIValidation" */;
+			buildConfigurationList = FC230884286342B100186843 /* Build configuration list for PBXProject "validation" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -199,8 +231,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC230898286342B500186843 /* ContentView.swift in Sources */,
+				FC2308B528634A8B00186843 /* ComponentDelegate.swift in Sources */,
+				FC2308B828634CB600186843 /* ProductComponent.swift in Sources */,
+				FC2308AE286346D800186843 /* AppDelegate.swift in Sources */,
 				FC230896286342B500186843 /* SDUIValidationApp.swift in Sources */,
+				FC2308B1286347B900186843 /* Api.swift in Sources */,
+				FC2308AB2863466600186843 /* SDUIData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +244,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC230899286342B500186843 /* ContentView.swift in Sources */,
+				FC2308B628634A8B00186843 /* ComponentDelegate.swift in Sources */,
+				FC2308B928634CB600186843 /* ProductComponent.swift in Sources */,
+				FC2308AF286346D800186843 /* AppDelegate.swift in Sources */,
 				FC230897286342B500186843 /* SDUIValidationApp.swift in Sources */,
+				FC2308B2286347B900186843 /* Api.swift in Sources */,
+				FC2308AC2863466600186843 /* SDUIData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +485,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FC230884286342B100186843 /* Build configuration list for PBXProject "SDUIValidation" */ = {
+		FC230884286342B100186843 /* Build configuration list for PBXProject "validation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC23089C286342B500186843 /* Debug */,
