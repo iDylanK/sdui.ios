@@ -56,7 +56,7 @@ Implement the following functions:
 #### Decoder
 Only the application will hold information about how to decode custom components. This information has to be shared with the SDUI Library by adding a decode function to the delegate. In the example app an enum is used to switch between the different custom types: 
 
-'''
+```
 public enum SDUIComponent: Codable, Equatable, Hashable {
     case product(SDUIProductComponent)
     ...
@@ -70,32 +70,32 @@ public enum SDUIComponent: Codable, Equatable, Hashable {
         }
     }
 }
-'''
+```
 
 The decoded SDUIComponent is saved as an AnyHashable decoded variable to the Library Component. This is later passed back to the delegate's view function to render the corresponding component.
 
 #### View
 The delegate is responsible for rendering the Component's view. En example implementation:
 
-'''
+```
 guard let componentDecoded = component.decoded as? SDUIComponent else { return AnyView(ErrorView(error: "Decoding error")) }
 
 switch componentDecoded {
 case .product(let product): return AnyView(ProductComponent(component: product))
 case ...
 }
-'''
+```
 
 The decoded AnyHashable variable from the [decode](#decoder) step is cast back to the app's SDUIComponent. Using a switch the right type is found and the corresponding ProductComponent is returned. 
 
 #### Equals
 This is needed to update states within the SwiftUI architecture. The SDUI Library won't be able to compare custom models correctly. Therefore the right equals function should cast the decoded types and compare them. Example implementation: 
 
-'''
+```
 guard let lhs = lhs.decoded as? SDUIComponent else { return false }
 guard let rhs = rhs.decoded as? SDUIComponent else { return false }
 return lhs == rhs
-'''
+```
 
 #### Filter (Component only)
 ...
