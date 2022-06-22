@@ -1,3 +1,20 @@
+- [SDUI Swift Library](#sdui-swift-library)
+  - [Getting started](#getting-started)
+    - [Installation](#installation)
+    - [SDUIDataSource](#sduidatasource)
+    - [SDUIRootView](#sduirootview)
+  - [Default types and models](#default-types-and-models)
+  - [Adding custom Components, Headers, Actions and PlaceHolders](#adding-custom-components-headers-actions-and-placeholders)
+    - [Setting up the delegate](#setting-up-the-delegate)
+      - [Decoder](#decoder)
+      - [View](#view)
+      - [Equals](#equals)
+      - [Filter (Component only)](#filter-component-only)
+    - [Generate new type](#generate-new-type)
+    - [Implement type](#implement-type)
+  - [Passing Project Data](#passing-project-data)
+  - [Contributing](#contributing)
+
 # SDUI Swift Library
 
 The SDUI Library helps integrating SDUI in a new or existing probject. Its core functionality is based on SwiftUI. The corresponding types are generated using a second repo: XX. This (backend) repo also features a sample Express server that works with this library. 
@@ -29,20 +46,62 @@ See the backend repo (XX).
 ## Adding custom Components, Headers, Actions and PlaceHolders
 The first thing that is needed is a file with SDUI models that expands the Library Model file (containing all the Codable structs). This can automatically be created using the backend repo (see: XX).
 
-### Setting up the right Delegate
-...
+The next step is to implement the right delegate. In this example a new Component is created and the delegate is set:
 
-#### Decoding
-...
+Create a SDUIComponentDelegate and install it: `ServerDrivenUI.shared.componentDelegate = YourComponentDelegate()`.
 
-#### Showing the right SwiftUI View
-...
+### Setting up the delegate
+Implement the following functions:
+
+#### Decoder
+Only the application will hold information about how to decode custom components. This information has to be shared with the SDUI Library by adding a decode function to the delegate. In the example app an enum is used to switch between the different custom types: 
+
+'''
+public enum SDUIComponent: Codable, Equatable, Hashable {
+    case product(SDUIProductComponent)
+    ...
+
+    public init(from decoder: Decoder) throws {
+        let type = try SDUIComponentType(rawValue: decoder.decodeType())
+
+        switch type {
+        case .product: self = try .product(decoder.decodeSingleValueContainer())
+        default: self = try .empty(decoder.decodeSingleValueContainer())
+        }
+    }
+}
+'''
+
+The decoded SDUIComponent is saved as an AnyHashable decoded variable to the Library Component. This is later passed back to the delegate's view function to render the corresponding component.
+
+#### View
+The delegate is responsible for rendering the Component's view. En example implementation:
+
+'''
+guard let componentDecoded = component.decoded as? SDUIComponent else { return AnyView(ErrorView(error: "Decoding error")) }
+
+switch componentDecoded {
+case .product(let product): return AnyView(ProductComponent(component: product))
+case ...
+}
+'''
+
+The decoded AnyHashable variable from the [decode](#decoder) step is cast back to the app's SDUIComponent. Using a switch the right type is found and the corresponding ProductComponent is returned. 
 
 #### Equals
-This is needed to update states within the SwiftUI architecture. 
+This is needed to update states within the SwiftUI architecture. The SDUI Library won't be able to compare custom models correctly. Therefore the right equals function should cast the decoded types and compare them. Example implementation: 
+
+'''
+guard let lhs = lhs.decoded as? SDUIComponent else { return false }
+guard let rhs = rhs.decoded as? SDUIComponent else { return false }
+return lhs == rhs
+'''
+
+#### Filter (Component only)
+...
 
 ### Generate new type
-...
+In order to support new types, the SDUI backend library has to be altered first. 
 
 ### Implement type
 ... 
@@ -51,3 +110,4 @@ This is needed to update states within the SwiftUI architecture.
 ...
 
 ## Contributing
+...
