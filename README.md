@@ -1,3 +1,5 @@
+# SDUI Swift Library
+
 - [SDUI Swift Library](#sdui-swift-library)
   - [Getting started](#getting-started)
     - [Installation](#installation)
@@ -15,8 +17,6 @@
     - [Implement type](#implement-type)
   - [Passing Project Data](#passing-project-data)
   - [Contributing](#contributing)
-
-# SDUI Swift Library
 
 The SDUI Library helps integrating SDUI in a new or existing probject. Its core functionality is based on SwiftUI. The corresponding types are generated using a second repo: [backend](https://github.com/iDylanK/sdui.backend). This (backend) repo also features a sample Express server that works with this library. 
 
