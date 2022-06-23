@@ -1,6 +1,7 @@
 - [SDUI Swift Library](#sdui-swift-library)
   - [Getting started](#getting-started)
     - [Installation](#installation)
+    - [Api](#api)
     - [SDUIDataSource](#sduidatasource)
     - [SDUIRootView](#sduirootview)
   - [Default types and models](#default-types-and-models)
@@ -17,7 +18,7 @@
 
 # SDUI Swift Library
 
-The SDUI Library helps integrating SDUI in a new or existing probject. Its core functionality is based on SwiftUI. The corresponding types are generated using a second repo: XX. This (backend) repo also features a sample Express server that works with this library. 
+The SDUI Library helps integrating SDUI in a new or existing probject. Its core functionality is based on SwiftUI. The corresponding types are generated using a second repo: [backend](https://github.com/iDylanK/sdui.backend). This (backend) repo also features a sample Express server that works with this library. 
 
 ## Getting started
 
@@ -28,9 +29,12 @@ There are 3 ways to get started with the library:
 2. Clone this repo and manually import as Swift Package to your application.
 3. Clone this repo and use the Sample Application. 
 
+### Api 
+Setup your API using the instructions in the SDUI backend repo found [here](https://github.com/iDylanK/sdui.backend).
+
 ### SDUIDataSource
 
-Before it's possible to display Server Driven views, the library needs a SDUIDataSource. 
+Before it's possible to display Server Driven views, the library needs a SDUIDataSource to connect to the API mentioned above. 
 Create this datasource `ServerDrivenUI.shared.dataSource = YourProjectsDataSource()` and connect it to your app's network manager. The network manager should use a JSONDecoder to decode all respones to a SDUIScreen. To read more about how to implement it, see the SDUIDataSource file.
 
 ### SDUIRootView
@@ -38,13 +42,14 @@ Create this datasource `ServerDrivenUI.shared.dataSource = YourProjectsDataSourc
 Displaying the first Server Driven View is as simple as calling the View: `SDUIRootView()` with the optional parameter `navigationView: Bool`, to specifiy whether the view has to be wrapped in a NavigationView. This is needed for the following concepts to work properly: 
 - NavigationLink
 - ...
+
 So make sure to use a NavigationView (either using the library or via the app itself) when using these properties.
 
 ## Default types and models
-See the backend repo (XX).
+See the backend repo's wiki [here](https://github.com/iDylanK/sdui.backend/wiki/SDUI-Types).
 
 ## Adding custom Components, Headers, Actions and PlaceHolders
-The first thing that is needed is a file with SDUI models that expands the Library Model file (containing all the Codable structs). This can automatically be created using the backend repo (see: XX).
+The first thing that is needed is a file with SDUI models that expands the Library Model file (containing all the Codable structs). This can automatically be created using the backend repo [here](https://github.com/iDylanK/sdui.backend).
 
 The next step is to implement the right delegate. In this example a new Component is created and the delegate is set:
 
