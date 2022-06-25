@@ -16,7 +16,7 @@ class SampleDataSource: SDUIDataSource {
 }
 
 class SampleComponentDelegate: SDUIComponentDelegate {
-    func view(for component: SDUI.SDUICustomComponent, with action: SDUICustomAction?) -> AnyView {
+    func view(for component: SDUI.SDUICustomComponent) -> AnyView {
         guard let componentDecoded = component.decoded as? SDUIComponent else {
             return AnyView(ErrorView(error: "Decoding error"))
         }

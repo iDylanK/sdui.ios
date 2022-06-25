@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// This view represents one of the main Screen Types, namely a Content View.
+/// /// It will show all the sections of the screen.
 struct ContentView: View {
     @EnvironmentObject var state: SDUIState
 

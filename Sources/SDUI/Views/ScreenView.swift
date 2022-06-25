@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// Main Screen. It's job is to determine the screen type (LIST or CONTENT) and call
+/// the right view for it. It also binds the default library actions (alerts, sheets, share views).
 struct ScreenView: View {
     @EnvironmentObject var state: SDUIState
 

@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+/// UIViewControllerRepresentable making it possible to show a UIActivityViewController
+/// displaying a share sheet.
+//  TODO:  This seems to be the right way to show the share sheet in SwiftUI.
+///        However, it shows the sheet full screen and this is not changable prior to ios 16
 struct ShareView: UIViewControllerRepresentable {
     @EnvironmentObject var state: SDUIState
-    // TODO: This seems to be the right way to show the share sheet in SwiftUI.
-    //       However, it shows the sheet full screen and this is not changable prior to ios 16.
 
     func makeUIViewController(context: Context) -> UIActivityViewController {
         var activityItems: [Any] = []

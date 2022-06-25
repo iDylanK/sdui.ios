@@ -7,14 +7,27 @@
 
 import SwiftUI
 
+/// Current default Loading View only displaying a ProgressView.
 struct LoadingView: View {
-    var body: some View {
-        ProgressView()
-    }
-}
+    @StateObject var state = SDUIState()
 
-struct LoadingView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadingView()
+    /// Url where to fetch Screen information from.
+    var viewUrl: String?
+    /// PlaceHolder to be set as a Header when the content is being fetched.
+    var placeHolder: SDUIPlaceHolder?
+
+    var body: some View {
+        if let placeHolder = placeHolder {
+            VStack {
+                ServerDrivenUI.shared.placeHolderDelegate?.view(for: placeHolder).onAppear {
+                    self.state.getView(viewUrl: viewUrl)
+                }
+                Spacer()
+            }
+        } else {
+            ProgressView().onAppear {
+                self.state.getView(viewUrl: viewUrl)
+            }
+        }
     }
 }

@@ -8,6 +8,10 @@
 import Foundation
 
 extension Array where Element == SDUISection {
+    /// Filters the array of sections by a given search value. The search value and the section searable values
+    /// are trimmed and matched using a case insensitive comparison.
+    /// - Parameter value: The search string to math a component's searchable value with.
+    /// - Returns: New list of sections containing at least 1 component matching the search value.
     func search(value: String) -> [SDUISection] {
         self.map { section in
             var section = section
@@ -23,6 +27,8 @@ extension Array where Element == SDUISection {
         }
     }
 
+    /// Filters the array of sections by a a project defined filter delegate.
+    /// - Returns: New list of sections containing at least 1 component matching the filter criteria.
     func filter() -> [SDUISection] {
         guard let delegate = ServerDrivenUI.shared.componentDelegate else { return self }
 

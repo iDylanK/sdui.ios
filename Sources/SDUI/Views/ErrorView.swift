@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Current default error screen only displaying a message.
 public struct ErrorView: View {
     var error: String
 
@@ -14,11 +15,5 @@ public struct ErrorView: View {
 
     public var body: some View {
         Text(error)
-    }
-}
-
-struct ErrorView_Previews: PreviewProvider {
-    static var previews: some View {
-        ErrorView(error: "")
     }
 }
