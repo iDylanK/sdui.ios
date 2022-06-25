@@ -9,7 +9,7 @@ import SwiftUI
 
 /// Current default Loading View only displaying a ProgressView.
 struct LoadingView: View {
-    @StateObject var state = SDUIState()
+    @EnvironmentObject var state: SDUIState
 
     /// Url where to fetch Screen information from.
     var viewUrl: String?

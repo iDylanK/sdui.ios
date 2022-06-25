@@ -24,6 +24,7 @@ struct RootView: View {
     var body: some View {
         if self.state.isLoading {
             LoadingView(viewUrl: viewUrl, placeHolder: placeHolder)
+                .environmentObject(state)
         } else {
             ScreenView()
                 // Searchable
